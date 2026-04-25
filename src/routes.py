@@ -1,0 +1,2 @@
+class Routes:
+    OBJECTS = "/objects"

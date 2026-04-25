@@ -1,0 +1,12 @@
+[tool.pytest.ini_options]
+#версия
+minversion = "6.0"
+#все тесты в папке тест
+testpaths = ["tests"]
+#функция тестирования начинается с test
+python_files = ["test_*.py", "*_test.py"]
+python_functions = ["test_*"]
+addopts = [
+  "-vv",				        # подробный вывод хода теста
+  "--import-mode=importlib"  	# меньше проблем с импортами
+]
