@@ -4,7 +4,7 @@ import pytest
 from dotenv import load_dotenv
 
 from src.api_client import ApiClient
-from src.api_service import ObjectsApi
+from src.pom.api_object import ObjectsApi
 
 
 # === Настройка логгера (выполняется один раз при старте pytest) ===

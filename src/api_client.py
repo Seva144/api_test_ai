@@ -8,6 +8,8 @@ logger = logging.getLogger(__name__)
 
 # клиент для отправки запросов
 class ApiClient(Client):
+
+
     def __init__(self, base_url: str = None, timeout: int = 10):
 
         load_dotenv()
