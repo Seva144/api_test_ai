@@ -1,3 +1,0 @@
-33: 2026-04-25 23:48:42 ➡️ GET /objects/1
-1025: 2026-04-25 23:48:43 HTTP Request: GET https://api.restful-api.dev/objects/1 "HTTP/1.1 200 OK"
-38: 2026-04-25 23:48:43 ⬅️ Status: 200 | Body: {"id":"1","name":"Google Pixel 6 Pro","data":{"color":"Cloudy White","capacity":"128 GB"}}
