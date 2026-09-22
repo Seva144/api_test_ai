@@ -6,10 +6,10 @@ from httpx import Client, Response, Timeout
 
 logger = logging.getLogger(__name__)
 
+
 # клиент для отправки запросов
-class ApiClient(Client):
-
-
+class ApiClientHard(Client):
+    # расширение стандартного клиента httpx
     def __init__(self, base_url: str = None, timeout: int = 10):
 
         load_dotenv()

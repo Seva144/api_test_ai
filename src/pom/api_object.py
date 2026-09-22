@@ -1,10 +1,10 @@
 from httpx import Response
 
-from src.api_client import ApiClient
+from src.api_client_hard import ApiClientHard
 from src.routes import Routes
 
 class ObjectsApi:
-    def __init__(self, client: ApiClient):
+    def __init__(self, client: ApiClientHard):
         self.client = client
 
     # POST
