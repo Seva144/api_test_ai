@@ -4,10 +4,10 @@ from httpx import Client, Response
 from utilities.logger_utils import logger
 
 
-class ApiClient:
+class ApiClient(Client):
 
     def __init__(self):
-        super().__init__(base_url=f"https://{os.getenv('RESOURCE_URL')}")
+        super().__init__(base_url=f"{os.getenv('RESOURCE_URL')}")
 
     def request(self, method, url, **kwargs):
         if eval(os.getenv("USE_LOGS")):

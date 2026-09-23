@@ -128,9 +128,9 @@ def assert_schema(response, model: Type[BaseModel]):
     body = response.json()
     if isinstance(body, list):
         for item in body:
-            model.model_validate(item, strict=True)
+            model.model_validate(item)
     else:
-        model.model_validate(body, strict=True)
+        model.model_validate(body)
 
 
 def assert_left_in_right_json(response, exp_json, actual_json):

@@ -5,7 +5,7 @@
     "tkEnabled": true,
     "useTestAgent": false,
     "kits": "{{kits}}",
-    "urlApp": "{{urlApp}}",
+    "urlApp": "{{url_app}}",
     "model": "{{model}}"
   }
 }

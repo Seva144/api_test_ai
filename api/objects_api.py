@@ -9,8 +9,8 @@ def get_object(client, obj_id):
     return client.get(routes.Routes.OBJECTS_ITEM.format(obj_id))
 
 
-def post_object(client, **kwargs):
-    return client.post(routes.Routes.OBJECTS, **kwargs)
+def post_object(client, url, **kwargs):
+    return client.post(url, **kwargs)
 
 
 def put_object(client, obj_id, **kwargs):
