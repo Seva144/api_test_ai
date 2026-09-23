@@ -1,3 +1,11 @@
+import json
+
+from pathlib import Path
+from typing import Any
+
+from test_data.config import DEFAULT_CONVERSATION
+
+
 def remove_ids(origin_dict):
     """
     удаляет ключи из словаря, в которых есть id
@@ -43,3 +51,30 @@ def compare_json_left_in_right(json1, json2, key='', path=''):
     elif json1 != json2:
         diff_dict[key] = {"expected": json1, "actual": json2, "path": path[:-1]}
     return diff_dict
+
+
+def set_default_values(obj: Any, ctx: dict[str, Any]) -> Any:
+    """Рекурсивно заменяет {{key}} на значения из ctx. (пробегает по json)
+       если строка без плейсхолдера пропускаем
+       если список то берем список и пробегаем по нему
+       если строка с плейсхолдером то заменяем на поле из объекта дата класса
+    """
+    if isinstance(obj, dict):
+        return {k: set_default_values(v, ctx) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [set_default_values(v, ctx) for v in obj]
+    if isinstance(obj, str) and obj.startswith("{{") and obj.endswith("}}"):
+        key = obj[2:-2].strip()
+        if key not in ctx:
+            raise KeyError(f"Нет значения для плейсхолдера '{key}'")
+        return ctx[key]
+    return obj
+
+
+def read_json_conversation_request(name: str) -> dict:
+    path = Path(f"test_data/{name}.json")
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    # __dict__ для передачи полей экземпляра формирует словарь dict[str, Any]
+    return set_default_values(raw, DEFAULT_CONVERSATION.__dict__)
+
+

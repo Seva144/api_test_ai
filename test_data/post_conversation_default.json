@@ -1,0 +1,11 @@
+{
+  "title": "Новый диалог",
+  "context": {
+    "atkEnabled": false,
+    "tkEnabled": true,
+    "useTestAgent": false,
+    "kits": "{{kits}}",
+    "urlApp": "{{urlApp}}",
+    "model": "{{model}}"
+  }
+}
