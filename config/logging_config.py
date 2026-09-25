@@ -22,7 +22,6 @@ class LoggingConfig:
 
 
 def build_logger(name: str, config: LoggingConfig) -> logging.Logger:
-    """Создаёт логгер с FileHandler по cfg. Дублирование handlers исключено."""
     logger = logging.getLogger(name)
     logger.setLevel(config.root_level)
     logger.propagate = False

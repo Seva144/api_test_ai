@@ -10,7 +10,7 @@ from config.logging_config import build_logger, LoggingConfig
 class TestBase:
     LOG_DIR: Path = Path("logs")
     LOG_FILE: str = "default_test_run.log"
-    LOGGING_CONFIG: LoggingConfig | None
+    LOGGING_CONFIG: LoggingConfig | None = None
 
     logger: logging.Logger = None
     client: ApiClient = None
