@@ -1,4 +1,5 @@
 import logging
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -8,7 +9,7 @@ class LoggingConfig:
     log_dir: Path = Path("logs")
     file_name: str = "test_run.log"
 
-    fmt: str = "%(asctime)s [%(levelname)-8s] %(name)s:%(lineno)d — %(message)s"
+    fmt: str = "%(asctime)s - || %(name)s:%(lineno)d || %(message)s"
     datefmt: str = "%Y-%m-%d %H:%M:%S"
 
     console_level: int = logging.INFO
@@ -41,10 +42,34 @@ def build_logger(name: str, config: LoggingConfig) -> logging.Logger:
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
-    for muted_name in config.muted_loggers:
-        logging.getLogger(muted_name).setLevel(logging.WARNING)
-
     return logger
+
+
+def setup_root_logging(cfg: LoggingConfig) -> None:
+    """Настраивает root-логгер: консоль + общий файл."""
+    root_logger = logging.getLogger()
+    root_logger.setLevel(cfg.root_level)
+
+    if root_logger.handlers:
+        root_logger.handlers.clear()
+
+    formatter = logging.Formatter(cfg.fmt, datefmt=cfg.datefmt)
+
+    console = logging.StreamHandler(sys.stdout)
+    console.setLevel(cfg.console_level)
+    console.setFormatter(formatter)
+    root_logger.addHandler(console)
+
+    cfg.log_dir.mkdir(parents=True, exist_ok=True)
+    file_all = logging.FileHandler(
+        cfg.log_dir / cfg.file_name, mode="w", encoding="utf-8"
+    )
+    file_all.setLevel(cfg.file_level)
+    file_all.setFormatter(formatter)
+    root_logger.addHandler(file_all)
+
+    for muted in cfg.muted_loggers:
+        logging.getLogger(muted).setLevel(logging.WARNING)
 
 
 
