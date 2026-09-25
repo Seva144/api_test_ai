@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from test_data.config import DEFAULT_CONVERSATION
+from models.request.default_fields import DEFAULT_CONVERSATION
 
 
 def remove_ids(origin_dict):
@@ -71,10 +71,11 @@ def set_default_values(obj: Any, ctx: dict[str, Any]) -> Any:
     return obj
 
 
-def read_json_conversation_request(name: str) -> dict:
-    path = Path(f"test_data/{name}.json")
+def read_json_conversation_request(name: str, **overrides: Any) -> dict:
+    path = Path(f"models/request/{name}.json")
     raw = json.loads(path.read_text(encoding="utf-8"))
     # __dict__ для передачи полей экземпляра формирует словарь dict[str, Any]
-    return set_default_values(raw, DEFAULT_CONVERSATION.__dict__)
+    ctx = {**DEFAULT_CONVERSATION.__dict__, **overrides}
+    return set_default_values(raw, ctx)
 
 

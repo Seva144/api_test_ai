@@ -2,7 +2,7 @@ from http import HTTPStatus
 
 from api.conversation_api import post_conversation, delete_conversation
 from assertions.assertion_base import assert_status_code, assert_schema
-from models.conversation_dto import ConversationDTO
+from models.response.conversation_dto import ConversationDTO
 
 from tests.base_test import TestBase
 from utilities.json_utils import read_json_conversation_request

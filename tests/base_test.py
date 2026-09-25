@@ -1,11 +1,17 @@
 import logging
+from http import HTTPStatus
 from pathlib import Path
+from typing import Any
 from uuid import UUID
 
 import pytest
 
 from api.client import ApiClient
+from api.conversation_api import post_conversation
+from assertions.assertion_base import assert_status_code, assert_schema
 from config.logging_config import build_logger, LoggingConfig
+from models.response.conversation_dto import ConversationDTO
+from utilities.json_utils import read_json_conversation_request
 
 
 class TestBase:
@@ -51,7 +57,23 @@ class TestBase:
         if cls.client is not None:
             cls.client.close()
 
-    def create_conversation(self) -> UUID:
+    def create_conversation(self,  **overrides: Any) -> UUID:
         self.logger.info(f"Создание нового диалога диалога")
+        post_obj = read_json_conversation_request("post_conversation_default", overrides)
+        self.logger.info(f"payload: {post_obj}")
+        response_post = post_conversation(self.client, json=post_obj)
+        assert_status_code(response_post, HTTPStatus.OK)
+        assert_schema(response_post, ConversationDTO)
+        id_conversation = response_post.json()['id']
+        self.logger.info(f"Создан диалог с id = {id_conversation}")
+
+
+    def delete_conversation(self, uuid: UUID):
+        self.logger(f"Удаляем диалог с id ")
+
+
+
+
+
 
 
