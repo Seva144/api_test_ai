@@ -1,5 +1,6 @@
 import logging
 from pathlib import Path
+from uuid import UUID
 
 import pytest
 
@@ -49,3 +50,8 @@ class TestBase:
         # закрыть HTTP-соединения
         if cls.client is not None:
             cls.client.close()
+
+    def create_conversation(self) -> UUID:
+        self.logger.info(f"Создание нового диалога диалога")
+
+

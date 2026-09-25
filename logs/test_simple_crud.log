@@ -1,0 +1,19 @@
+2026-09-25 11:34:18 - || TestSimpleCRUD:37 || ApiClient инициализирован
+2026-09-25 11:34:18 - || TestSimpleCRUD:39 || ============================================================
+2026-09-25 11:34:18 - || TestSimpleCRUD:40 || START TestSimpleCRUD  (log: logs/test_simple_crud.log)
+2026-09-25 11:34:18 - || TestSimpleCRUD:41 || ============================================================
+2026-09-25 11:34:18 - || TestSimpleCRUD:17 || Создание диалога
+2026-09-25 11:34:18 - || TestSimpleCRUD:19 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': True, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.8-27B-FP8'}}
+2026-09-25 11:34:18 - || TestSimpleCRUD:24 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-09-25 11:34:18 - || TestSimpleCRUD:27 ||   request body: {"title":"Новый диалог","context":{"atkEnabled":false,"tkEnabled":true,"useTestAgent":false,"kits":"СБП","urlApp":"https://test-app.local","model":"Qwen/Qwen3.8-27B-FP8"}}
+2026-09-25 11:34:18 - || TestSimpleCRUD:33 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-09-25 11:34:18 - || TestSimpleCRUD:45 ||   response body: {"id":"9b0ab86a-3a3b-49d2-853c-8ebc075953d7","businessUid":"СБП-ДС-25.09.2026-2","userId":"dev-user","currentModel":"Qwen/Qwen3.8-27B-FP8","atkEnabled":false,"tkEnabled":true,"useTestAgent":false,"urlApp":"https://test-app.local","kitsComponent":"СБП","title":"Новый диалог","createdAt":"2026-09-25T11:34:18.850143674","updatedAt":"2026-09-25T11:34:18.850143674","cipher":"SBP001"}
+2026-09-25 11:34:18 - || TestSimpleCRUD:26 || Создан диалог с id=9b0ab86a-3a3b-49d2-853c-8ebc075953d7
+2026-09-25 11:34:18 - || TestSimpleCRUD:27 || Удаление диалога
+2026-09-25 11:34:18 - || TestSimpleCRUD:24 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/9b0ab86a-3a3b-49d2-853c-8ebc075953d7
+2026-09-25 11:34:19 - || TestSimpleCRUD:33 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/9b0ab86a-3a3b-49d2-853c-8ebc075953d7
+2026-09-25 11:34:19 - || TestSimpleCRUD:45 ||   response body: {"id":"9b0ab86a-3a3b-49d2-853c-8ebc075953d7","businessUid":"СБП-ДС-25.09.2026-2","userId":"dev-user","currentModel":"Qwen/Qwen3.8-27B-FP8","atkEnabled":false,"tkEnabled":true,"useTestAgent":false,"urlApp":"https://test-app.local","kitsComponent":"СБП","title":"Новый диалог","createdAt":"2026-09-25T11:34:18.850144","updatedAt":"2026-09-25T11:34:18.850144","cipher":"SBP001"}
+2026-09-25 11:34:19 - || TestSimpleCRUD:29 || <Response [200 ]>
+2026-09-25 11:34:19 - || TestSimpleCRUD:45 || ============================================================
+2026-09-25 11:34:19 - || TestSimpleCRUD:46 || END TestSimpleCRUD
+2026-09-25 11:34:19 - || TestSimpleCRUD:47 || ============================================================

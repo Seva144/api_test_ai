@@ -1,3 +1,4 @@
+import logging
 from typing import Type
 
 from pydantic import BaseModel
@@ -8,6 +9,8 @@ from utilities.json_utils import compare_json_left_in_right, remove_ids
 """
    Базовый класс для построение логов AssertionError. Конструирует сообщение в свое поле _msg.
    """
+
+logger = logging.getLogger(__name__)
 
 
 class LogMsg:
@@ -50,6 +53,7 @@ class LogMsg:
         return self
 
     def get_message(self):
+        logger.error(self._msg)
         return self._msg
 
 

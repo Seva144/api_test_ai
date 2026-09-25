@@ -14,7 +14,7 @@ class TestSimpleCRUD(TestBase):
 
     def test_create_and_delete_conversation(self):
         # создание диалога
-        self.logger.info(f"Создание диалога")
+        self.logger.info(f"Создание диалога - test_create_and_delete_conversation")
         post_obj = read_json_conversation_request("post_conversation_default")
         self.logger.info(f"payload: {post_obj}")
         response_post = post_conversation(self.client, json=post_obj)
