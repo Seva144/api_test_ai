@@ -7,7 +7,7 @@ from uuid import UUID
 import pytest
 
 from api.client import ApiClient
-from api.conversation_api import post_conversation
+from api.conversation_api import post_conversation, delete_conversation
 from assertions.assertion_base import assert_status_code, assert_schema
 from config.logging_config import build_logger, LoggingConfig
 from models.response.conversation_dto import ConversationDTO
@@ -57,19 +57,31 @@ class TestBase:
         if cls.client is not None:
             cls.client.close()
 
-    def create_conversation(self,  **overrides: Any) -> UUID:
+    def create_conversation(self,  **overrides: Any) -> ConversationDTO:
         self.logger.info(f"Создание нового диалога диалога")
         post_obj = read_json_conversation_request("post_conversation_default", overrides)
         self.logger.info(f"payload: {post_obj}")
-        response_post = post_conversation(self.client, json=post_obj)
-        assert_status_code(response_post, HTTPStatus.OK)
-        assert_schema(response_post, ConversationDTO)
-        id_conversation = response_post.json()['id']
-        self.logger.info(f"Создан диалог с id = {id_conversation}")
+        response = post_conversation(self.client, json=post_obj)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema(response, ConversationDTO)
+        dto = ConversationDTO.model_validate(response.json())
+        self.logger.info(f"Создан диалог id={dto.id}")
+        return dto
+
+    def delete_conversation(self, id_conversation: UUID, user: str) -> ConversationDTO:
+        self.logger.info(f"Удаляем диалог {id_conversation} пользователя c id {user} ")
+        response = delete_conversation(self.client, id_conversation)
+        self.logger.info(response)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema(response, ConversationDTO)
+        self.logger.info(f"Диалог с id - {id_conversation} удален")
+        dto = ConversationDTO.model_validate(response.json())
+        return dto
 
 
-    def delete_conversation(self, uuid: UUID):
-        self.logger(f"Удаляем диалог с id ")
+
+
+
 
 
 
