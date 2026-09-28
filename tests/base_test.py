@@ -7,12 +7,13 @@ from uuid import UUID
 import pytest
 
 from api.client import ApiClient
-from api.conversation_api import post_conversation, delete_conversation, stream_message
-from assertions.assertion_base import assert_status_code, assert_schema
+from api.conversation_api import post_conversation, delete_conversation, stream_message, get_messages
+from assertions.assertion_base import assert_status_code, assert_schema, assert_schema_list
 from config.logging_config import build_logger, LoggingConfig
 from models.request.default_fields import *
 from models.response.conversation_dto import ConversationDTO
 from models.response.message_chunk_dto import MessageChunkDTO, MessageStreamResult
+from models.response.message_dto import MessageDTO
 from utilities.json_utils import create_request
 from utilities.sse import iter_sse
 
@@ -153,6 +154,17 @@ class TestBase:
 
         self._log_stream_result(result, finished=finished)
         return result
+
+    def get_messages(self, id_conversation: UUID, user_id: str) -> list[MessageDTO]:
+        self.logger.info(f"Получение всех сообщений пользователя {user_id} из диалога - {id_conversation}")
+        response = get_messages(self.client, id_conversation)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema_list(response, MessageDTO)
+        messages = [MessageDTO.model_validate(m) for m in response.json()]
+        self.logger.info(f"Получено {len(messages)} сообщений")
+        return messages
+
+
 
 
 

@@ -6,6 +6,8 @@ import logging
 
 from pydantic import json
 
+from utilities.log_utils import pretty_json
+
 
 class ApiClient(Client):
 
@@ -26,7 +28,7 @@ class ApiClient(Client):
             try:
                 self.logger.debug(f"  request body: {request.content.decode('utf-8')}")
             except Exception:
-                self.logger.debug("  request body: <binary>")
+                self.logger.debug("  request body:\n%s", pretty_json(request.content))
 
     def _log_response(self, response):
         req = response.request
@@ -42,9 +44,5 @@ class ApiClient(Client):
             except Exception as e:
                 self.logger.info(f"  response body: <read failed: {type(e).__name__}: {e}>")
                 return
+        self.logger.info("  response body:\n%s", pretty_json(response.content))
 
-        try:
-            body = response.json()
-            self.logger.info(f"  response body:\n{json.dumps(body, ensure_ascii=False, indent=2)}")
-        except Exception:
-            self.logger.info(f"  response body: {response.text}")

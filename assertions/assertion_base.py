@@ -1,7 +1,7 @@
 import logging
 from typing import Type
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from utilities.files_utils import read_json_test_data, read_json_common_response_data
 from utilities.json_utils import compare_json_left_in_right, remove_ids
@@ -136,6 +136,20 @@ def assert_schema(response, model: Type[BaseModel]):
     else:
         model.model_validate(body)
 
+
+def assert_schema_list(response, model: Type[BaseModel]):
+    body = response.json()
+    assert isinstance(body, list), (
+        f"Ожидался JSON-массив, получен {type(body).__name__}. Тело: {body!r}"
+    )
+
+    for index, item in enumerate(body):
+        try:
+            model.model_validate(item)
+        except ValidationError as e:
+            raise AssertionError(
+                f"Элемент [{index}] не соответствует схеме {model.__name__}:\n{e}"
+            ) from e
 
 def assert_left_in_right_json(response, exp_json, actual_json):
     """

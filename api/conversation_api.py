@@ -15,5 +15,9 @@ def delete_conversation(client: ApiClient, id_conversation: UUID) -> Response:
     return client.delete(routes.Routes.CONVERSATION_BY_ID.format(id_conversation))
 
 
+def get_messages(client: ApiClient, id_conversation: UUID) -> Response:
+    return client.get(routes.Routes.MESSAGES_GET.format(id_conversation))
+
+
 def stream_message(client: ApiClient, id_conversation: UUID, **kwargs: Any) -> Iterator[Response]:
     return client.stream("POST", routes.Routes.MESSAGE_SEND.format(id_conversation), **kwargs)
