@@ -13,7 +13,7 @@ class ApiClient(Client):
         self.logger = logger
         super().__init__(
             base_url=os.getenv("RESOURCE_URL"),
-            timeout=30.0,
+            timeout=120.0,
             event_hooks={
                 "request": [self._log_request],
                 "response": [self._log_response],
@@ -32,12 +32,17 @@ class ApiClient(Client):
         req = response.request
         self.logger.info(f"← {response.status_code} {req.method} {req.url}")
 
+        content_type = response.headers.get("content-type", "")
+        if "text/event-stream" in content_type:
+            self.logger.debug("  response body: <SSE stream, skipped>")
+            return
         if not response.is_stream_consumed:
             try:
                 response.read()
             except Exception as e:
                 self.logger.info(f"  response body: <read failed: {type(e).__name__}: {e}>")
                 return
+
         try:
             body = response.json()
             self.logger.info(f"  response body:\n{json.dumps(body, ensure_ascii=False, indent=2)}")

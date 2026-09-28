@@ -1,0 +1,11 @@
+{
+  "message": "{{message}}",
+  "context": {
+    "atkEnabled": "{{atkEnabled}}",
+    "tkEnabled": "{{tkEnabled}}",
+    "useTestAgent": "{{useTestAgent}}",
+    "kits": "{{kits}}",
+    "urlApp": "{{url_app}}",
+    "model": "{{model}}"
+  }
+}

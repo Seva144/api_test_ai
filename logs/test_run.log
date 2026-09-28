@@ -1,3 +1,3 @@
-2026-09-25 15:24:58 - || pytest:7 || ▶ START  tests/simple_crud.py::TestSimpleCRUD::test_create_and_delete_conversation
-2026-09-25 15:24:58 - || pytest:20 || ✘ FAILED tests/simple_crud.py::TestSimpleCRUD::test_create_and_delete_conversation — TypeError: read_json_conversation_request() takes 1 positional argument but 2 were given
-2026-09-25 15:24:58 - || pytest:11 || ◆ END    tests/simple_crud.py::TestSimpleCRUD::test_create_and_delete_conversation
+2026-09-28 14:19:40 - || pytest:7 || ▶ START  tests/simple_crud.py::TestSimpleCRUD::test_create_and_delete_conversation
+2026-09-28 14:19:45 - || pytest:18 || ✔ PASSED tests/simple_crud.py::TestSimpleCRUD::test_create_and_delete_conversation
+2026-09-28 14:19:45 - || pytest:11 || ◆ END    tests/simple_crud.py::TestSimpleCRUD::test_create_and_delete_conversation

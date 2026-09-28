@@ -1,8 +1,100 @@
-2026-09-25 15:24:58 - || TestSimpleCRUD:44 || ApiClient инициализирован
-2026-09-25 15:24:58 - || TestSimpleCRUD:46 || ============================================================
-2026-09-25 15:24:58 - || TestSimpleCRUD:47 || START TestSimpleCRUD  (log: logs/test_simple_crud.log)
-2026-09-25 15:24:58 - || TestSimpleCRUD:48 || ============================================================
-2026-09-25 15:24:58 - || TestSimpleCRUD:61 || Создание нового диалога диалога
-2026-09-25 15:24:58 - || TestSimpleCRUD:52 || ============================================================
-2026-09-25 15:24:58 - || TestSimpleCRUD:53 || END TestSimpleCRUD
-2026-09-25 15:24:58 - || TestSimpleCRUD:54 || ============================================================
+2026-09-28 14:19:40 - || TestSimpleCRUD:47 || ApiClient инициализирован
+2026-09-28 14:19:40 - || TestSimpleCRUD:49 || ============================================================
+2026-09-28 14:19:40 - || TestSimpleCRUD:50 || START TestSimpleCRUD  (log: logs/test_simple_crud.log)
+2026-09-28 14:19:40 - || TestSimpleCRUD:51 || ============================================================
+2026-09-28 14:19:40 - || TestSimpleCRUD:64 || Создание нового диалога диалога
+2026-09-28 14:19:40 - || TestSimpleCRUD:67 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-09-28 14:19:40 - || TestSimpleCRUD:24 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-09-28 14:19:40 - || TestSimpleCRUD:27 ||   request body: {"title":"Новый диалог","context":{"atkEnabled":false,"tkEnabled":false,"useTestAgent":false,"kits":"СБП","urlApp":"https://test-app.local","model":"Qwen/Qwen3.5-4B"}}
+2026-09-28 14:19:41 - || TestSimpleCRUD:33 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-09-28 14:19:41 - || TestSimpleCRUD:50 ||   response body: {"id":"931cb775-ca72-4a2c-8b19-d7768253ea32","businessUid":"СБП-ДС-28.09.2026-13","userId":"dev-user","currentModel":"Qwen/Qwen3.5-4B","atkEnabled":false,"tkEnabled":false,"useTestAgent":false,"urlApp":"https://test-app.local","kitsComponent":"СБП","title":"Новый диалог","createdAt":"2026-09-28T14:19:41.043745142","updatedAt":"2026-09-28T14:19:41.043745142","cipher":"SBP001"}
+2026-09-28 14:19:41 - || TestSimpleCRUD:74 || Создан диалог id=931cb775-ca72-4a2c-8b19-d7768253ea32
+2026-09-28 14:19:41 - || TestSimpleCRUD:109 || Отправляем сообщение 'Сделай АТК по авторизации' в диалог 931cb775-ca72-4a2c-8b19-d7768253ea32
+2026-09-28 14:19:41 - || TestSimpleCRUD:112 || payload: {'message': 'Сделай АТК по авторизации', 'context': {'atkEnabled': True, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-09-28 14:19:41 - || TestSimpleCRUD:24 || → POST http://localhost:9081/api/ai-test/chat/conversations/931cb775-ca72-4a2c-8b19-d7768253ea32/messages
+2026-09-28 14:19:41 - || TestSimpleCRUD:27 ||   request body: {"message":"Сделай АТК по авторизации","context":{"atkEnabled":true,"tkEnabled":false,"useTestAgent":false,"kits":"СБП","urlApp":"https://test-app.local","model":"Qwen/Qwen3.5-4B"}}
+2026-09-28 14:19:41 - || TestSimpleCRUD:33 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/931cb775-ca72-4a2c-8b19-d7768253ea32/messages
+2026-09-28 14:19:41 - || TestSimpleCRUD:37 ||   response body: <SSE stream, skipped>
+2026-09-28 14:19:45 - || TestSimpleCRUD:92 || ============================================================
+2026-09-28 14:19:45 - || TestSimpleCRUD:93 || РЕЗУЛЬТАТ SSE-СТРИМА
+2026-09-28 14:19:45 - || TestSimpleCRUD:94 || ============================================================
+2026-09-28 14:19:45 - || TestSimpleCRUD:95 || conversationId: 931cb775-ca72-4a2c-8b19-d7768253ea32
+2026-09-28 14:19:45 - || TestSimpleCRUD:96 || messageId:      943ead48-5db8-4428-8eaf-00f9a1b8ba24
+2026-09-28 14:19:45 - || TestSimpleCRUD:97 || событий всего:  451
+2026-09-28 14:19:45 - || TestSimpleCRUD:98 || чанков:         450
+2026-09-28 14:19:45 - || TestSimpleCRUD:99 || последний seq:  450
+2026-09-28 14:19:45 - || TestSimpleCRUD:100 || finish получен: True
+2026-09-28 14:19:45 - || TestSimpleCRUD:101 || длина текста:   2145 символов
+2026-09-28 14:19:45 - || TestSimpleCRUD:102 || ============================================================
+2026-09-28 14:19:45 - || TestSimpleCRUD:103 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
+2026-09-28 14:19:45 - || TestSimpleCRUD:104 || ============================================================
+2026-09-28 14:19:45 - || TestSimpleCRUD:105 || /**
+ *
+ * @author dev-user
+ */
+public class AuthorizationTestsOfSBP001BydevUser {
+    import static org.junit.jupiter.api.Assertions.*;
+    import io.github.bonigarcia.wdm.WebDriverManager;
+    import org.junit.jupiter.api.BeforeEach;
+    import org.junit.jupiter.api.Test;
+    import org.openqa.selenium.By;
+    import org.openqa.selenium.WebDriver;
+    import org.openqa.selenium.WebElement;
+    import org.openqa.selenium.chrome.ChromeDriver;
+
+    private WebDriver driver;
+    private static final String BASE_URL = "https://example.com";
+
+    @BeforeEach
+    public void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get(BASE_URL);
+    }
+
+    @Test
+    public void successfulLoginWithValidCredentials() {
+        WebElement emailField = driver.findElement(By.id("email"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+        WebElement loginButton = driver.findElement(By.id("login"));
+
+        emailField.sendKeys("dev-user@example.com");
+        passwordField.sendKeys("SecurePass123!");
+        loginButton.click();
+
+        assertTrue(driver.getPageSource().contains("Dashboard"), "User should be redirected to dashboard after successful login");
+    }
+
+    @Test
+    public void unsuccessfulLoginWithInvalidPassword() {
+        WebElement emailField = driver.findElement(By.id("email"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+        WebElement loginButton = driver.findElement(By.id("login"));
+
+        emailField.sendKeys("dev-user@example.com");
+        passwordField.sendKeys("WrongPassword");
+        loginButton.click();
+
+        assertTrue(driver.getPageSource().contains("Invalid credentials"), "Should show error message for invalid password");
+    }
+
+    @Test
+    public void unsuccessfulLoginWithEmptyFields() {
+        WebElement loginButton = driver.findElement(By.id("login"));
+
+        loginButton.click();
+
+        assertTrue(driver.getPageSource().contains("Please fill in all fields"), "Should show error message for empty fields");
+    }
+}
+2026-09-28 14:19:45 - || TestSimpleCRUD:106 || ============================================================
+2026-09-28 14:19:45 - || TestSimpleCRUD:78 || Удаляем диалог 931cb775-ca72-4a2c-8b19-d7768253ea32 пользователя c id dev-user 
+2026-09-28 14:19:45 - || TestSimpleCRUD:24 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/931cb775-ca72-4a2c-8b19-d7768253ea32
+2026-09-28 14:19:45 - || TestSimpleCRUD:33 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/931cb775-ca72-4a2c-8b19-d7768253ea32
+2026-09-28 14:19:45 - || TestSimpleCRUD:50 ||   response body: {"id":"931cb775-ca72-4a2c-8b19-d7768253ea32","businessUid":"СБП-ДС-28.09.2026-13","userId":"dev-user","currentModel":"Qwen/Qwen3.5-4B","atkEnabled":true,"tkEnabled":false,"useTestAgent":false,"urlApp":"https://test-app.local","kitsComponent":"СБП","title":"Новый диалог","createdAt":"2026-09-28T14:19:41.043745","updatedAt":"2026-09-28T14:19:41.282559","cipher":"SBP001"}
+2026-09-28 14:19:45 - || TestSimpleCRUD:82 || <Response [200 ]>
+2026-09-28 14:19:45 - || TestSimpleCRUD:85 || Диалог с id - 931cb775-ca72-4a2c-8b19-d7768253ea32 удален
+2026-09-28 14:19:45 - || TestSimpleCRUD:55 || ============================================================
+2026-09-28 14:19:45 - || TestSimpleCRUD:56 || END TestSimpleCRUD
+2026-09-28 14:19:45 - || TestSimpleCRUD:57 || ============================================================

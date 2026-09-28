@@ -71,11 +71,11 @@ def set_default_values(obj: Any, ctx: dict[str, Any]) -> Any:
     return obj
 
 
-def read_json_conversation_request(name: str, **overrides: Any) -> dict:
+def create_request(config: Any, name: str, **overrides: Any) -> dict:
     path = Path(f"models/request/{name}.json")
     raw = json.loads(path.read_text(encoding="utf-8"))
     # __dict__ для передачи полей экземпляра формирует словарь dict[str, Any]
-    ctx = {**DEFAULT_CONVERSATION.__dict__, **overrides}
+    ctx = {**config.__dict__, **overrides}
     return set_default_values(raw, ctx)
 
 

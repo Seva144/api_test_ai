@@ -5,6 +5,7 @@ from typing import Any
 from pydantic import BaseModel, ConfigDict, Field
 
 
+
 class MessageDTO(BaseModel):
     """DTO полного сообщения чата."""
 
@@ -25,3 +26,4 @@ class MessageDTO(BaseModel):
     # опциональные
     error: str | None = None
     error_message: str | None = Field(default=None, alias="errorMessage")
+
