@@ -7,7 +7,8 @@ from uuid import UUID
 import pytest
 
 from api.client import ApiClient
-from api.ai_test_api import post_conversation, delete_conversation, stream_message, get_messages, post_atk, delete_atk
+from api.ai_test_api import post_conversation, delete_conversation, stream_message, get_messages, post_atk, delete_atk, \
+    post_tk, delete_tk
 from assertions.assertion_base import assert_status_code, assert_schema, assert_schema_list
 from config.logging_config import build_logger, LoggingConfig
 from models.request.default_fields import *
@@ -15,6 +16,7 @@ from models.response.atk_dto import AtkDTO
 from models.response.conversation_dto import ConversationDTO
 from models.response.message_chunk_dto import MessageChunkDTO, MessageStreamResult
 from models.response.message_dto import MessageDTO
+from models.response.tk_dto import TkDTO
 from utilities.json_utils import create_request
 from utilities.sse import iter_sse
 
@@ -157,7 +159,7 @@ class TestBase:
         response = get_messages(self.client, id_conversation)
         assert_status_code(response, HTTPStatus.OK)
         assert_schema_list(response, MessageDTO)
-        messages = [MessageDTO.model_validate(m) for m in response.json()]
+        messages = [MessageDTO.model_validate(item) for item in response.json()]
         self.logger.info(f"Получено {len(messages)} сообщений")
         by_id: dict[UUID, MessageDTO] = {m.id: m for m in messages}
         return by_id
@@ -167,7 +169,7 @@ class TestBase:
                    message: str,
                    project_id: UUID) -> AtkDTO:
         self.logger.info(f"Отправка АТК пользователя {user_id} id сообщения - {id_conversation}")
-        request = create_request(DEFAULT_CONVERSATION, "post_atk", message=message)
+        request = create_request(ATK_MESSAGE_DEFAULT, "post_atk", message=message)
         response = post_atk(self.client, project_id, json=request)
         assert_status_code(response, HTTPStatus.OK)
         assert_schema(response, AtkDTO)
@@ -175,7 +177,7 @@ class TestBase:
         self.logger.info(f"Создан АТК с id={dto.id}")
         return dto
 
-    def atk_delete(self, user_id: str, atk_id: UUID):
+    def atk_delete(self, user_id: str, atk_id: UUID) -> AtkDTO:
         self.logger.info(f"Удаление АТК с id - {atk_id}, пользователем id - {user_id}")
         response = delete_atk(self.client, atk_id)
         assert_status_code(response, HTTPStatus.OK)
@@ -183,6 +185,31 @@ class TestBase:
         dto = AtkDTO.model_validate(response.json())
         self.logger.info(f"Удален АТК с id={dto.id}")
         return dto
+
+    def tks_create(self, id_conversation: UUID,
+                   user_id: str,
+                   message: str
+                   ) -> list[TkDTO]:
+        self.logger.info(f"Отправка ТК пользователя {user_id} id сообщения - {id_conversation}")
+        request = create_request(TK_MESSAGE_DEFAULT, "post_tk", message=message)
+        response = post_tk(self.client, json=request)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema_list(response, TkDTO)
+        tks = [TkDTO.model_validate(item) for item in response.json()]
+        self.logger.info(f"Создано TK: {len(tks)}")
+        return tks
+
+    def tks_delete(self, user_id: str, tks: list[TkDTO]):
+        self.logger.info(f"Удаление сгенерированных ТК пользователем - {user_id}")
+        for tk in tks:
+            self.logger.info(f" Удаляем TK id - {tk.id}")
+            response = delete_tk(self.client, tk.id)
+            assert_status_code(response, HTTPStatus.OK)
+            assert_schema(response, TkDTO)
+            self.logger.info(f" TK id - {tk.id} удалён")
+
+
+
 
 
 

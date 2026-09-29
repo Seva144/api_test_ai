@@ -29,7 +29,7 @@ MESSAGE_ATK_SIMPLE = MessageConfigAtkSimple()
 
 
 @dataclass
-class MessageConfigAtkOther:
+class MessageConfigTkSimple:
     atkEnabled: bool = False
     tkEnabled: bool = True
     useTestAgent: bool = False
@@ -38,7 +38,7 @@ class MessageConfigAtkOther:
     url_app: str = "https://test-app.local"
 
 
-MESSAGE_TK_SIMPLE = MessageConfigAtkOther()
+MESSAGE_TK_SIMPLE = MessageConfigTkSimple()
 
 
 @dataclass
@@ -48,5 +48,16 @@ class ATKMessageConfig:
 
 
 ATK_MESSAGE_DEFAULT = ATKMessageConfig()
+
+
+@dataclass
+class TKMessageConfig:
+    name: str = "ТК"
+    kits: str = "СБП"
+
+
+TK_MESSAGE_DEFAULT = ATKMessageConfig()
+
+
 
 
