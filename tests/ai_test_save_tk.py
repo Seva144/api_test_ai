@@ -33,7 +33,7 @@ class TestAiSaveTk(TestBase):
 
             #  4. Сохранение ТК
             self.logger.info(f"ШАГ 4: Сохранение ТК")
-            tks = self.tks_create(id_conversation, id_user, assistant_msg.content)
+            tks = self.tks_create(id_conversation, id_user, id_message, assistant_msg.content)
             self.logger.info(f"Сгенерировано {len(tks)} TK")
 
             # 5. Удаление ТК

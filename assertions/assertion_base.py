@@ -282,7 +282,7 @@ def assert_stream_result(
     assert event_types <= {"chunk"}, f"Неожиданные event_type: {event_types}"
 
     logger.info(
-        f"✔ assert_stream_result: OK "
+        f" assert_stream_result: OK "
         f"(диалог {id_conversation}, сообщений 1, чанков {len(result.chunks)}, "
         f"seq {seqs[0]}..{seqs[-1]})"
     )
