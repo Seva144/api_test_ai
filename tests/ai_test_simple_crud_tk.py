@@ -4,11 +4,11 @@ from models.request.default_fields import MESSAGE_ATK_SIMPLE
 from tests.base_test import TestBase
 
 
-class AiTestSimpleCrudAtk(TestBase):
+class TestAiSimpleCrudAtk(TestBase):
 
     LOG_FILE = "ai_test_simple_crud_atk.log"
 
-    def ai_test_simple_crud_atk(self):
+    def test_ai_simple_crud_atk(self):
         try:
             #1. создание диалога
             create_conversation_response = self.create_conversation()

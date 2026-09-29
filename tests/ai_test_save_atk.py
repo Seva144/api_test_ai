@@ -6,9 +6,9 @@ from models.request.default_fields import MESSAGE_ATK_SIMPLE
 from tests.base_test import TestBase
 
 
-class AiTestSaveAtk(TestBase):
+class TestAiSaveAtk(TestBase):
 
-    def ai_test_save_atk(self):
+    def test_ai_save_atk(self):
         # 1. создание диалога
         self.logger.info(f"ШAГ 1: Создание диалога пользователя")
         create_conversation_response = self.create_conversation()

@@ -3,11 +3,11 @@ from uuid import UUID
 from tests.base_test import TestBase
 
 
-class AiTestSimpleCrudAtk(TestBase):
+class TestAiSimpleCrudAtk(TestBase):
 
     LOG_FILE = "ai_test_simple_crud_atk.log"
 
-    def ai_test_simple_crud_atk(self):
+    def test_ai_simple_crud_atk(self):
         # 1. создание диалога
         create_conversation_response = self.create_conversation()
         id_conversation: UUID = create_conversation_response.id
