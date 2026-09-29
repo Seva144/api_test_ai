@@ -8,6 +8,8 @@ from tests.base_test import TestBase
 
 class TestAiSaveAtk(TestBase):
 
+    LOG_FILE = "test_ai_save_atk.log"
+
     def test_ai_save_atk(self):
         # 1. создание диалога
         self.logger.info(f"ШAГ 1: Создание диалога пользователя")
@@ -37,7 +39,7 @@ class TestAiSaveAtk(TestBase):
 
             # 5. Удаление АТК
             self.logger.info(f"ШАГ 5: Удаление АТК")
-            atk_delete = self.atk_delete(id_user, id_atk)
+            self.atk_delete(id_user, id_atk)
 
         finally:
             # 6. удаление диалога

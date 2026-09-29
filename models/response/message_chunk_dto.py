@@ -25,7 +25,7 @@ class MessageChunkDTO(BaseModel):
 
 
 @dataclass
-class MessageStreamResult(BaseModel):
+class MessageStreamResult:
     """Результат сборки SSE-стрима: чанки + склеенный текст + метаданные."""
     conversation_id: UUID
     message_id: UUID

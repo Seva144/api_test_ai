@@ -170,7 +170,7 @@ class TestBase:
         request = create_request(DEFAULT_CONVERSATION, "post_atk", message=message)
         response = post_atk(self.client, project_id, json=request)
         assert_status_code(response, HTTPStatus.OK)
-        assert_schema_list(response, AtkDTO)
+        assert_schema(response, AtkDTO)
         dto = AtkDTO.model_validate(response.json())
         self.logger.info(f"Создан АТК с id={dto.id}")
         return dto
@@ -179,7 +179,7 @@ class TestBase:
         self.logger.info(f"Удаление АТК с id - {atk_id}, пользователем id - {user_id}")
         response = delete_atk(self.client, atk_id)
         assert_status_code(response, HTTPStatus.OK)
-        assert_schema_list(response, AtkDTO)
+        assert_schema(response, AtkDTO)
         dto = AtkDTO.model_validate(response.json())
         self.logger.info(f"Удален АТК с id={dto.id}")
         return dto
