@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "e4a4f7ad-99f4-432a-97fe-de5a2ac824f0",
+		"name": "ai-test-download-file-to-agent-doc",
+		"description": "📌 Сценарий загрузки файла в агент и генерации тест-кейсов:\n\n1. Создание диалога → сохранение `conversationId`\n2. Загрузка файла → проверка DOC_AGENT ответа\n3. Отправка сообщения с context → проверка SSE с event:finish\n4. Получение сообщений диалога → проверка 3 сообщений с разными role\n5. Удаление чата\n\n## Переменные\n- `conversationId` — сохраняется из ответа первого запроса\n- `userId` — укажи в переменных коллекции\n- `messageId` — сохраняется из SSE ответа",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Создать диалог",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Поле id присутствует\", function () {",
+							"    pm.expect(jsonData.id).to.exist;",
+							"});",
+							"",
+							"pm.collectionVariables.set(\"conversationId\", jsonData.id);",
+							"console.log(\"✅ conversationId сохранён:\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-User-Id",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Загрузка файла и генерация тест-кейсов\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9081/api/ai-test/chat/conversations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9081",
+					"path": [
+						"api",
+						"ai-test",
+						"chat",
+						"conversations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Загрузить файл в агент",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const convId = pm.collectionVariables.get(\"conversationId\");",
+							"if (!convId) {",
+							"    console.error(\"❌ conversationId не найден\");",
+							"    throw new Error(\"Сначала выполните запрос '1. Создать диалог'\");",
+							"}",
+							"console.log(\"📌 Загрузка файла в диалог:\", convId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"conversationId совпадает\", function () {",
+							"    const savedConvId = pm.collectionVariables.get(\"conversationId\");",
+							"    pm.expect(jsonData.conversationId).to.equal(savedConvId);",
+							"});",
+							"pm.test(\"summary не пустое\", function () {",
+							"    pm.expect(jsonData.metadata.summary).to.exist;",
+							"    pm.expect(jsonData.metadata.summary).to.be.a(\"string\").and.not.be.empty;",
+							"    console.log(\"Summary:\", jsonData.metadata.summary.substring(0, 100) + \"...\");",
+							"});",
+							"pm.test(\"filename присутствует\", function () {",
+							"    pm.expect(jsonData.metadata.filename).to.equal(\"Authorized.txt\");",
+							"});",
+							"pm.test(\"processing_status = completed\", function () {",
+							"    pm.expect(jsonData.metadata.processing_status).to.equal(\"completed\");",
+							"});",
+							"pm.test(\"data_content не пустое\", function () {",
+							"    pm.expect(jsonData.metadata.data_content).to.exist;",
+							"    pm.expect(jsonData.metadata.data_content).to.be.a(\"string\").and.not.be.empty;",
+							"});",
+							"pm.test(\"source = agent\", function () {",
+							"    pm.expect(jsonData.metadata.source).to.equal(\"agent\");",
+							"});",
+							"pm.test(\"file_size присутствует\", function () {",
+							"    pm.expect(jsonData.metadata.file_size).to.be.a(\"number\");",
+							"    pm.expect(jsonData.metadata.file_size).to.be.above(0);",
+							"});",
+							"console.log(\"Файл загружен, ID сообщения:\", jsonData.id);",
+							"console.log(\"Статус обработки:\", jsonData.metadata.processing_status);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-User-Id",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "Doc_rest.docx"
+						},
+						{
+							"key": "useTestAgent",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9081/api/ai-test/chat/{{conversationId}}/files/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9081",
+					"path": [
+						"api",
+						"ai-test",
+						"chat",
+						"{{conversationId}}",
+						"files",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Отправить сообщение для генерации тест-кейсов",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const convId = pm.collectionVariables.get(\"conversationId\");",
+							"if (!convId) {",
+							"    console.error(\"❌ conversationId не найден\");",
+							"    throw new Error(\"Сначала выполните запрос '1. Создать диалог'\");",
+							"}",
+							"console.log(\"📌 Отправка запроса на генерацию тест-кейсов в диалог:\", convId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type является text/event-stream\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/event-stream\");",
+							"});",
+							"",
+							"// Получаем текст ответа",
+							"const responseText = pm.response.text();",
+							"console.log(\"📄 SSE поток получен, длина:\", responseText.length);",
+							"",
+							"// Проверка наличия event:finish",
+							"pm.test(\"SSE поток содержит event:finish\", function () {",
+							"    pm.expect(responseText).to.include(\"event:finish\");",
+							"});",
+							"",
+							"// Извлекаем данные из события",
+							"const dataMatch = responseText.match(/data:(.+)/s);",
+							"pm.test(\"SSE содержит data поле\", function () {",
+							"    pm.expect(dataMatch, \"data поле не найдено\").to.exist;",
+							"});",
+							"",
+							"// Парсим и проверяем JSON данные",
+							"if (dataMatch) {",
+							"    try {",
+							"        const jsonData = JSON.parse(dataMatch[1].trim());",
+							"        ",
+							"        pm.test(\"messageId присутствует и не пустой\", function () {",
+							"            pm.expect(jsonData.messageId).to.exist;",
+							"            pm.expect(jsonData.messageId).to.not.be.empty;",
+							"        });",
+							"        ",
+							"        pm.test(\"content поле присутствует\", function () {",
+							"            pm.expect(jsonData).to.have.property('content');",
+							"        });",
+							"        ",
+							"        pm.test(\"metadata содержит testCases\", function () {",
+							"            pm.expect(jsonData.metadata).to.have.property('testCases');",
+							"            pm.expect(jsonData.metadata.testCases).to.be.an('array');",
+							"            pm.expect(jsonData.metadata.testCases.length).to.be.at.least(1);",
+							"        });",
+							"        ",
+							"        pm.test(\"workflowStatus = completed\", function () {",
+							"            pm.expect(jsonData.metadata.workflowStatus).to.equal('completed');",
+							"        });",
+							"        ",
+							"        // Сохраняем messageId для следующих запросов",
+							"        pm.collectionVariables.set(\"messageId\", jsonData.messageId);",
+							"        console.log(\"✅ messageId сохранён:\", jsonData.messageId);",
+							"        console.log(\"📊 Количество testCases:\", jsonData.metadata.testCases.length);",
+							"        ",
+							"    } catch (e) {",
+							"        console.error(\"❌ Ошибка парсинга JSON:\", e.message);",
+							"        pm.expect.fail(\"Не удалось распарсить data поле\");",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-User-Id",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"Сделай тест кейсы на отпуск использую данные из файла\",\n    \"context\": {\n        \"kits\": \"РАБИС-НП\",\n        \"model\": \"Qwen/Qwen3.5-397B-A17B-GPTQ-Int4\",\n        \"urlApp\": \"http://localhost:5173/ai\",\n        \"atkEnabled\": true,\n        \"useTestAgent\": true\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9081/api/ai-test/chat/conversations/{{conversationId}}/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9081",
+					"path": [
+						"api",
+						"ai-test",
+						"chat",
+						"conversations",
+						"{{conversationId}}",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Получить сообщения диалога",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const convId = pm.collectionVariables.get(\"conversationId\");",
+							"if (!convId) {",
+							"    throw new Error(\"❌ conversationId не найден\");",
+							"}",
+							"console.log(\"📌 Получение сообщений диалога:\", convId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const messages = pm.response.json();",
+							"",
+							"pm.test(\"Ответ является массивом\", function () {",
+							"    pm.expect(messages).to.be.an('array');",
+							"});",
+							"",
+							"pm.test(\"Получено 3 сообщения\", function () {",
+							"    pm.expect(messages.length).to.equal(3);",
+							"    console.log(\"📊 Количество сообщений:\", messages.length);",
+							"});",
+							"",
+							"// Найдем все сообщения по ролям",
+							"const userMessages = messages.filter(msg => msg.role === 'USER');",
+							"const docAgentMessages = messages.filter(msg => msg.role === 'AGENT_DOC');",
+							"const agentMessages = messages.filter(msg => msg.role === 'AGENT');",
+							"",
+							"pm.test(\"Есть сообщения USER\", function () {",
+							"    pm.expect(userMessages.length).to.be.at.least(1);",
+							"    console.log(\"👤 USER сообщений:\", userMessages.length);",
+							"});",
+							"",
+							"pm.test(\"Есть сообщение AGENT с testCases\", function () {",
+							"    pm.expect(agentMessages.length).to.be.at.least(1);",
+							"    if (agentMessages.length > 0) {",
+							"        pm.expect(agentMessages[0].metadata).to.have.property('testCases');",
+							"        console.log(\"🤖 AGENT тест-кейсов:\", agentMessages[0].metadata.testCases?.length || 0);",
+							"    }",
+							"});",
+							"",
+							"",
+							"if (docAgentMessages.length > 0) {",
+							"    const docMsg = docAgentMessages[0];",
+							"    pm.test(\"DOC_AGENT сообщение содержит summary\", function () {",
+							"        pm.expect(docMsg.metadata.summary).to.exist;",
+							"        pm.expect(docMsg.metadata.summary).to.not.be.empty;",
+							"    });",
+							"}",
+							"",
+							"// Проверка соответствия messageId для AGENT сообщения",
+							"const savedMessageId = pm.collectionVariables.get(\"messageId\");",
+							"if (savedMessageId && agentMessages.length > 0) {",
+							"    pm.test(\"messageId совпадает с сохранённым\", function () {",
+							"        pm.expect(agentMessages[0].id).to.equal(savedMessageId);",
+							"    });",
+							"    console.log(\"✅ messageId совпадает:\", savedMessageId);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-User-Id",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9081/api/ai-test/chat/conversations/{{conversationId}}/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9081",
+					"path": [
+						"api",
+						"ai-test",
+						"chat",
+						"conversations",
+						"{{conversationId}}",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Удалить диалог",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const convId = pm.collectionVariables.get(\"conversationId\");",
+							"if (!convId) {",
+							"    throw new Error(\"❌ conversationId не найден\");",
+							"}",
+							"console.log(\"📌 Удаление диалога:\", convId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус 200 или 204\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+							"});",
+							"",
+							"const deletedId = pm.collectionVariables.get(\"conversationId\");",
+							"console.log(\"✅ Диалог удалён:\", deletedId);",
+							"",
+							"// Очищаем переменные",
+							"pm.collectionVariables.unset(\"conversationId\");",
+							"pm.collectionVariables.unset(\"messageId\");",
+							"console.log(\"🧹 Переменные очищены\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-User-Id",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9081/api/ai-test/chat/conversations/{{conversationId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9081",
+					"path": [
+						"api",
+						"ai-test",
+						"chat",
+						"conversations",
+						"{{conversationId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "userId",
+			"value": "user1"
+		},
+		{
+			"key": "conversationId",
+			"value": ""
+		}
+	]
+}
