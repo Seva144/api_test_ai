@@ -16,7 +16,7 @@ DEFAULT_CONVERSATION = ConversationConfigDefault()
 
 
 @dataclass
-class MessageConfigAtkOther:
+class MessageConfigAtkSimple:
     atkEnabled: bool = True
     tkEnabled: bool = False
     useTestAgent: bool = False
@@ -25,4 +25,28 @@ class MessageConfigAtkOther:
     url_app: str = "https://test-app.local"
 
 
-MESSAGE_ATK_OTHER = MessageConfigAtkOther()
+MESSAGE_ATK_SIMPLE = MessageConfigAtkSimple()
+
+
+@dataclass
+class MessageConfigAtkOther:
+    atkEnabled: bool = False
+    tkEnabled: bool = True
+    useTestAgent: bool = False
+    model: str = "Qwen/Qwen3.5-4B"
+    kits: str = "СБП"
+    url_app: str = "https://test-app.local"
+
+
+MESSAGE_TK_SIMPLE = MessageConfigAtkOther()
+
+
+@dataclass
+class ATKMessageConfig:
+    name: str = "АТК"
+    kits: str = "СБП"
+
+
+ATK_MESSAGE_DEFAULT = ATKMessageConfig()
+
+

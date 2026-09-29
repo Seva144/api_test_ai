@@ -1,8 +1,11 @@
 import logging
 from typing import Type
+from uuid import UUID
 
 from pydantic import BaseModel, ValidationError
 
+from models.response.message_chunk_dto import MessageStreamResult
+from models.response.message_dto import MessageDTO
 from utilities.files_utils import read_json_test_data, read_json_common_response_data
 from utilities.json_utils import compare_json_left_in_right, remove_ids
 
@@ -236,3 +239,66 @@ def assert_not_exist(request, response, obj_id):
     exp = read_json_test_data(request)
     exp['error'] = exp['error'].format(obj_id)
     assert_response_body_fields(request, response, exp_obj=exp, rmv_ids=False)
+
+
+def assert_stream_result(
+    result: MessageStreamResult,
+    id_conversation: UUID,
+) -> None:
+    """
+    Проверяет инварианты SSE-стрима:
+      - поток непуст;
+      - все чанки из одного диалога и одного сообщения;
+      - seq монотонно возрастает;
+      - full_text склеен из чанков в порядке seq;
+      - event_type у всех чанков = 'chunk'.
+    """
+    logger.info(
+        f"assert_stream_result: chunks={len(result.chunks)}, "
+        f"event_count={result.event_count}, text_len={len(result.full_text)}"
+    )
+
+    assert result.chunks, "SSE не вернул ни одного чанка"
+    assert result.full_text.strip(), "Пустой ответ модели"
+
+    conv_ids = {c.conversation_id for c in result.chunks}
+    assert conv_ids == {id_conversation}, (
+        f"Чанки из разных диалогов: {conv_ids}, ожидался {id_conversation}"
+    )
+
+    msg_ids = {c.message_id for c in result.chunks}
+    assert len(msg_ids) == 1, f"Чанки из разных сообщений: {msg_ids}"
+    assert result.message_id in msg_ids, (
+        f"result.message_id={result.message_id} нет среди чанков"
+    )
+
+    seqs = [c.seq for c in result.chunks]
+    assert seqs == sorted(seqs), f"seq не возрастает: первые 10 = {seqs[:10]}"
+
+    expected = "".join(c.content for c in sorted(result.chunks, key=lambda c: c.seq))
+    assert result.full_text == expected, "full_text не совпадает со склейкой чанков"
+
+    event_types = {c.event_type for c in result.chunks}
+    assert event_types <= {"chunk"}, f"Неожиданные event_type: {event_types}"
+
+    logger.info(
+        f"✔ assert_stream_result: OK "
+        f"(диалог {id_conversation}, сообщений 1, чанков {len(result.chunks)}, "
+        f"seq {seqs[0]}..{seqs[-1]})"
+    )
+
+
+def assert_messages_contains_id(
+    messages_by_id: dict[UUID, MessageDTO],
+    id_message: UUID,
+) -> MessageDTO:
+    """
+    Проверяет, что в словаре есть сообщение с указанным id.
+    Возвращает это сообщение.
+    """
+    ids = set(messages_by_id.keys())
+    assert id_message in ids, (
+        f"Сообщение с id={id_message} не найдено. Есть: {sorted(ids)}"
+    )
+    logger.info(f"✔ сообщение с id={id_message} найдено")
+    return messages_by_id[id_message]

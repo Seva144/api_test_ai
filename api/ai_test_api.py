@@ -7,7 +7,7 @@ from api import routes
 from api.client import ApiClient
 
 
-def post_conversation(client: ApiClient, **kwargs) -> Response:
+def post_conversation(client: ApiClient, **kwargs: Any) -> Response:
     return client.post(routes.Routes.CONVERSATION, **kwargs)
 
 
@@ -21,3 +21,14 @@ def get_messages(client: ApiClient, id_conversation: UUID) -> Response:
 
 def stream_message(client: ApiClient, id_conversation: UUID, **kwargs: Any) -> Iterator[Response]:
     return client.stream("POST", routes.Routes.MESSAGE_SEND.format(id_conversation), **kwargs)
+
+
+def post_atk(client: ApiClient, project_id: UUID, **kwargs: Any) -> Response:
+    return client.post(routes.Routes.ATK_POST.format(project_id), **kwargs)
+
+
+def delete_atk(client: ApiClient, atk_id: UUID) -> Response:
+    return client.delete(routes.Routes.ATK_DELETE.format(atk_id))
+
+
+

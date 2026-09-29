@@ -7,10 +7,11 @@ from uuid import UUID
 import pytest
 
 from api.client import ApiClient
-from api.conversation_api import post_conversation, delete_conversation, stream_message, get_messages
+from api.ai_test_api import post_conversation, delete_conversation, stream_message, get_messages, post_atk, delete_atk
 from assertions.assertion_base import assert_status_code, assert_schema, assert_schema_list
 from config.logging_config import build_logger, LoggingConfig
 from models.request.default_fields import *
+from models.response.atk_dto import AtkDTO
 from models.response.conversation_dto import ConversationDTO
 from models.response.message_chunk_dto import MessageChunkDTO, MessageStreamResult
 from models.response.message_dto import MessageDTO
@@ -61,10 +62,10 @@ class TestBase:
         if cls.client is not None:
             cls.client.close()
 
-    def create_conversation(self,  **overrides: Any) -> ConversationDTO:
+    def create_conversation(self) -> ConversationDTO:
         self.logger.info(f"Создание нового диалога диалога")
 
-        request = create_request(DEFAULT_CONVERSATION, "post_conversation", **overrides)
+        request = create_request(DEFAULT_CONVERSATION, "post_conversation")
         self.logger.info(f"payload: {request}")
 
         response = post_conversation(self.client, json=request)
@@ -106,10 +107,10 @@ class TestBase:
         self.logger.info(result.full_text)
         self.logger.info(sep)
 
-    def send_message_atk_other(self, id_conversation: UUID, message: str) -> MessageStreamResult:
+    def send_message(self, config: Any, id_conversation: UUID, message: str) -> MessageStreamResult:
         self.logger.info(f"Отправляем сообщение {message!r} в диалог {id_conversation}")
 
-        request = create_request(MESSAGE_ATK_OTHER, "send_message", message=message)
+        request = create_request(config, "send_message", message=message)
         self.logger.debug(f"payload: {request}")
 
         chunks: list[MessageChunkDTO] = []
@@ -118,11 +119,6 @@ class TestBase:
 
         with stream_message(self.client, id_conversation, json=request) as response:
             response.raise_for_status()
-            print(
-                f"SSE status={response.status_code} "
-                f"content-type={response.headers.get('content-type')}"
-            )
-
             for event, data in iter_sse(response):
                 event_count += 1
                 print(f"event={event} data={data}")
@@ -150,19 +146,50 @@ class TestBase:
             chunks=ordered,
             full_text=full_text,
             event_count=event_count,
+            finished=finished
         )
 
         self._log_stream_result(result, finished=finished)
         return result
 
-    def get_messages(self, id_conversation: UUID, user_id: str) -> list[MessageDTO]:
+    def get_messages(self, id_conversation: UUID, user_id: str) -> dict[UUID, MessageDTO]:
         self.logger.info(f"Получение всех сообщений пользователя {user_id} из диалога - {id_conversation}")
         response = get_messages(self.client, id_conversation)
         assert_status_code(response, HTTPStatus.OK)
         assert_schema_list(response, MessageDTO)
         messages = [MessageDTO.model_validate(m) for m in response.json()]
         self.logger.info(f"Получено {len(messages)} сообщений")
-        return messages
+        by_id: dict[UUID, MessageDTO] = {m.id: m for m in messages}
+        return by_id
+
+    def atk_create(self, id_conversation: UUID,
+                   user_id: str,
+                   message: str,
+                   project_id: UUID) -> AtkDTO:
+        self.logger.info(f"Отправка АТК пользователя {user_id} id сообщения - {id_conversation}")
+        request = create_request(DEFAULT_CONVERSATION, "post_atk", message=message)
+        response = post_atk(self.client, project_id, json=request)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema_list(response, AtkDTO)
+        dto = AtkDTO.model_validate(response.json())
+        self.logger.info(f"Создан АТК с id={dto.id}")
+        return dto
+
+    def atk_delete(self, user_id: str, atk_id: UUID):
+        self.logger.info(f"Удаление АТК с id - {atk_id}, пользователем id - {user_id}")
+        response = delete_atk(self.client, atk_id)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema_list(response, AtkDTO)
+        dto = AtkDTO.model_validate(response.json())
+        self.logger.info(f"Удален АТК с id={dto.id}")
+        return dto
+
+
+
+
+
+
+
 
 
 

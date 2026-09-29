@@ -25,13 +25,14 @@ class MessageChunkDTO(BaseModel):
 
 
 @dataclass
-class MessageStreamResult:
+class MessageStreamResult(BaseModel):
     """Результат сборки SSE-стрима: чанки + склеенный текст + метаданные."""
     conversation_id: UUID
     message_id: UUID
     chunks: list[MessageChunkDTO]
     full_text: str
     event_count: int
+    finished: bool = False
 
     @property
     def last_seq(self) -> int:

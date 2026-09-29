@@ -1,0 +1,7 @@
+{
+  "message": "{{message}}",
+  "name": "{name}",
+  "context": {
+    "kits": "{{kits}}"
+  }
+}
