@@ -42,6 +42,19 @@ MESSAGE_TK_SIMPLE = MessageConfigTkSimple()
 
 
 @dataclass
+class MessageConfigSendAgent:
+    atkEnabled: bool = False
+    tkEnabled: bool = False
+    useTestAgent: bool = True
+    model: str = "Qwen/Qwen3.5-4B"
+    kits: str = "СБП"
+    url_app: str = "https://test-app.local"
+
+
+MESSAGE_SEND_AGENT = MessageConfigSendAgent()
+
+
+@dataclass
 class ATKMessageConfig:
     name: str = "АТК"
     kits: str = "СБП"

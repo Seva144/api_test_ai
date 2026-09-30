@@ -8,12 +8,13 @@ import pytest
 
 from api.client import ApiClient
 from api.ai_test_api import post_conversation, delete_conversation, stream_message, get_messages, post_atk, delete_atk, \
-    post_tk, delete_tk
-from assertions.assertion_base import assert_status_code, assert_schema, assert_schema_list
+    post_tk, delete_tk, upload_file
+from assertions.assertion_base import assert_status_code, assert_schema, assert_schema_list, assert_file_uploaded
 from config.logging_config import build_logger, LoggingConfig
 from models.request.default_fields import *
 from models.response.atk_dto import AtkDTO
 from models.response.conversation_dto import ConversationDTO
+from models.response.file_dto import FileDTO
 from models.response.message_chunk_dto import MessageChunkDTO, MessageStreamResult
 from models.response.message_dto import MessageDTO
 from models.response.tk_dto import TkDTO
@@ -208,6 +209,43 @@ class TestBase:
             assert_status_code(response, HTTPStatus.OK)
             assert_schema(response, TkDTO)
             self.logger.info(f" TK id - {tk.id} удалён")
+
+    def upload_file(
+            self,
+            id_conversation: UUID,
+            file_path: Path | str,
+            *,
+            filename: str | None = None,
+            mime_type: str = "application/octet-stream",
+            use_test_agent: bool = False,
+    ) -> FileDTO:
+        path = Path(file_path)
+        self.logger.info(f"Загрузка файла {path.name} ({path.stat().st_size} байт) в диалог {id_conversation}")
+
+        with path.open("rb") as f:
+            file_tuple = (filename or path.name, f, mime_type)
+
+            response = upload_file(
+                self.client,
+                id_conversation,
+                file_tuple,
+                use_test_agent=use_test_agent,
+            )
+
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema(response, FileDTO)
+        dto = FileDTO.model_validate(response.json())
+        assert_file_uploaded(dto, id_conversation, file_path)
+
+        self.logger.info(
+            f"Файл загружен: id={dto.id}, filename={dto.filename}, "
+            f"size={dto.file_size}, status={dto.processing_status}"
+        )
+
+        return dto
+
+
+
 
 
 

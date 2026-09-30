@@ -1,4 +1,4 @@
-from typing import Any, Iterator
+from typing import Any, Iterator, BinaryIO
 from uuid import UUID
 
 from httpx import Response
@@ -39,6 +39,12 @@ def delete_tk(client: ApiClient, tk_id: UUID) -> Response:
     return client.delete(routes.Routes.TK_DELETE.format(tk_id))
 
 
-
-
-
+def upload_file(
+        client: ApiClient,
+        id_conversation: UUID,
+        file: tuple[str, BinaryIO, str] | tuple[str, bytes, str],
+        use_test_agent: bool = False,
+) -> Response:
+    url = routes.Routes.FILE_UPLOAD.format(id_conversation)
+    params = {"useTestAgent": use_test_agent}
+    return client.post(url, files={"file": file}, params=params)

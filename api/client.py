@@ -1,6 +1,6 @@
 import os
 
-
+import httpx
 from httpx import Client
 import logging
 
@@ -24,11 +24,22 @@ class ApiClient(Client):
 
     def _log_request(self, request):
         self.logger.info(f"→ {request.method} {request.url}")
-        if request.content:
+
+        try:
+            content = request.content
+        except httpx.RequestNotRead:
+            # multipart / streaming — тело не читается в хуке
+            self.logger.debug("  request body: <multipart/streaming, not logged>")
+            return
+
+        if content:
             try:
-                self.logger.debug(f"  request body: {request.content.decode('utf-8')}")
-            except Exception:
-                self.logger.debug("  request body:\n%s", pretty_json(request.content))
+                self.logger.debug(
+                    "  request body:\n%s",
+                    pretty_json(content),
+                )
+            except Exception as e:
+                self.logger.debug(f"  request body: <{type(e).__name__}: {e}>")
 
     def _log_response(self, response):
         req = response.request

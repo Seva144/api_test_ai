@@ -1,9 +1,11 @@
 import logging
+from pathlib import Path
 from typing import Type
 from uuid import UUID
 
 from pydantic import BaseModel, ValidationError
 
+from models.response.file_dto import FileDTO
 from models.response.message_chunk_dto import MessageStreamResult
 from models.response.message_dto import MessageDTO
 from utilities.files_utils import read_json_test_data, read_json_common_response_data
@@ -154,6 +156,7 @@ def assert_schema_list(response, model: Type[BaseModel]):
                 f"Элемент [{index}] не соответствует схеме {model.__name__}:\n{e}"
             ) from e
 
+
 def assert_left_in_right_json(response, exp_json, actual_json):
     """
     проверяет, что все значения полей exp_json равны значениям полей в actual_json
@@ -242,8 +245,8 @@ def assert_not_exist(request, response, obj_id):
 
 
 def assert_stream_result(
-    result: MessageStreamResult,
-    id_conversation: UUID,
+        result: MessageStreamResult,
+        id_conversation: UUID,
 ) -> None:
     """
     Проверяет инварианты SSE-стрима:
@@ -289,8 +292,8 @@ def assert_stream_result(
 
 
 def assert_messages_contains_id(
-    messages_by_id: dict[UUID, MessageDTO],
-    id_message: UUID,
+        messages_by_id: dict[UUID, MessageDTO],
+        id_message: UUID,
 ) -> MessageDTO:
     """
     Проверяет, что в словаре есть сообщение с указанным id.
@@ -302,3 +305,51 @@ def assert_messages_contains_id(
     )
     logger.info(f"✔ сообщение с id={id_message} найдено")
     return messages_by_id[id_message]
+
+
+def assert_file_uploaded(
+        file_dto: FileDTO,
+        conversation_id: UUID,
+        file_path: Path | str
+) -> FileDTO:
+    """
+    Проверяет результат загрузки файла в диалог.
+
+    :param file_dto: DTO ответа от сервера
+    :param conversation_id: ожидаемый id диалога (UUID)
+    :param file_path: путь к загруженному файлу (для сверки имени и размера)
+    :param mime_type: ожидаемый MIME-тип
+    :param allowed_statuses: (по умолчанию UPLOADED / PROCESSING / READY)
+    :raises AssertionError: если проверки не прошли
+    :return: тот же file_dto (для удобного чейнинга в тесте)
+    """
+    path = Path(file_path)
+    allowed = {"UPLOADED", "PROCESSING", "READY"}
+
+    logger.info(
+        f"assert_file_uploaded: id={file_dto.id}, "
+        f"filename={file_dto.filename}, size={file_dto.file_size}, "
+        f"mime={file_dto.mime_type}, status={file_dto.processing_status}"
+    )
+
+    assert file_dto.conversation_id == str(conversation_id), (
+        f"conversationId не совпадает: "
+        f"ожидался {conversation_id}, получен {file_dto.conversation_id}"
+    )
+    logger.info(f"conversationId совпадает: {file_dto.conversation_id}")
+
+    assert file_dto.filename == path.name, (
+        f"filename не совпадает: ожидался {path.name!r}, получен {file_dto.filename!r}"
+    )
+    logger.info(f"✔ filename совпадает: {file_dto.filename}")
+
+    assert file_dto.processing_status in allowed, (
+        f"processingStatus {file_dto.processing_status!r} не входит в {allowed}"
+    )
+    logger.info(f"processingStatus - : {file_dto.processing_status}")
+
+    assert file_dto.error is None, (
+        f"Ошибка загрузки: {file_dto.error} — {file_dto.error_message}"
+    )
+
+    return file_dto
