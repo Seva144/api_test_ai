@@ -5,6 +5,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class FileDTO(BaseModel):
+
     model_config = ConfigDict(
         populate_by_name=True,
         extra="ignore",
@@ -25,3 +26,6 @@ class FileDTO(BaseModel):
 
     created_at: datetime = Field(alias="createdAt")
     metadata: dict[str, Any] | None = None
+
+    error: str | None = None                     # ErrorType — см. ниже
+    error_message: str | None = Field(default=None, alias="errorMessage")

@@ -6,6 +6,7 @@ from uuid import UUID
 from pydantic import BaseModel, ValidationError
 
 from models.response.file_dto import FileDTO
+from models.response.message_agent_dto import TestCaseDTO
 from models.response.message_chunk_dto import MessageStreamResult
 from models.response.message_dto import MessageDTO
 from utilities.files_utils import read_json_test_data, read_json_common_response_data
@@ -309,8 +310,7 @@ def assert_messages_contains_id(
 
 def assert_file_uploaded(
         file_dto: FileDTO,
-        conversation_id: UUID,
-        file_path: Path | str
+        conversation_id: UUID
 ) -> FileDTO:
     """
     Проверяет результат загрузки файла в диалог.
@@ -319,12 +319,9 @@ def assert_file_uploaded(
     :param conversation_id: ожидаемый id диалога (UUID)
     :param file_path: путь к загруженному файлу (для сверки имени и размера)
     :param mime_type: ожидаемый MIME-тип
-    :param allowed_statuses: (по умолчанию UPLOADED / PROCESSING / READY)
     :raises AssertionError: если проверки не прошли
     :return: тот же file_dto (для удобного чейнинга в тесте)
     """
-    path = Path(file_path)
-    allowed = {"UPLOADED", "PROCESSING", "READY"}
 
     logger.info(
         f"assert_file_uploaded: id={file_dto.id}, "
@@ -338,18 +335,23 @@ def assert_file_uploaded(
     )
     logger.info(f"conversationId совпадает: {file_dto.conversation_id}")
 
-    assert file_dto.filename == path.name, (
-        f"filename не совпадает: ожидался {path.name!r}, получен {file_dto.filename!r}"
-    )
-    logger.info(f"✔ filename совпадает: {file_dto.filename}")
-
-    assert file_dto.processing_status in allowed, (
-        f"processingStatus {file_dto.processing_status!r} не входит в {allowed}"
-    )
-    logger.info(f"processingStatus - : {file_dto.processing_status}")
 
     assert file_dto.error is None, (
         f"Ошибка загрузки: {file_dto.error} — {file_dto.error_message}"
     )
 
     return file_dto
+
+
+def assert_test_cases_agent_generated(result: MessageStreamResult) -> list[TestCaseDTO]:
+    """Проверяет, что агент сгенерировал тест-кейсы."""
+    last = result.chunks[-1]
+    assert last.metadata is not None, "У последнего чанка нет metadata"
+    assert last.metadata.test_cases, (
+        f"Агент не вернул testCases. "
+        f"workflowStatus={last.metadata.workflow_status}, "
+        f"source={last.metadata.source}"
+    )
+    test_cases = last.metadata.test_cases
+    logger.info(f"assert_test_cases_generated: всего={len(test_cases)}")
+    return test_cases

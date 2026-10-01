@@ -1,5 +1,8 @@
 from typing import Iterator
 
+from models.response.message_agent_dto import TestCaseDTO
+from models.response.message_chunk_dto import MessageStreamResult
+
 
 def iter_sse(response) -> Iterator[tuple[str, str]]:
     """
@@ -39,3 +42,4 @@ def iter_sse(response) -> Iterator[tuple[str, str]]:
         elif field == "data":
             data_lines.append(value)
         # id/retry нам не нужны
+

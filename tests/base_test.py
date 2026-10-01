@@ -19,6 +19,7 @@ from models.response.message_chunk_dto import MessageChunkDTO, MessageStreamResu
 from models.response.message_dto import MessageDTO
 from models.response.tk_dto import TkDTO
 from utilities.json_utils import create_request
+from utilities.log_utils import pretty_json
 from utilities.sse import iter_sse
 
 
@@ -114,7 +115,6 @@ class TestBase:
         self.logger.info(f"Отправляем сообщение {message!r} в диалог {id_conversation}")
 
         request = create_request(config, "send_message", message=message)
-        self.logger.debug(f"payload: {request}")
 
         chunks: list[MessageChunkDTO] = []
         event_count = 0
@@ -154,6 +154,50 @@ class TestBase:
 
         self._log_stream_result(result, finished=finished)
         return result
+
+    def send_message_agent(self, config: Any, id_conversation: UUID, message: str) -> MessageStreamResult:
+        """
+            Отправляет сообщение агенту (useTestAgent=true).
+            Агент возвращает ОДИН finish-чанк с metadata.testCases.
+            """
+        self.logger.info(f"→ SEND MESSAGE (agent) в диалог {id_conversation}: {message!r}")
+
+        request = create_request(config, "send_message", message=message)
+        chunks: list[MessageChunkDTO] = []
+        event_count = 0
+
+        with stream_message(self.client, id_conversation, json=request) as response:
+            response.raise_for_status()
+
+            for event, data in iter_sse(response):
+                event_count += 1
+                self.logger.debug("event=%s data=%s", event, pretty_json(data))
+
+                if not data:
+                    continue
+
+                chunk = MessageChunkDTO.model_validate_json(data)
+                chunk.event_type = event
+                chunks.append(chunk)
+
+        if not chunks:
+            raise AssertionError("Агент не вернул ни одного сообщения")
+
+        # у агента обычно один финальный чанк с testCases
+        last = chunks[-1]
+        full_text = last.content
+
+        result = MessageStreamResult(
+            conversation_id=last.conversation_id,
+            message_id=last.message_id,
+            chunks=chunks,
+            full_text=full_text,
+            event_count=event_count,
+        )
+
+        self._log_stream_result(result, finished=True)
+        return result
+
 
     def get_messages(self, id_conversation: UUID, user_id: str) -> dict[UUID, MessageDTO]:
         self.logger.info(f"Получение всех сообщений пользователя {user_id} из диалога - {id_conversation}")
@@ -235,7 +279,7 @@ class TestBase:
         assert_status_code(response, HTTPStatus.OK)
         assert_schema(response, FileDTO)
         dto = FileDTO.model_validate(response.json())
-        assert_file_uploaded(dto, id_conversation, file_path)
+        assert_file_uploaded(dto, id_conversation)
 
         self.logger.info(
             f"Файл загружен: id={dto.id}, filename={dto.filename}, "

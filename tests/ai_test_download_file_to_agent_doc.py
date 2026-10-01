@@ -1,6 +1,7 @@
 from uuid import UUID
 
-from assertions.assertion_base import assert_messages_contains_id, assert_stream_result
+from assertions.assertion_base import assert_messages_contains_id, assert_stream_result, \
+    assert_test_cases_agent_generated
 from models.request.default_fields import MESSAGE_SEND_AGENT
 from tests.base_test import TestBase
 
@@ -8,7 +9,7 @@ from tests.base_test import TestBase
 class TestAiDownloadFileToAgentDoc(TestBase):
 
 
-    LOG_FILE = "test-ai-download-file-to-agent-doc"
+    LOG_FILE = "test-ai-download-file-to-agent-doc.log"
 
     def test_ai_download_file_to_agent_doc(self):
         # 1. создание диалога
@@ -27,18 +28,18 @@ class TestAiDownloadFileToAgentDoc(TestBase):
             # 3. Отправить сообщение для генерации тест-кейса
             self.logger.info(f"ШАГ 3: Написать сообщение для генерации ТК")
             message = "Сделай тест кейсы на отпуск использую данные из файла"
-            message_send = self.send_message(MESSAGE_SEND_AGENT, id_conversation, message)
-            assert_stream_result(message_send, id_conversation)
+            message_send = self.send_message_agent(MESSAGE_SEND_AGENT, id_conversation, message)
+            assert_test_cases_agent_generated(message_send)
             id_message = message_send.message_id
 
             # 4. Получить сообщения диалога
             self.logger.info(f"ШАГ 3: Получение сообщений диалога")
             messages = self.get_messages(id_conversation, id_user)
-            assistant_msg = assert_messages_contains_id(messages, id_message)
+            assert_messages_contains_id(messages, id_message)
 
         finally:
-            # 4. удаление диалога
-            self.logger
+            # 5. удаление диалога
+            self.logger.info("Удаление ")
             self.delete_conversation(id_conversation, id_user)
 
 

@@ -6,6 +6,9 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field
 
 
+
+
+
 class MessageDTO(BaseModel):
     """DTO полного сообщения чата."""
 
