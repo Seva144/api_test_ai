@@ -1,12 +1,13 @@
 from uuid import UUID
 
-from assertions.assertion_base import assert_messages_contains_id, assert_stream_result, \
-    assert_test_cases_agent_generated
+from assertions.assertion_base import assert_test_cases_agent_generated, assert_messages_contains_id
 from models.request.default_fields import MESSAGE_SEND_AGENT
 from tests.base_test import TestBase
 
 
 class TestAiDownloadFileToAgentDoc(TestBase):
+
+
     LOG_FILE = "test-ai-download-file-to-agent-doc.log"
 
     def test_ai_download_file_to_agent_doc(self):

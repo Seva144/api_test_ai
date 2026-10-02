@@ -308,6 +308,23 @@ def assert_messages_contains_id(
     return messages_by_id[id_message]
 
 
+def assert_check_content_message(message: str, *words):
+    """
+    Функция проверят если ли переданный контекст
+    в сообщении
+    """
+    missing: list[str] = []
+    for word in words:
+        result = word in message
+        if result:
+            logger.info(f"В сообщении {message} - содержитя слово {word}")
+        else:
+            logger.info(f"В сообщении {message} - содержитя слово {word}")
+            missing.append(word)
+
+    assert not missing, f"В сообщении не найдены подстроки: {missing}. "
+
+
 def assert_file_uploaded(
         file_dto: FileDTO,
         conversation_id: UUID
