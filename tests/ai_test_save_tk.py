@@ -1,6 +1,7 @@
 from uuid import UUID
 
-from assertions.assertion_base import assert_stream_result, assert_messages_contains_id
+from assertions.assertion_base import assert_stream_result, assert_messages_contains_id, \
+    assert_test_cases_agent_generated
 from models.request.default_fields import MESSAGE_TK_SIMPLE
 from tests.base_test import TestBase
 
@@ -23,7 +24,7 @@ class TestAiSaveTk(TestBase):
             # 2. Отправка сообщения
             self.logger.info(f"ШAГ 2: отправка сообщения на получение ТК")
             message_send = self.send_message(MESSAGE_TK_SIMPLE, id_conversation, message)
-            assert_stream_result(message_send, id_conversation)
+            assert_test_cases_agent_generated(message_send)
             id_message = message_send.message_id
 
             # 3. Получение сообщений

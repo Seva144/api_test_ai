@@ -111,7 +111,7 @@ class TestBase:
         self.logger.info(result.full_text)
         self.logger.info(sep)
 
-    def send_message(self, config: Any, id_conversation: UUID, message: str) -> MessageStreamResult:
+    def send_message_locally(self, config: Any, id_conversation: UUID, message: str) -> MessageStreamResult:
         self.logger.info(f"Отправляем сообщение {message!r} в диалог {id_conversation}")
 
         request = create_request(config, "send_message", message=message)
@@ -155,7 +155,7 @@ class TestBase:
         self._log_stream_result(result, finished=finished)
         return result
 
-    def send_message_agent(self, config: Any, id_conversation: UUID, message: str) -> MessageStreamResult:
+    def send_message(self, config: Any, id_conversation: UUID, message: str) -> MessageStreamResult:
         """
             Отправляет сообщение агенту (useTestAgent=true).
             Агент возвращает ОДИН finish-чанк с metadata.testCases.
@@ -197,7 +197,6 @@ class TestBase:
 
         self._log_stream_result(result, finished=True)
         return result
-
 
     def get_messages(self, id_conversation: UUID, user_id: str) -> dict[UUID, MessageDTO]:
         self.logger.info(f"Получение всех сообщений пользователя {user_id} из диалога - {id_conversation}")
@@ -287,37 +286,3 @@ class TestBase:
         )
 
         return dto
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

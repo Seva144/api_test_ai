@@ -22,7 +22,7 @@ class TestAiSaveAtk(TestBase):
         try:
             # 2. Отправка сообщения
             self.logger.info(f"ШAГ 2: отправка сообщения на получение АТК")
-            message_send = self.send_message(MESSAGE_ATK_SIMPLE, id_conversation, message)
+            message_send = self.send_message_locally(MESSAGE_ATK_SIMPLE, id_conversation, message)
             assert_stream_result(message_send, id_conversation)
             id_message = message_send.message_id
 

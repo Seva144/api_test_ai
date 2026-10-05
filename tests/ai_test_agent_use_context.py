@@ -27,7 +27,7 @@ class TestAiDownloadFileToAgentDoc(TestBase):
             # 3. Отправить сообщение для генерации тест-кейса
             self.logger.info(f"ШАГ 3: Написать сообщение для генерации ТК")
             message_request_one = "Сделай тест-кейсы на авторизацию использую данные из файла"
-            message_response_one = self.send_message_agent(MESSAGE_SEND_AGENT, id_conversation, message_request_one)
+            message_response_one = self.send_message(MESSAGE_SEND_AGENT, id_conversation, message_request_one)
             assert_test_cases_agent_generated(message_response_one)
             id_message_one = message_response_one.message_id
 
@@ -43,7 +43,7 @@ class TestAiDownloadFileToAgentDoc(TestBase):
             self.logger.info(f"ШАГ 5: Изменить в сообщении некоторые данные")
             word_three = "Клавиатура1"
             message_request_two = f"Измени в ТК авторизации с password1 на {word_three}"
-            message_response_two = self.send_message_agent(MESSAGE_SEND_AGENT, id_conversation, message_request_two)
+            message_response_two = self.send_message(MESSAGE_SEND_AGENT, id_conversation, message_request_two)
             assert_test_cases_agent_generated(message_response_two)
             id_message_two = message_response_two.message_id
 

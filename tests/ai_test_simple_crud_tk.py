@@ -1,23 +1,22 @@
 from uuid import UUID
 
-from models.request.default_fields import MESSAGE_ATK_SIMPLE
+from models.request.default_fields import MESSAGE_ATK_SIMPLE, MESSAGE_TK_SIMPLE
 from tests.base_test import TestBase
 
 
 class TestAiSimpleCrudAtk(TestBase):
 
-    LOG_FILE = "ai_test_simple_crud_atk.log"
+    LOG_FILE = "ai_test_simple_crud_tk.log"
 
     def test_ai_simple_crud_atk(self):
+        # 1. создание диалога
+        create_conversation_response = self.create_conversation()
+        id_conversation: UUID = create_conversation_response.id
+        id_user: str = create_conversation_response.user_id
+        message: str = "Сделай ТК по авторизации"
         try:
-            #1. создание диалога
-            create_conversation_response = self.create_conversation()
-            id_conversation: UUID = create_conversation_response.id
-            id_user: str = create_conversation_response.user_id
-            message: str = "Сделай ТК по авторизации"
             #2. отправка сообщения
-
-            self.send_message(MESSAGE_ATK_SIMPLE, id_conversation, message)
+            self.send_message(MESSAGE_TK_SIMPLE, id_conversation, message)
             #3. получение всех сообщений диалога
             self.get_messages(id_conversation, id_user)
         finally:

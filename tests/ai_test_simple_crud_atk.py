@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from models.request.default_fields import MESSAGE_TK_SIMPLE
+from models.request.default_fields import MESSAGE_ATK_SIMPLE
 from tests.base_test import TestBase
 
 
@@ -16,7 +16,7 @@ class TestAiSimpleCrudAtk(TestBase):
         message: str = "Сделай АТК по авторизации"
         try:
             #2. отправка сообщения
-            self.send_message(MESSAGE_TK_SIMPLE, id_conversation, message)
+            self.send_message_locally(MESSAGE_ATK_SIMPLE, id_conversation, message)
             #3. получение всех сообщений диалога
             self.get_messages(id_conversation, id_user)
         finally:

@@ -15,6 +15,6 @@ class TestSendMessageToAgent(TestBase):
         # 3. Отправить сообщение для генерации тест-кейса
 
         message = "Сделай тест кейсы на отпуск использую данные из файла"
-        message_send = self.send_message_agent(MESSAGE_SEND_AGENT, id_conversation, message)
+        message_send = self.send_message(MESSAGE_SEND_AGENT, id_conversation, message)
         assert_test_cases_agent_generated(message_send)
         id_message = message_send.message_id
