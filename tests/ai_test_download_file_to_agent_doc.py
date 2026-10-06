@@ -2,7 +2,7 @@ from uuid import UUID
 
 from assertions.assertion_base import assert_messages_contains_id, assert_stream_result, \
     assert_test_cases_agent_generated
-from models.request.default_fields import MESSAGE_SEND_AGENT
+from models.request.default_fields import MESSAGE_TK_SIMPLE
 from tests.base_test import TestBase
 
 
@@ -26,7 +26,7 @@ class TestAiDownloadFileToAgentDoc(TestBase):
             # 3. Отправить сообщение для генерации тест-кейса
             self.logger.info(f"ШАГ 3: Написать сообщение для генерации ТК")
             message = "Сделай тест кейсы на отпуск использую данные из файла"
-            message_send = self.send_message(MESSAGE_SEND_AGENT, id_conversation, message)
+            message_send = self.send_message(MESSAGE_TK_SIMPLE, id_conversation, message)
             assert_test_cases_agent_generated(message_send)
             id_message = message_send.message_id
 
@@ -37,5 +37,5 @@ class TestAiDownloadFileToAgentDoc(TestBase):
 
         finally:
             # 5. удаление диалога
-            self.logger.info("Удаление ")
+            self.logger.info("Удаление l")
             self.delete_conversation(id_conversation, id_user)

@@ -42,18 +42,19 @@ MESSAGE_TK_SIMPLE = MessageConfigTkSimple()
 
 
 @dataclass
-class MessageConfigSendAgent:
-    atkEnabled: bool = False
+class MessageConfigAtkByPbo:
+    atkEnabled: bool = True
     tkEnabled: bool = False
-    useTestAgent: bool = True
+    useTestAgent: bool = False
     model: str = "Qwen/Qwen3.5-4B"
-    kits: str = "СБП"
+    kits: str = "ПБО"
     url_app: str = "https://test-app.local"
 
 
-MESSAGE_SEND_AGENT = MessageConfigSendAgent()
+MESSAGE_ATK_BY_PBO = MessageConfigAtkByPbo()
 
 
+# Объекты для сохранения ТК и АТК
 @dataclass
 class ATKMessageConfig:
     name: str = "АТК"

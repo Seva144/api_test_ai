@@ -124,7 +124,7 @@ class TestBase:
             response.raise_for_status()
             for event, data in iter_sse(response):
                 event_count += 1
-                print(f"event={event} data={data}")
+                # print(f"event={event} data={data}")
 
                 if event == "finish":
                     finished = True

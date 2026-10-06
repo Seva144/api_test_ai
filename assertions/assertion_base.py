@@ -317,7 +317,7 @@ def assert_check_content_message(message: str, *words):
     for word in words:
         result = word in message
         if result:
-            logger.info(f"В сообщении {message} - содержитя слово {word}")
+            logger.info(f"В сообщении  - содержитя слово {word}")
         else:
             logger.info(f"В сообщении {message} - содержитя слово {word}")
             missing.append(word)
