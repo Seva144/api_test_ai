@@ -1,0 +1,41 @@
+2026-10-01 13:31:31 - || TestCreateConversation:53 || ApiClient инициализирован
+2026-10-01 13:31:31 - || TestCreateConversation:55 || ============================================================
+2026-10-01 13:31:31 - || TestCreateConversation:56 || START TestCreateConversation  (log: logs/CRUD/test-ai-download-file-to-agent-doc.log)
+2026-10-01 13:31:31 - || TestCreateConversation:57 || ============================================================
+2026-10-01 13:31:31 - || TestCreateConversation:12 || ШAГ 1: Создание диалога пользователя
+2026-10-01 13:31:31 - || TestCreateConversation:70 || Создание нового диалога диалога
+2026-10-01 13:31:31 - || TestCreateConversation:73 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-10-01 13:31:31 - || TestCreateConversation:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-01 13:31:31 - || TestCreateConversation:37 ||   request body:
+{
+  "title": "Новый диалог",
+  "context": {
+    "atkEnabled": false,
+    "tkEnabled": false,
+    "useTestAgent": false,
+    "kits": "СБП",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-01 13:31:32 - || TestCreateConversation:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-01 13:31:32 - || TestCreateConversation:58 ||   response body:
+{
+  "id": "e43d8905-fd76-4bf3-85f3-56190985646e",
+  "businessUid": "СБП-ДС-01.10.2026-2",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": false,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-01T13:31:32.08845038",
+  "updatedAt": "2026-10-01T13:31:32.08845038",
+  "cipher": "SBP001"
+}
+2026-10-01 13:31:32 - || TestCreateConversation:80 || Создан диалог id=e43d8905-fd76-4bf3-85f3-56190985646e
+2026-10-01 13:31:32 - || TestCreateConversation:61 || ============================================================
+2026-10-01 13:31:32 - || TestCreateConversation:62 || END TestCreateConversation
+2026-10-01 13:31:32 - || TestCreateConversation:63 || ============================================================

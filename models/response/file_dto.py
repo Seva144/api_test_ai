@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import Any
+from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -12,7 +13,7 @@ class FileDTO(BaseModel):
         str_strip_whitespace=False,
     )
 
-    id: str
+    id: UUID
     conversation_id: str = Field(alias="conversationId")
     filename: str
     original_filename: str = Field(alias="originalFilename")

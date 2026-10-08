@@ -5,10 +5,11 @@ from typing import Any
 from uuid import UUID
 
 import pytest
+from httpx import Timeout
 
 from api.client import ApiClient
 from api.ai_test_api import post_conversation, delete_conversation, stream_message, get_messages, post_atk, delete_atk, \
-    post_tk, delete_tk, upload_file
+    post_tk, delete_tk, upload_file, delete_file, get_files
 from assertions.assertion_base import assert_status_code, assert_schema, assert_schema_list, assert_file_uploaded
 from config.logging_config import build_logger, LoggingConfig
 from models.request.default_fields import *
@@ -27,6 +28,7 @@ class TestBase:
     LOG_DIR: Path = Path("logs")
     LOG_FILE: str = "default_test_run.log"
     LOGGING_CONFIG: LoggingConfig | None = None
+    TIMEOUT_LONG = Timeout(connect=10.0, read=None, write=30.0, pool=10.0)
 
     logger: logging.Logger = None
     client: ApiClient = None
@@ -120,7 +122,7 @@ class TestBase:
         event_count = 0
         finished = False
 
-        with stream_message(self.client, id_conversation, json=request) as response:
+        with stream_message(self.client, id_conversation, timeout=self.TIMEOUT_LONG, json=request) as response:
             response.raise_for_status()
             for event, data in iter_sse(response):
                 event_count += 1
@@ -162,7 +164,7 @@ class TestBase:
             """
         self.logger.info(f"→ SEND MESSAGE (agent) в диалог {id_conversation}: {message!r}")
 
-        request = create_request(config, "send_message", message=message)
+        request = create_request(config, "send_message", timeout=self.TIMEOUT_LONG, message=message)
         chunks: list[MessageChunkDTO] = []
         event_count = 0
 
@@ -253,7 +255,7 @@ class TestBase:
             assert_schema(response, TkDTO)
             self.logger.info(f" TK id - {tk.id} удалён")
 
-    def upload_file(
+    def file_upload(
             self,
             id_conversation: UUID,
             file_path: Path | str,
@@ -286,3 +288,31 @@ class TestBase:
         )
 
         return dto
+
+    def file_delete(self, id_conversation: UUID, id_file: UUID) -> FileDTO:
+        self.logger.info(f"Удаляем файл id - {id_file} на диалоге id - {id_conversation} ")
+        response = delete_file(self.client, id_conversation, id_file)
+        self.logger.info(response)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema(response, FileDTO)
+        self.logger.info(f"Файл с {id_file} удален")
+        dto = FileDTO.model_validate(response.json())
+        return dto
+
+    def files_get(self, id_conversation: UUID) -> dict[UUID, FileDTO]:
+        self.logger.info(f"Получение всех файлов диалога - id {id_conversation}")
+        response = get_files(self.client, id_conversation)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema_list(response, FileDTO)
+        files = [FileDTO.model_validate(item) for item in response.json()]
+        self.logger.info(f"Получено {len(files)} файлов")
+        by_id: dict[UUID, FileDTO] = {f.id: f for  f in files}
+        return by_id
+
+
+
+
+
+
+
+

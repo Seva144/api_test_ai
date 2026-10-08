@@ -1,0 +1,6 @@
+2026-10-07 11:54:31 - || pytest:7 || ▶ START  tests/ai_test_delete_file.py::TestAiDeleteFile::test_ai_delete_file
+2026-10-07 11:54:33 - || assertions.assertion_base:357 || assert_file_uploaded: id=7ce782a0-5a9d-49ee-b5c8-99167e9a823b, filename=dda9fc03-852e-433a-beb5-0784b4918219_Authorized.txt, size=1660, mime=application/octet-stream, status=completed
+2026-10-07 11:54:33 - || assertions.assertion_base:367 || conversationId совпадает: 6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68
+2026-10-07 11:54:33 - || assertions.assertion_base:322 || Файл с id=7ce782a0-5a9d-49ee-b5c8-99167e9a823b отсутствует, как и ожидалось
+2026-10-07 11:54:33 - || pytest:18 ||  PASSED tests/ai_test_delete_file.py::TestAiDeleteFile::test_ai_delete_file
+2026-10-07 11:54:33 - || pytest:11 || ◆ END    tests/ai_test_delete_file.py::TestAiDeleteFile::test_ai_delete_file

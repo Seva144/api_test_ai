@@ -48,3 +48,23 @@ def upload_file(
     url = routes.Routes.FILE_UPLOAD.format(id_conversation)
     params = {"useTestAgent": use_test_agent}
     return client.post(url, files={"file": file}, params=params)
+
+
+def delete_file(
+        client: ApiClient,
+        id_conversation: UUID,
+        id_file: UUID
+) -> Response:
+    url = routes.Routes.FILE_DELETE.format(id_conversation, id_file)
+    return client.delete(url)
+
+
+def get_files(
+        client: ApiClient,
+        id_conversation: UUID
+) -> Response:
+    url = routes.Routes.FILES_GET.format(id_conversation)
+    return client.get(url)
+
+
+

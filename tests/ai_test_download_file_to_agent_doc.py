@@ -18,10 +18,10 @@ class TestAiDownloadFileToAgentDoc(TestBase):
         id_user: str = create_conversation_response.user_id
 
         try:
-            # 2. Загрузка файла на агент
-            self.logger.info(f"ШАГ 2: Загружаем файл на агент")
+            # 2. Загрузка файла
+            self.logger.info(f"ШАГ 2: Загружаем файл")
             file_path = "resources/Doc_rest.docx"
-            self.upload_file(id_conversation, file_path)
+            self.file_upload(id_conversation, file_path)
 
             # 3. Отправить сообщение для генерации тест-кейса
             self.logger.info(f"ШАГ 3: Написать сообщение для генерации ТК")

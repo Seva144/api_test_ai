@@ -1,0 +1,126 @@
+2026-10-07 11:54:31 - || TestAiDeleteFile:55 || ApiClient инициализирован
+2026-10-07 11:54:31 - || TestAiDeleteFile:57 || ============================================================
+2026-10-07 11:54:31 - || TestAiDeleteFile:58 || START TestAiDeleteFile  (log: logs/test-ai-delete-file.log)
+2026-10-07 11:54:31 - || TestAiDeleteFile:59 || ============================================================
+2026-10-07 11:54:31 - || TestAiDeleteFile:12 || ШAГ 1: Создание диалога пользователя
+2026-10-07 11:54:31 - || TestAiDeleteFile:72 || Создание нового диалога диалога
+2026-10-07 11:54:31 - || TestAiDeleteFile:75 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-10-07 11:54:31 - || TestAiDeleteFile:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-07 11:54:31 - || TestAiDeleteFile:37 ||   request body:
+{
+  "title": "Новый диалог",
+  "context": {
+    "atkEnabled": false,
+    "tkEnabled": false,
+    "useTestAgent": false,
+    "kits": "СБП",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-07 11:54:31 - || TestAiDeleteFile:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-07 11:54:31 - || TestAiDeleteFile:58 ||   response body:
+{
+  "id": "6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68",
+  "businessUid": "СБП-ДС-07.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": false,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-07T11:54:31.469421796",
+  "updatedAt": "2026-10-07T11:54:31.469421796",
+  "cipher": "SBP001"
+}
+2026-10-07 11:54:31 - || TestAiDeleteFile:82 || Создан диалог id=6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68
+2026-10-07 11:54:31 - || TestAiDeleteFile:20 || ШАГ 2: Загружаем файл
+2026-10-07 11:54:31 - || TestAiDeleteFile:268 || Загрузка файла Authorized.txt (1660 байт) в диалог 6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68
+2026-10-07 11:54:31 - || TestAiDeleteFile:26 || → POST http://localhost:9081/api/ai-test/chat/6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68/files/upload?useTestAgent=false
+2026-10-07 11:54:31 - || TestAiDeleteFile:32 ||   request body: <multipart/streaming, not logged>
+2026-10-07 11:54:33 - || TestAiDeleteFile:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68/files/upload?useTestAgent=false
+2026-10-07 11:54:33 - || TestAiDeleteFile:58 ||   response body:
+{
+  "id": "7ce782a0-5a9d-49ee-b5c8-99167e9a823b",
+  "conversationId": "6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68",
+  "filename": "dda9fc03-852e-433a-beb5-0784b4918219_Authorized.txt",
+  "originalFilename": "Authorized.txt",
+  "fileSize": 1660,
+  "mimeType": "application/octet-stream",
+  "processingStatus": "completed",
+  "content": "Файл 'Authorized.txt' загружен в агент. Статус обработки: completed.",
+  "summary": "Спецификация безопасности, описывающая процедуру авторизации в системе и правила валидации учетных данных. Документ регламентирует процесс входа через ввод логина и пароля, устанавливает критерии успешной и некорректной авторизации (включая обработку всплывающих уведомлений) и предоставляет тестовые кейсы для верификации функционала.",
+  "createdAt": "2026-10-07T11:54:31.650674",
+  "metadata": {
+    "summary": "Спецификация безопасности, описывающая процедуру авторизации в системе и правила валидации учетных данных. Документ регламентирует процесс входа через ввод логина и пароля, устанавливает критерии успешной и некорректной авторизации (включая обработку всплывающих уведомлений) и предоставляет тестовые кейсы для верификации функционала.",
+    "original_filename": "Authorized.txt",
+    "filename": "Authorized.txt",
+    "mime_type": "application/octet-stream",
+    "processing_status": "completed",
+    "created_at": "2026-10-07T11:54:31.650673883",
+    "source": "agent",
+    "id": "7ce782a0-5a9d-49ee-b5c8-99167e9a823b",
+    "data_content": "| Логин         | Пароль     | Ожидаемый результат |\n|---------------|------------|---------------------|\n| Vova_P        | password1  | Успешная авторизация|\n| Dima_M        | password2  | Успешная авторизация|\n| invalid_user  | password3  | Ошибка авторизации  |\n| user3         | wrongpass  | Ошибка авторизации  |",
+    "file_size": 1660
+  }
+}
+2026-10-07 11:54:33 - || TestAiDeleteFile:285 || Файл загружен: id=7ce782a0-5a9d-49ee-b5c8-99167e9a823b, filename=dda9fc03-852e-433a-beb5-0784b4918219_Authorized.txt, size=1660, status=completed
+2026-10-07 11:54:33 - || TestAiDeleteFile:26 || ШАГ 3: Удаляем файл
+2026-10-07 11:54:33 - || TestAiDeleteFile:293 || Удаляем файл id - 7ce782a0-5a9d-49ee-b5c8-99167e9a823b на диалоге id - 6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68 
+2026-10-07 11:54:33 - || TestAiDeleteFile:26 || → DELETE http://localhost:9081/api/ai-test/chat/6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68/files/7ce782a0-5a9d-49ee-b5c8-99167e9a823b
+2026-10-07 11:54:33 - || TestAiDeleteFile:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68/files/7ce782a0-5a9d-49ee-b5c8-99167e9a823b
+2026-10-07 11:54:33 - || TestAiDeleteFile:58 ||   response body:
+{
+  "id": "7ce782a0-5a9d-49ee-b5c8-99167e9a823b",
+  "conversationId": "6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68",
+  "filename": "dda9fc03-852e-433a-beb5-0784b4918219_Authorized.txt",
+  "originalFilename": "Authorized.txt",
+  "fileSize": 1660,
+  "mimeType": "application/octet-stream",
+  "processingStatus": "completed",
+  "summary": "Спецификация безопасности, описывающая процедуру авторизации в системе и правила валидации учетных данных. Документ регламентирует процесс входа через ввод логина и пароля, устанавливает критерии успешной и некорректной авторизации (включая обработку всплывающих уведомлений) и предоставляет тестовые кейсы для верификации функционала.",
+  "createdAt": "2026-10-07T11:54:31.650674",
+  "metadata": {
+    "filename": "Authorized.txt",
+    "original_filename": "Authorized.txt",
+    "mime_type": "application/octet-stream",
+    "processing_status": "completed",
+    "file_size": 1660
+  }
+}
+2026-10-07 11:54:33 - || TestAiDeleteFile:295 || <Response [200 ]>
+2026-10-07 11:54:33 - || TestAiDeleteFile:298 || Файл с 7ce782a0-5a9d-49ee-b5c8-99167e9a823b удален
+2026-10-07 11:54:33 - || TestAiDeleteFile:34 || ШАГ 4: Получаем все файлы диалога
+2026-10-07 11:54:33 - || TestAiDeleteFile:303 || Получение всех файлов диалога - id 6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68
+2026-10-07 11:54:33 - || TestAiDeleteFile:26 || → GET http://localhost:9081/api/ai-test/chat/6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68/files
+2026-10-07 11:54:33 - || TestAiDeleteFile:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68/files
+2026-10-07 11:54:33 - || TestAiDeleteFile:58 ||   response body:
+[]
+2026-10-07 11:54:33 - || TestAiDeleteFile:308 || Получено 0 файлов
+2026-10-07 11:54:33 - || TestAiDeleteFile:39 || ШАГ 5: Удаление диалога с id - 6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68
+2026-10-07 11:54:33 - || TestAiDeleteFile:86 || Удаляем диалог 6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68 пользователя c id dev-user 
+2026-10-07 11:54:33 - || TestAiDeleteFile:26 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68
+2026-10-07 11:54:33 - || TestAiDeleteFile:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68
+2026-10-07 11:54:33 - || TestAiDeleteFile:58 ||   response body:
+{
+  "id": "6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68",
+  "businessUid": "СБП-ДС-07.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": false,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-07T11:54:31.469422",
+  "updatedAt": "2026-10-07T11:54:31.469422",
+  "cipher": "SBP001"
+}
+2026-10-07 11:54:33 - || TestAiDeleteFile:90 || <Response [200 ]>
+2026-10-07 11:54:33 - || TestAiDeleteFile:93 || Диалог с id - 6fdeecf5-fc20-48e9-976f-7bd4bf1fdd68 удален
+2026-10-07 11:54:33 - || TestAiDeleteFile:63 || ============================================================
+2026-10-07 11:54:33 - || TestAiDeleteFile:64 || END TestAiDeleteFile
+2026-10-07 11:54:33 - || TestAiDeleteFile:65 || ============================================================

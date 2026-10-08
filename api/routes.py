@@ -12,6 +12,8 @@ class Routes(str, Enum):
     TK_POST = '/tk/{}'
     TK_DELETE = '/tk/{}'
     FILE_UPLOAD = 'chat/{}/files/upload'
+    FILE_DELETE = 'chat/{}/files/{}'
+    FILES_GET = 'chat/{}/files'
 
     def __str__(self) -> str:
         return self.value

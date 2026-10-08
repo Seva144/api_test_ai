@@ -1,0 +1,259 @@
+2026-10-05 10:32:46 - || TestAiSaveAtk:53 || ApiClient инициализирован
+2026-10-05 10:32:46 - || TestAiSaveAtk:55 || ============================================================
+2026-10-05 10:32:46 - || TestAiSaveAtk:56 || START TestAiSaveAtk  (log: logs/test_ai_save_atk.log)
+2026-10-05 10:32:46 - || TestAiSaveAtk:57 || ============================================================
+2026-10-05 10:32:46 - || TestAiSaveAtk:15 || ШAГ 1: Создание диалога пользователя
+2026-10-05 10:32:46 - || TestAiSaveAtk:70 || Создание нового диалога диалога
+2026-10-05 10:32:46 - || TestAiSaveAtk:73 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-10-05 10:32:46 - || TestAiSaveAtk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-05 10:32:46 - || TestAiSaveAtk:37 ||   request body:
+{
+  "title": "Новый диалог",
+  "context": {
+    "atkEnabled": false,
+    "tkEnabled": false,
+    "useTestAgent": false,
+    "kits": "СБП",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-05 10:32:46 - || TestAiSaveAtk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-05 10:32:46 - || TestAiSaveAtk:58 ||   response body:
+{
+  "id": "aa3bcfa2-94c3-4f83-84d6-391866254ede",
+  "businessUid": "СБП-ДС-05.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": false,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-05T10:32:46.585213652",
+  "updatedAt": "2026-10-05T10:32:46.585213652",
+  "cipher": "SBP001"
+}
+2026-10-05 10:32:46 - || TestAiSaveAtk:80 || Создан диалог id=aa3bcfa2-94c3-4f83-84d6-391866254ede
+2026-10-05 10:32:46 - || TestAiSaveAtk:24 || ШAГ 2: отправка сообщения на получение АТК
+2026-10-05 10:32:46 - || TestAiSaveAtk:115 || Отправляем сообщение 'Сгенерируй авто тест-кейс по авторизации' в диалог aa3bcfa2-94c3-4f83-84d6-391866254ede
+2026-10-05 10:32:46 - || TestAiSaveAtk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations/aa3bcfa2-94c3-4f83-84d6-391866254ede/messages
+2026-10-05 10:32:46 - || TestAiSaveAtk:37 ||   request body:
+{
+  "message": "Сгенерируй авто тест-кейс по авторизации",
+  "context": {
+    "atkEnabled": true,
+    "tkEnabled": false,
+    "useTestAgent": false,
+    "kits": "СБП",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-05 10:32:50 - || TestAiSaveAtk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/aa3bcfa2-94c3-4f83-84d6-391866254ede/messages
+2026-10-05 10:32:50 - || TestAiSaveAtk:50 ||   response body: <SSE stream, skipped>
+2026-10-05 10:32:54 - || TestAiSaveAtk:98 || ============================================================
+2026-10-05 10:32:54 - || TestAiSaveAtk:99 || РЕЗУЛЬТАТ SSE-СТРИМА
+2026-10-05 10:32:54 - || TestAiSaveAtk:100 || ============================================================
+2026-10-05 10:32:54 - || TestAiSaveAtk:101 || conversationId: aa3bcfa2-94c3-4f83-84d6-391866254ede
+2026-10-05 10:32:54 - || TestAiSaveAtk:102 || messageId:      87035c59-d265-4f19-a807-ffd0db353154
+2026-10-05 10:32:54 - || TestAiSaveAtk:103 || событий всего:  576
+2026-10-05 10:32:54 - || TestAiSaveAtk:104 || чанков:         575
+2026-10-05 10:32:54 - || TestAiSaveAtk:105 || последний seq:  575
+2026-10-05 10:32:54 - || TestAiSaveAtk:106 || finish получен: True
+2026-10-05 10:32:54 - || TestAiSaveAtk:107 || длина текста:   2748 символов
+2026-10-05 10:32:54 - || TestAiSaveAtk:108 || ============================================================
+2026-10-05 10:32:54 - || TestAiSaveAtk:109 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
+2026-10-05 10:32:54 - || TestAiSaveAtk:110 || ============================================================
+2026-10-05 10:32:54 - || TestAiSaveAtk:111 || /**
+ *
+ * @author dev-user
+ */
+public class AuthorizationTestsOfSBP001BydevUser {
+    import static org.junit.jupiter.api.Assertions.*;
+    import io.github.bonigarcia.wdm.WebDriverManager;
+    import org.junit.jupiter.api.*;
+    import org.openqa.selenium.*;
+    import org.openqa.selenium.support.ui.*;
+    import java.util.*;
+
+    @Test
+    @DisplayName("SuccessfulLoginWithCorrectCredentials")
+    void successfulLoginWithCorrectCredentials() {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://example.com/login");
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password")));
+
+        driver.findElement(By.id("username")).sendKeys("test@example.com");
+        driver.findElement(By.id("password")).sendKeys("SecurePass123!");
+        driver.findElement(By.id("loginButton")).click();
+
+        assertTrue(driver.getTitle().contains("Dashboard"), "Login should be successful");
+        driver.quit();
+    }
+
+    @Test
+    @DisplayName("UnsuccessfulLoginWithWrongPassword")
+    void unsuccessfulLoginWithWrongPassword() {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://example.com/login");
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password")));
+
+        driver.findElement(By.id("username")).sendKeys("test@example.com");
+        driver.findElement(By.id("password")).sendKeys("WrongPassword");
+        driver.findElement(By.id("loginButton")).click();
+
+        assertTrue(driver.findElement(By.id("error")).isDisplayed(), "Error message should be displayed");
+        driver.quit();
+    }
+
+    @Test
+    @DisplayName("UnsuccessfulLoginWithEmptyFields")
+    void unsuccessfulLoginWithEmptyFields() {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://example.com/login");
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginButton")));
+
+        driver.findElement(By.id("loginButton")).click();
+
+        assertTrue(driver.findElement(By.id("error")).isDisplayed(), "Error message should be displayed for empty fields");
+        driver.quit();
+    }
+}
+2026-10-05 10:32:54 - || TestAiSaveAtk:112 || ============================================================
+2026-10-05 10:32:54 - || TestAiSaveAtk:30 || ШАГ 3: Получение сообщений диалога
+2026-10-05 10:32:54 - || TestAiSaveAtk:203 || Получение всех сообщений пользователя dev-user из диалога - aa3bcfa2-94c3-4f83-84d6-391866254ede
+2026-10-05 10:32:54 - || TestAiSaveAtk:26 || → GET http://localhost:9081/api/ai-test/chat/conversations/aa3bcfa2-94c3-4f83-84d6-391866254ede/messages
+2026-10-05 10:32:55 - || TestAiSaveAtk:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/conversations/aa3bcfa2-94c3-4f83-84d6-391866254ede/messages
+2026-10-05 10:32:55 - || TestAiSaveAtk:58 ||   response body:
+[
+  {
+    "id": "119cb4e7-ad2e-466f-970f-50b7567637e8",
+    "conversationId": "aa3bcfa2-94c3-4f83-84d6-391866254ede",
+    "role": "GREETING",
+    "content": "👋 Привет, ! Я ИИ Ассистент 🤖 \n Я могу помочь тебе с написанием тест-кейсов (ТК) и авто-тестов (АТК) \nИнструкцию по моему использованию ты можешь найти сверху этого чата, нажав на кнопку 'Инструкция' . ⬆️\nЗагрузи необходимые файлы и введи запрос. Учти, что я могу писать только ТК и АТК и ничего больше! \nДавай начнем! 🚀",
+    "cipher": "SBP001",
+    "createdAt": "2026-10-05T10:32:46.640907",
+    "metadata": {}
+  },
+  {
+    "id": "f18c7017-6370-4e49-b362-1f224d53ef2c",
+    "conversationId": "aa3bcfa2-94c3-4f83-84d6-391866254ede",
+    "role": "USER",
+    "content": "Сгенерируй авто тест-кейс по авторизации",
+    "cipher": "SBP001",
+    "createdAt": "2026-10-05T10:32:49.971912",
+    "metadata": {
+      "kits": "СБП",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  },
+  {
+    "id": "87035c59-d265-4f19-a807-ffd0db353154",
+    "conversationId": "aa3bcfa2-94c3-4f83-84d6-391866254ede",
+    "role": "ASSISTANT",
+    "content": "/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001BydevUser {\n    import static org.junit.jupiter.api.Assertions.*;\n    import io.github.bonigarcia.wdm.WebDriverManager;\n    import org.junit.jupiter.api.*;\n    import org.openqa.selenium.*;\n    import org.openqa.selenium.support.ui.*;\n    import java.util.*;\n\n    @Test\n    @DisplayName(\"SuccessfulLoginWithCorrectCredentials\")\n    void successfulLoginWithCorrectCredentials() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"username\")));\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"password\")));\n\n        driver.findElement(By.id(\"username\")).sendKeys(\"test@example.com\");\n        driver.findElement(By.id(\"password\")).sendKeys(\"SecurePass123!\");\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.getTitle().contains(\"Dashboard\"), \"Login should be successful\");\n        driver.quit();\n    }\n\n    @Test\n    @DisplayName(\"UnsuccessfulLoginWithWrongPassword\")\n    void unsuccessfulLoginWithWrongPassword() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"username\")));\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"password\")));\n\n        driver.findElement(By.id(\"username\")).sendKeys(\"test@example.com\");\n        driver.findElement(By.id(\"password\")).sendKeys(\"WrongPassword\");\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.findElement(By.id(\"error\")).isDisplayed(), \"Error message should be displayed\");\n        driver.quit();\n    }\n\n    @Test\n    @DisplayName(\"UnsuccessfulLoginWithEmptyFields\")\n    void unsuccessfulLoginWithEmptyFields() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"loginButton\")));\n\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.findElement(By.id(\"error\")).isDisplayed(), \"Error message should be displayed for empty fields\");\n        driver.quit();\n    }\n}",
+    "cipher": "SBP001",
+    "createdAt": "2026-10-05T10:32:54.883662",
+    "metadata": {
+      "kits": "СБП",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  }
+]
+2026-10-05 10:32:55 - || TestAiSaveAtk:208 || Получено 3 сообщений
+2026-10-05 10:32:55 - || TestAiSaveAtk:35 || ШАГ 4: Сохранение АТК
+2026-10-05 10:32:55 - || TestAiSaveAtk:216 || Отправка АТК пользователя dev-user id сообщения - aa3bcfa2-94c3-4f83-84d6-391866254ede
+2026-10-05 10:32:55 - || TestAiSaveAtk:26 || → POST http://localhost:9081/api/ai-test/atk/1f865f5b-4b8a-4caa-a66f-1cec318750e9
+2026-10-05 10:32:55 - || TestAiSaveAtk:37 ||   request body:
+{
+  "message": "/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001BydevUser {\n    import static org.junit.jupiter.api.Assertions.*;\n    import io.github.bonigarcia.wdm.WebDriverManager;\n    import org.junit.jupiter.api.*;\n    import org.openqa.selenium.*;\n    import org.openqa.selenium.support.ui.*;\n    import java.util.*;\n\n    @Test\n    @DisplayName(\"SuccessfulLoginWithCorrectCredentials\")\n    void successfulLoginWithCorrectCredentials() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"username\")));\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"password\")));\n\n        driver.findElement(By.id(\"username\")).sendKeys(\"test@example.com\");\n        driver.findElement(By.id(\"password\")).sendKeys(\"SecurePass123!\");\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.getTitle().contains(\"Dashboard\"), \"Login should be successful\");\n        driver.quit();\n    }\n\n    @Test\n    @DisplayName(\"UnsuccessfulLoginWithWrongPassword\")\n    void unsuccessfulLoginWithWrongPassword() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"username\")));\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"password\")));\n\n        driver.findElement(By.id(\"username\")).sendKeys(\"test@example.com\");\n        driver.findElement(By.id(\"password\")).sendKeys(\"WrongPassword\");\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.findElement(By.id(\"error\")).isDisplayed(), \"Error message should be displayed\");\n        driver.quit();\n    }\n\n    @Test\n    @DisplayName(\"UnsuccessfulLoginWithEmptyFields\")\n    void unsuccessfulLoginWithEmptyFields() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"loginButton\")));\n\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.findElement(By.id(\"error\")).isDisplayed(), \"Error message should be displayed for empty fields\");\n        driver.quit();\n    }\n}",
+  "name": "{name}",
+  "context": {
+    "kits": "СБП"
+  }
+}
+2026-10-05 10:32:55 - || TestAiSaveAtk:46 || ← 200 POST http://localhost:9081/api/ai-test/atk/1f865f5b-4b8a-4caa-a66f-1cec318750e9
+2026-10-05 10:32:55 - || TestAiSaveAtk:58 ||   response body:
+{
+  "id": "e0ce127a-e40d-4888-8cc3-cd14e8d05d6a",
+  "businessUid": "СБП-ПРАТК-05.10.2026-1",
+  "name": "{name}",
+  "userId": "dev-user",
+  "content": "class AuthorizationTestsOfSBP001BydevUser {\n    import static org.junit.jupiter.api.Assertions.*;\n    import io.github.bonigarcia.wdm.WebDriverManager;\n    import org.junit.jupiter.api.*;\n    import org.openqa.selenium.*;\n    import org.openqa.selenium.support.ui.*;\n    import java.util.*;\n\n    @Test\n    @DisplayName(\"SuccessfulLoginWithCorrectCredentials\")\n    void successfulLoginWithCorrectCredentials() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"username\")));\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"password\")));\n\n        driver.findElement(By.id(\"username\")).sendKeys(\"test@example.com\");\n        driver.findElement(By.id(\"password\")).sendKeys(\"SecurePass123!\");\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.getTitle().contains(\"Dashboard\"), \"Login should be successful\");\n        driver.quit();\n    }\n\n    @Test\n    @DisplayName(\"UnsuccessfulLoginWithWrongPassword\")\n    void unsuccessfulLoginWithWrongPassword() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"username\")));\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"password\")));\n\n        driver.findElement(By.id(\"username\")).sendKeys(\"test@example.com\");\n        driver.findElement(By.id(\"password\")).sendKeys(\"WrongPassword\");\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.findElement(By.id(\"error\")).isDisplayed(), \"Error message should be displayed\");\n        driver.quit();\n    }\n\n    @Test\n    @DisplayName(\"UnsuccessfulLoginWithEmptyFields\")\n    void unsuccessfulLoginWithEmptyFields() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"loginButton\")));\n\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.findElement(By.id(\"error\")).isDisplayed(), \"Error message should be displayed for empty fields\");\n        driver.quit();\n    }\n}",
+  "kits": "СБП",
+  "cipher": "SBP001",
+  "projectUUID": "1f865f5b-4b8a-4caa-a66f-1cec318750e9",
+  "nameClass": "AuthorizationTestsOfSBP001BydevUser$3.java",
+  "createdAt": "2026-10-05T10:32:55.268299959",
+  "updatedAt": "2026-10-05T10:32:55.268299959"
+}
+2026-10-05 10:32:55 - || TestAiSaveAtk:222 || Создан АТК с id=e0ce127a-e40d-4888-8cc3-cd14e8d05d6a
+2026-10-05 10:32:55 - || TestAiSaveAtk:41 || ШАГ 5: Удаление АТК
+2026-10-05 10:32:55 - || TestAiSaveAtk:226 || Удаление АТК с id - e0ce127a-e40d-4888-8cc3-cd14e8d05d6a, пользователем id - dev-user
+2026-10-05 10:32:55 - || TestAiSaveAtk:26 || → DELETE http://localhost:9081/api/ai-test/atk/e0ce127a-e40d-4888-8cc3-cd14e8d05d6a
+2026-10-05 10:32:55 - || TestAiSaveAtk:46 || ← 200 DELETE http://localhost:9081/api/ai-test/atk/e0ce127a-e40d-4888-8cc3-cd14e8d05d6a
+2026-10-05 10:32:55 - || TestAiSaveAtk:58 ||   response body:
+{
+  "id": "e0ce127a-e40d-4888-8cc3-cd14e8d05d6a",
+  "businessUid": "СБП-ПРАТК-05.10.2026-1",
+  "name": "{name}",
+  "userId": "dev-user",
+  "content": "class AuthorizationTestsOfSBP001BydevUser {\n    import static org.junit.jupiter.api.Assertions.*;\n    import io.github.bonigarcia.wdm.WebDriverManager;\n    import org.junit.jupiter.api.*;\n    import org.openqa.selenium.*;\n    import org.openqa.selenium.support.ui.*;\n    import java.util.*;\n\n    @Test\n    @DisplayName(\"SuccessfulLoginWithCorrectCredentials\")\n    void successfulLoginWithCorrectCredentials() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"username\")));\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"password\")));\n\n        driver.findElement(By.id(\"username\")).sendKeys(\"test@example.com\");\n        driver.findElement(By.id(\"password\")).sendKeys(\"SecurePass123!\");\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.getTitle().contains(\"Dashboard\"), \"Login should be successful\");\n        driver.quit();\n    }\n\n    @Test\n    @DisplayName(\"UnsuccessfulLoginWithWrongPassword\")\n    void unsuccessfulLoginWithWrongPassword() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"username\")));\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"password\")));\n\n        driver.findElement(By.id(\"username\")).sendKeys(\"test@example.com\");\n        driver.findElement(By.id(\"password\")).sendKeys(\"WrongPassword\");\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.findElement(By.id(\"error\")).isDisplayed(), \"Error message should be displayed\");\n        driver.quit();\n    }\n\n    @Test\n    @DisplayName(\"UnsuccessfulLoginWithEmptyFields\")\n    void unsuccessfulLoginWithEmptyFields() {\n        WebDriverManager.chromedriver().setup();\n        WebDriver driver = new ChromeDriver();\n        driver.manage().window().maximize();\n        driver.get(\"https://example.com/login\");\n\n        WebDriverWait wait = new WebDriverWait(driver, 10);\n        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"loginButton\")));\n\n        driver.findElement(By.id(\"loginButton\")).click();\n\n        assertTrue(driver.findElement(By.id(\"error\")).isDisplayed(), \"Error message should be displayed for empty fields\");\n        driver.quit();\n    }\n}",
+  "kits": "СБП",
+  "cipher": "SBP001",
+  "projectUUID": "1f865f5b-4b8a-4caa-a66f-1cec318750e9",
+  "nameClass": "AuthorizationTestsOfSBP001BydevUser$3.java",
+  "createdAt": "2026-10-05T10:32:55.2683",
+  "updatedAt": "2026-10-05T10:32:55.2683"
+}
+2026-10-05 10:32:55 - || TestAiSaveAtk:231 || Удален АТК с id=e0ce127a-e40d-4888-8cc3-cd14e8d05d6a
+2026-10-05 10:32:55 - || TestAiSaveAtk:84 || Удаляем диалог aa3bcfa2-94c3-4f83-84d6-391866254ede пользователя c id dev-user 
+2026-10-05 10:32:55 - || TestAiSaveAtk:26 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/aa3bcfa2-94c3-4f83-84d6-391866254ede
+2026-10-05 10:32:55 - || TestAiSaveAtk:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/aa3bcfa2-94c3-4f83-84d6-391866254ede
+2026-10-05 10:32:55 - || TestAiSaveAtk:58 ||   response body:
+{
+  "id": "aa3bcfa2-94c3-4f83-84d6-391866254ede",
+  "businessUid": "СБП-ДС-05.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": true,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-05T10:32:46.585214",
+  "updatedAt": "2026-10-05T10:32:46.735967",
+  "cipher": "SBP001"
+}
+2026-10-05 10:32:55 - || TestAiSaveAtk:88 || <Response [200 ]>
+2026-10-05 10:32:55 - || TestAiSaveAtk:91 || Диалог с id - aa3bcfa2-94c3-4f83-84d6-391866254ede удален
+2026-10-05 10:32:55 - || TestAiSaveAtk:61 || ============================================================
+2026-10-05 10:32:55 - || TestAiSaveAtk:62 || END TestAiSaveAtk
+2026-10-05 10:32:55 - || TestAiSaveAtk:63 || ============================================================

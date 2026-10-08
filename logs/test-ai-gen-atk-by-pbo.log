@@ -1,0 +1,363 @@
+2026-10-06 10:40:11 - || TestAiGenAtkByPbo:53 || ApiClient инициализирован
+2026-10-06 10:40:11 - || TestAiGenAtkByPbo:55 || ============================================================
+2026-10-06 10:40:11 - || TestAiGenAtkByPbo:56 || START TestAiGenAtkByPbo  (log: logs/test-ai-gen-atk-by-pbo.log)
+2026-10-06 10:40:11 - || TestAiGenAtkByPbo:57 || ============================================================
+2026-10-06 10:40:11 - || TestAiGenAtkByPbo:14 || ШAГ 1: Создание диалога пользователя
+2026-10-06 10:40:11 - || TestAiGenAtkByPbo:70 || Создание нового диалога диалога
+2026-10-06 10:40:11 - || TestAiGenAtkByPbo:73 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-10-06 10:40:11 - || TestAiGenAtkByPbo:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-06 10:40:11 - || TestAiGenAtkByPbo:37 ||   request body:
+{
+  "title": "Новый диалог",
+  "context": {
+    "atkEnabled": false,
+    "tkEnabled": false,
+    "useTestAgent": false,
+    "kits": "СБП",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-06 10:40:13 - || TestAiGenAtkByPbo:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-06 10:40:13 - || TestAiGenAtkByPbo:58 ||   response body:
+{
+  "id": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+  "businessUid": "СБП-ДС-06.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": false,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-06T10:40:12.750542388",
+  "updatedAt": "2026-10-06T10:40:12.750542388",
+  "cipher": "SBP001"
+}
+2026-10-06 10:40:13 - || TestAiGenAtkByPbo:80 || Создан диалог id=cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:13 - || TestAiGenAtkByPbo:21 || ШАГ 2: Отправка первого сообщения
+2026-10-06 10:40:13 - || TestAiGenAtkByPbo:115 || Отправляем сообщение 'Напиши АТК по авторизации' в диалог cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:13 - || TestAiGenAtkByPbo:26 || → POST http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c/messages
+2026-10-06 10:40:13 - || TestAiGenAtkByPbo:37 ||   request body:
+{
+  "message": "Напиши АТК по авторизации",
+  "context": {
+    "atkEnabled": true,
+    "tkEnabled": false,
+    "useTestAgent": false,
+    "kits": "ПБО",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-06 10:40:15 - || TestAiGenAtkByPbo:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c/messages
+2026-10-06 10:40:15 - || TestAiGenAtkByPbo:50 ||   response body: <SSE stream, skipped>
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:98 || ============================================================
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:99 || РЕЗУЛЬТАТ SSE-СТРИМА
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:100 || ============================================================
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:101 || conversationId: cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:102 || messageId:      5263e073-414a-4e7b-8f71-07474fec1d1e
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:103 || событий всего:  386
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:104 || чанков:         385
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:105 || последний seq:  385
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:106 || finish получен: True
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:107 || длина текста:   1475 символов
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:108 || ============================================================
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:109 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:110 || ============================================================
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:111 || // === FILE: src/qa/tests/T14624_1.java ===
+package qa.tests;
+
+import core.base.test.BaseTest;
+import core.web.operations.login.Ow14624_1;
+import qa.tests.TestException;
+
+public class T14624_1 extends BaseTest {
+
+    @Override
+    public void startTest() throws TestException {
+        new Ow14624_1().run(1);
+    }
+}
+
+// === FILE: src/core/web/operations/login/Ow14624_1.java ===
+package core.web.operations.login;
+
+import core.base.operations.OperationType;
+import core.base.test.TestException;
+import core.web.po.pages.login.LoginPage;
+import core.web.po.pages.mainmenu.MainMenuPage;
+import core.web.po.pages.mainmenu.MainMenu;
+import qa.tests.TestException;
+
+import java.util.HashMap;
+
+public class Ow14624_1 extends WebOperation {
+
+    private String user;
+    private String password;
+
+    @Override
+    public void setOperationType() {
+        operationType = OperationType.Ow14624;
+    }
+
+    @Override
+    public void create(HashMap<String, String> dataRow) throws TestException {
+        step("1");
+        _login(user, password);
+
+        step("2");
+        MainMenuPage menuPage = new MainMenuPage(getWebDriver());
+        menuPage.mustAppear();
+        menuPage.clickEnterPaymentOrders();
+        menuPage.clickInventoryPrEnter();
+
+        LoginPage loginPage = new LoginPage(getWebDriver());
+        loginPage.mustAppear();
+
+        step("3");
+        loginPage.setUserName(user);
+        loginPage.setPassword(password);
+        loginPage.clickLogin();
+    }
+}
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:112 || ============================================================
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:28 || ШАГ 3: Получение сообщений диалога
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:202 || Получение всех сообщений пользователя dev-user из диалога - cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:26 || → GET http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c/messages
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c/messages
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:58 ||   response body:
+[
+  {
+    "id": "b8bd581f-a44b-4373-b8bb-fd0cffa1db34",
+    "conversationId": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+    "role": "GREETING",
+    "content": "👋 Привет, ! Я ИИ Ассистент 🤖 \n Я могу помочь тебе с написанием тест-кейсов (ТК) и авто-тестов (АТК) \nИнструкцию по моему использованию ты можешь найти сверху этого чата, нажав на кнопку 'Инструкция' . ⬆️\nЗагрузи необходимые файлы и введи запрос. Учти, что я могу писать только ТК и АТК и ничего больше! \nДавай начнем! 🚀",
+    "cipher": "PBO001",
+    "createdAt": "2026-10-06T10:40:12.932916",
+    "metadata": {}
+  },
+  {
+    "id": "8e87a9bf-1cc3-4940-824c-49163efdf0dd",
+    "conversationId": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+    "role": "USER",
+    "content": "Напиши АТК по авторизации",
+    "cipher": "PBO001",
+    "createdAt": "2026-10-06T10:40:14.099516",
+    "metadata": {
+      "kits": "ПБО",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  },
+  {
+    "id": "5263e073-414a-4e7b-8f71-07474fec1d1e",
+    "conversationId": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+    "role": "ASSISTANT",
+    "content": "// === FILE: src/qa/tests/T14624_1.java ===\npackage qa.tests;\n\nimport core.base.test.BaseTest;\nimport core.web.operations.login.Ow14624_1;\nimport qa.tests.TestException;\n\npublic class T14624_1 extends BaseTest {\n\n    @Override\n    public void startTest() throws TestException {\n        new Ow14624_1().run(1);\n    }\n}\n\n// === FILE: src/core/web/operations/login/Ow14624_1.java ===\npackage core.web.operations.login;\n\nimport core.base.operations.OperationType;\nimport core.base.test.TestException;\nimport core.web.po.pages.login.LoginPage;\nimport core.web.po.pages.mainmenu.MainMenuPage;\nimport core.web.po.pages.mainmenu.MainMenu;\nimport qa.tests.TestException;\n\nimport java.util.HashMap;\n\npublic class Ow14624_1 extends WebOperation {\n\n    private String user;\n    private String password;\n\n    @Override\n    public void setOperationType() {\n        operationType = OperationType.Ow14624;\n    }\n\n    @Override\n    public void create(HashMap<String, String> dataRow) throws TestException {\n        step(\"1\");\n        _login(user, password);\n\n        step(\"2\");\n        MainMenuPage menuPage = new MainMenuPage(getWebDriver());\n        menuPage.mustAppear();\n        menuPage.clickEnterPaymentOrders();\n        menuPage.clickInventoryPrEnter();\n\n        LoginPage loginPage = new LoginPage(getWebDriver());\n        loginPage.mustAppear();\n\n        step(\"3\");\n        loginPage.setUserName(user);\n        loginPage.setPassword(password);\n        loginPage.clickLogin();\n    }\n}",
+    "cipher": "PBO001",
+    "createdAt": "2026-10-06T10:40:18.550599",
+    "metadata": {
+      "kits": "ПБО",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  }
+]
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:207 || Получено 3 сообщений
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:38 || ШАГ 4: Отправка второго сообщения
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:115 || Отправляем сообщение 'Напиши АТК по авторизации с переходом на главную страницу' в диалог cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:26 || → POST http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c/messages
+2026-10-06 10:40:18 - || TestAiGenAtkByPbo:37 ||   request body:
+{
+  "message": "Напиши АТК по авторизации с переходом на главную страницу",
+  "context": {
+    "atkEnabled": true,
+    "tkEnabled": false,
+    "useTestAgent": false,
+    "kits": "ПБО",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-06 10:40:19 - || TestAiGenAtkByPbo:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c/messages
+2026-10-06 10:40:19 - || TestAiGenAtkByPbo:50 ||   response body: <SSE stream, skipped>
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:98 || ============================================================
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:99 || РЕЗУЛЬТАТ SSE-СТРИМА
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:100 || ============================================================
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:101 || conversationId: cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:102 || messageId:      2dbb23f0-0f78-4745-9b6b-f7a5cf3d4bfa
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:103 || событий всего:  311
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:104 || чанков:         310
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:105 || последний seq:  310
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:106 || finish получен: True
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:107 || длина текста:   1121 символов
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:108 || ============================================================
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:109 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:110 || ============================================================
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:111 || // === FILE: src/qa/tests/T16343_1.java ===
+package qa.tests;
+
+import core.base.test.BaseTest;
+import core.web.operations.login.Ow16343_1;
+import qa.tests.TestException;
+
+public class T16343_1 extends BaseTest {
+
+    @Override
+    public void startTest() throws TestException {
+        new Ow16343_1().run(1);
+    }
+}
+
+// === FILE: src/core/web/operations/login/Ow16343_1.java ===
+package core.web.operations.login;
+
+import core.base.operations.OperationType;
+import core.base.test.TestException;
+import core.web.po.pages.login.LoginPage;
+import core.web.po.pages.mainmenu.MainMenuPage;
+import qa.tests.TestException;
+
+import java.util.HashMap;
+
+public class Ow16343_1 extends WebOperation {
+
+    private String user;
+    private String password;
+
+    @Override
+    public void setOperationType() {
+        operationType = OperationType.Ow16343;
+    }
+
+    @Override
+    public void create(HashMap<String, String> dataRow) throws TestException {
+        step("1");
+        _login(user, password);
+
+        step("2");
+        MainMenuPage menuPage = new MainMenuPage(getWebDriver());
+        menuPage.mustAppear();
+    }
+}
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:112 || ============================================================
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:202 || Получение всех сообщений пользователя dev-user из диалога - cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:26 || → GET http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c/messages
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c/messages
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:58 ||   response body:
+[
+  {
+    "id": "b8bd581f-a44b-4373-b8bb-fd0cffa1db34",
+    "conversationId": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+    "role": "GREETING",
+    "content": "👋 Привет, ! Я ИИ Ассистент 🤖 \n Я могу помочь тебе с написанием тест-кейсов (ТК) и авто-тестов (АТК) \nИнструкцию по моему использованию ты можешь найти сверху этого чата, нажав на кнопку 'Инструкция' . ⬆️\nЗагрузи необходимые файлы и введи запрос. Учти, что я могу писать только ТК и АТК и ничего больше! \nДавай начнем! 🚀",
+    "cipher": "PBO001",
+    "createdAt": "2026-10-06T10:40:12.932916",
+    "metadata": {}
+  },
+  {
+    "id": "8e87a9bf-1cc3-4940-824c-49163efdf0dd",
+    "conversationId": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+    "role": "USER",
+    "content": "Напиши АТК по авторизации",
+    "cipher": "PBO001",
+    "createdAt": "2026-10-06T10:40:14.099516",
+    "metadata": {
+      "kits": "ПБО",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  },
+  {
+    "id": "5263e073-414a-4e7b-8f71-07474fec1d1e",
+    "conversationId": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+    "role": "ASSISTANT",
+    "content": "// === FILE: src/qa/tests/T14624_1.java ===\npackage qa.tests;\n\nimport core.base.test.BaseTest;\nimport core.web.operations.login.Ow14624_1;\nimport qa.tests.TestException;\n\npublic class T14624_1 extends BaseTest {\n\n    @Override\n    public void startTest() throws TestException {\n        new Ow14624_1().run(1);\n    }\n}\n\n// === FILE: src/core/web/operations/login/Ow14624_1.java ===\npackage core.web.operations.login;\n\nimport core.base.operations.OperationType;\nimport core.base.test.TestException;\nimport core.web.po.pages.login.LoginPage;\nimport core.web.po.pages.mainmenu.MainMenuPage;\nimport core.web.po.pages.mainmenu.MainMenu;\nimport qa.tests.TestException;\n\nimport java.util.HashMap;\n\npublic class Ow14624_1 extends WebOperation {\n\n    private String user;\n    private String password;\n\n    @Override\n    public void setOperationType() {\n        operationType = OperationType.Ow14624;\n    }\n\n    @Override\n    public void create(HashMap<String, String> dataRow) throws TestException {\n        step(\"1\");\n        _login(user, password);\n\n        step(\"2\");\n        MainMenuPage menuPage = new MainMenuPage(getWebDriver());\n        menuPage.mustAppear();\n        menuPage.clickEnterPaymentOrders();\n        menuPage.clickInventoryPrEnter();\n\n        LoginPage loginPage = new LoginPage(getWebDriver());\n        loginPage.mustAppear();\n\n        step(\"3\");\n        loginPage.setUserName(user);\n        loginPage.setPassword(password);\n        loginPage.clickLogin();\n    }\n}",
+    "cipher": "PBO001",
+    "createdAt": "2026-10-06T10:40:18.550599",
+    "metadata": {
+      "kits": "ПБО",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  },
+  {
+    "id": "a5b602a3-f79e-4a35-8b8b-d480ce25684d",
+    "conversationId": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+    "role": "USER",
+    "content": "Напиши АТК по авторизации с переходом на главную страницу",
+    "cipher": "PBO001",
+    "createdAt": "2026-10-06T10:40:19.484861",
+    "metadata": {
+      "kits": "ПБО",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  },
+  {
+    "id": "2dbb23f0-0f78-4745-9b6b-f7a5cf3d4bfa",
+    "conversationId": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+    "role": "ASSISTANT",
+    "content": "// === FILE: src/qa/tests/T16343_1.java ===\npackage qa.tests;\n\nimport core.base.test.BaseTest;\nimport core.web.operations.login.Ow16343_1;\nimport qa.tests.TestException;\n\npublic class T16343_1 extends BaseTest {\n\n    @Override\n    public void startTest() throws TestException {\n        new Ow16343_1().run(1);\n    }\n}\n\n// === FILE: src/core/web/operations/login/Ow16343_1.java ===\npackage core.web.operations.login;\n\nimport core.base.operations.OperationType;\nimport core.base.test.TestException;\nimport core.web.po.pages.login.LoginPage;\nimport core.web.po.pages.mainmenu.MainMenuPage;\nimport qa.tests.TestException;\n\nimport java.util.HashMap;\n\npublic class Ow16343_1 extends WebOperation {\n\n    private String user;\n    private String password;\n\n    @Override\n    public void setOperationType() {\n        operationType = OperationType.Ow16343;\n    }\n\n    @Override\n    public void create(HashMap<String, String> dataRow) throws TestException {\n        step(\"1\");\n        _login(user, password);\n\n        step(\"2\");\n        MainMenuPage menuPage = new MainMenuPage(getWebDriver());\n        menuPage.mustAppear();\n    }\n}",
+    "cipher": "PBO001",
+    "createdAt": "2026-10-06T10:40:22.503923",
+    "metadata": {
+      "kits": "ПБО",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  }
+]
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:207 || Получено 5 сообщений
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:51 || ШАГ 6: Удаление диалога с id - cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:84 || Удаляем диалог cfd5b335-1ce5-44b9-8de6-6ae5bf45503c пользователя c id dev-user 
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:26 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/cfd5b335-1ce5-44b9-8de6-6ae5bf45503c
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:58 ||   response body:
+{
+  "id": "cfd5b335-1ce5-44b9-8de6-6ae5bf45503c",
+  "businessUid": "СБП-ДС-06.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": true,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "ПБО",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-06T10:40:12.750542",
+  "updatedAt": "2026-10-06T10:40:13.185629",
+  "cipher": "PBO001"
+}
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:88 || <Response [200 ]>
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:91 || Диалог с id - cfd5b335-1ce5-44b9-8de6-6ae5bf45503c удален
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:61 || ============================================================
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:62 || END TestAiGenAtkByPbo
+2026-10-06 10:40:22 - || TestAiGenAtkByPbo:63 || ============================================================

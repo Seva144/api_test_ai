@@ -1,5 +1,4 @@
 import logging
-from pathlib import Path
 from typing import Type
 from uuid import UUID
 
@@ -304,8 +303,23 @@ def assert_messages_contains_id(
     assert id_message in ids, (
         f"Сообщение с id={id_message} не найдено. Есть: {sorted(ids)}"
     )
-    logger.info(f"✔ сообщение с id={id_message} найдено")
+    logger.info(f" сообщение с id={id_message} найдено")
     return messages_by_id[id_message]
+
+
+def assert_file_not_contain_dialog(
+        files_by_id: dict[UUID, FileDTO],
+        id_file: UUID,
+):
+    """
+    Проверяет, что в словаре есть сообщение с указанным id.
+    Возвращает это сообщение.
+    """
+    ids = set(files_by_id.keys())
+    assert id_file not in ids, (
+        f"Файл с id={id_file} найден, но не должен присутствовать. Есть: {sorted(ids)}"
+    )
+    logger.info(f"Файл с id={id_file} отсутствует, как и ожидалось")
 
 
 def assert_check_content_message(message: str, *words):
@@ -319,7 +333,7 @@ def assert_check_content_message(message: str, *words):
         if result:
             logger.info(f"В сообщении  - содержитя слово {word}")
         else:
-            logger.info(f"В сообщении {message} - содержитя слово {word}")
+            logger.info(f"В сообщении не - содержитя слово {word}")
             missing.append(word)
 
     assert not missing, f"В сообщении не найдены подстроки: {missing}. "
