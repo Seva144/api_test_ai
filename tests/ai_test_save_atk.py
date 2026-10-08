@@ -10,6 +10,10 @@ class TestAiSaveAtk(TestBase):
 
     LOG_FILE = "test_ai_save_atk.log"
 
+    """
+     Тест сохранения АТК
+    """
+
     def test_ai_save_atk(self):
         # 1. создание диалога
         self.logger.info(f"ШAГ 1: Создание диалога пользователя")

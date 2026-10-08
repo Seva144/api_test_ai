@@ -6,11 +6,16 @@ from models.request.default_fields import MESSAGE_TK_SIMPLE
 from tests.base_test import TestBase
 
 
-class TestAiDownloadFileToAgentDoc(TestBase):
-
+class TestAiUseContextInTk(TestBase):
     LOG_FILE = "ai-test-agent-use-context.log"
 
-    def test_ai_agent_use_context(self):
+    """
+        Тест для проверки использования контекста
+        при получении тест-кейсов
+        Контекст от загруженного до
+        """
+
+    def test_ai_use_context_in_tk(self):
         # 1. создание диалога
         self.logger.info(f"ШAГ 1: Создание диалога пользователя")
         create_conversation_response = self.create_conversation()
@@ -57,6 +62,3 @@ class TestAiDownloadFileToAgentDoc(TestBase):
             # 7. удаление диалога
             self.logger.info(f"ШАГ 7: Удаление диалога с id - {id_conversation}")
             self.delete_conversation(id_conversation, id_user)
-
-
-

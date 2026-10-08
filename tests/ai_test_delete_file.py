@@ -7,6 +7,10 @@ from tests.base_test import TestBase
 class TestAiDeleteFile(TestBase):
     LOG_FILE = "test-ai-delete-file.log"
 
+    """
+            Тест для проверки удаления файла
+            """
+
     def test_ai_delete_file(self):
         # 1. создание диалога
         self.logger.info(f"ШAГ 1: Создание диалога пользователя")

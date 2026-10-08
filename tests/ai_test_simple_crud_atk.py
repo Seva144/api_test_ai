@@ -8,6 +8,10 @@ class TestAiSimpleCrudAtk(TestBase):
 
     LOG_FILE = "ai_test_simple_crud_atk.log"
 
+    """
+    Простой тест получения в чате шаблона АТК
+    """
+
     def test_ai_simple_crud_atk(self):
         # 1. создание диалога
         create_conversation_response = self.create_conversation()

@@ -9,6 +9,10 @@ from tests.base_test import TestBase
 class TestAiDownloadFileToAgentDoc(TestBase):
     LOG_FILE = "test-ai-download-file-to-agent-doc.log"
 
+    """
+               Тест для проверки удаления файла
+               """
+
     def test_ai_download_file_to_agent_doc(self):
         # 1. создание диалога
         self.logger.info(f"ШAГ 1: Создание диалога пользователя")

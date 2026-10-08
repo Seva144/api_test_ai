@@ -9,6 +9,10 @@ from tests.base_test import TestBase
 class TestAiGenAtkByPbo(TestBase):
     LOG_FILE = "test-ai-gen-atk-by-pbo.log"
 
+    """
+      Тест для генерации АТК по КИТС ПБО
+       """
+
     def test_ai_gen_atk_by_pbo(self):
         # 1. создание диалога
         self.logger.info(f"ШAГ 1: Создание диалога пользователя")
