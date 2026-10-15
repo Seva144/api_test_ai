@@ -32,7 +32,6 @@ MESSAGE_ATK_SIMPLE = MessageConfigAtkSimple()
 class MessageConfigTkSimple:
     atkEnabled: bool = False
     tkEnabled: bool = True
-    useTestAgent: bool = False
     model: str = "Qwen/Qwen3.5-4B"
     kits: str = "СБП"
     url_app: str = "https://test-app.local"

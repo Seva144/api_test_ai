@@ -235,10 +235,11 @@ class TestBase:
     def tks_create(self, id_conversation: UUID,
                    user_id: str,
                    message_id: UUID,
-                   message: str
+                   message: str,
+                   testing_type: str
                    ) -> list[TkDTO]:
         self.logger.info(f"Отправка ТК пользователя {user_id} id сообщения - {id_conversation}")
-        request = create_request(TK_MESSAGE_DEFAULT, "post_tk", message=message)
+        request = create_request(TK_MESSAGE_DEFAULT, "post_tk", message=message, testingType=testing_type)
         response = post_tk(self.client, message_id, json=request)
         assert_status_code(response, HTTPStatus.OK)
         assert_schema_list(response, TkDTO)

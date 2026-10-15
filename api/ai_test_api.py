@@ -67,4 +67,5 @@ def get_files(
     return client.get(url)
 
 
-
+def get_testing_type(client: ApiClient) -> Response:
+    return client.get(routes.Routes.MESSAGES_GET)

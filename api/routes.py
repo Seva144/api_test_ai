@@ -14,6 +14,7 @@ class Routes(str, Enum):
     FILE_UPLOAD = 'chat/{}/files/upload'
     FILE_DELETE = 'chat/{}/files/{}'
     FILES_GET = 'chat/{}/files'
+    TESTING_TYPE = 'testing-type/get-all'
 
     def __str__(self) -> str:
         return self.value
