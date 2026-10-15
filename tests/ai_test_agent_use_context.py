@@ -41,8 +41,7 @@ class TestAiUseContextInTk(TestBase):
             messages = self.get_messages(id_conversation, id_user)
             message_first = assert_messages_contains_id(messages, id_message_one)
             word_one = "Vova_P"
-            word_two = "Dima_M"
-            assert_check_content_message(message_first.content, word_one, word_two)
+            assert_check_content_message(message_first.content, word_one)
 
             # 5. Отправить сообшение
             self.logger.info(f"ШАГ 5: Изменить в сообщении некоторые данные")

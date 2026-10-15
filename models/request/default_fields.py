@@ -42,6 +42,18 @@ MESSAGE_TK_SIMPLE = MessageConfigTkSimple()
 
 
 @dataclass
+class MessageConfigWithoutUseTestAgent:
+    atkEnabled: bool = False
+    tkEnabled: bool = True
+    model: str = "Qwen/Qwen3.5-4B"
+    kits: str = "СБП"
+    url_app: str = "https://test-app.local"
+
+
+MESSAGE_WITHOUT_USE_TEST_AGENT = MessageConfigWithoutUseTestAgent()
+
+
+@dataclass
 class MessageConfigAtkByPbo:
     atkEnabled: bool = True
     tkEnabled: bool = False
