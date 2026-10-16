@@ -1,0 +1,596 @@
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:55 || ApiClient инициализирован
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:57 || ============================================================
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:58 || START TestAiWithoutUseTestAgentFlag  (log: logs/ai-test-without-use-test-agent-flag.log)
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:59 || ============================================================
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:18 || ШAГ 1: Создание диалога пользователя
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:72 || Создание нового диалога диалога
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:75 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:37 ||   request body:
+{
+  "title": "Новый диалог",
+  "context": {
+    "atkEnabled": false,
+    "tkEnabled": false,
+    "useTestAgent": false,
+    "kits": "СБП",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:58 ||   response body:
+{
+  "id": "cf1d04d6-9086-4c8d-bf26-e0b3c625b400",
+  "businessUid": "СБП-ДС-12.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": false,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-12T14:30:21.755073866",
+  "updatedAt": "2026-10-12T14:30:21.755073866",
+  "cipher": "SBP001"
+}
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:82 || Создан диалог id=cf1d04d6-9086-4c8d-bf26-e0b3c625b400
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:26 || ШАГ 2: Загружаем файл на агент
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:268 || Загрузка файла Authorized.txt (1660 байт) в диалог cf1d04d6-9086-4c8d-bf26-e0b3c625b400
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:26 || → POST http://localhost:9081/api/ai-test/chat/cf1d04d6-9086-4c8d-bf26-e0b3c625b400/files/upload?useTestAgent=false
+2026-10-12 14:30:21 - || TestAiWithoutUseTestAgentFlag:32 ||   request body: <multipart/streaming, not logged>
+2026-10-12 14:30:24 - || TestAiWithoutUseTestAgentFlag:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/cf1d04d6-9086-4c8d-bf26-e0b3c625b400/files/upload?useTestAgent=false
+2026-10-12 14:30:24 - || TestAiWithoutUseTestAgentFlag:58 ||   response body:
+{
+  "id": "e07ffd00-66ec-424f-97ad-8ebe86dddda2",
+  "conversationId": "cf1d04d6-9086-4c8d-bf26-e0b3c625b400",
+  "filename": "a36de60f-e9ec-429d-8e9a-00b8b5256807_Authorized.txt",
+  "originalFilename": "Authorized.txt",
+  "fileSize": 1660,
+  "mimeType": "application/octet-stream",
+  "processingStatus": "completed",
+  "content": "Файл 'Authorized.txt' загружен в агент. Статус обработки: completed.",
+  "summary": "Это **техническое задание (ТЗ)** на разработку модуля авторизации, описывающее процедуру входа через учетные данные и логику обработки случаев успеха или ошибки. Документ специфицирует требуемые шаги взаимодействия пользователя, предусмотренную возможность восстановления доступа, а также критерии корректной и некорректной аутентификации, включая отображение специфического предупреждающего сообщения для несуществующих пользователей.",
+  "createdAt": "2026-10-12T14:30:22.128757",
+  "metadata": {
+    "summary": "Это **техническое задание (ТЗ)** на разработку модуля авторизации, описывающее процедуру входа через учетные данные и логику обработки случаев успеха или ошибки. Документ специфицирует требуемые шаги взаимодействия пользователя, предусмотренную возможность восстановления доступа, а также критерии корректной и некорректной аутентификации, включая отображение специфического предупреждающего сообщения для несуществующих пользователей.",
+    "original_filename": "Authorized.txt",
+    "filename": "Authorized.txt",
+    "mime_type": "application/octet-stream",
+    "processing_status": "completed",
+    "created_at": "2026-10-12T14:30:22.128756868",
+    "source": "agent",
+    "id": "e07ffd00-66ec-424f-97ad-8ebe86dddda2",
+    "data_content": "| Логин         | Пароль     | Ожидаемый результат |\n|---------------|------------|---------------------|\n| Vova_P        | password1  | Успешная авторизация|\n| Dima_M        | password2  | Успешная авторизация|\n| invalid_user  | password3  | Ошибка авторизации  |\n| user3         | wrongpass  | Ошибка авторизации  |",
+    "file_size": 1660
+  }
+}
+2026-10-12 14:30:24 - || TestAiWithoutUseTestAgentFlag:285 || Файл загружен: id=e07ffd00-66ec-424f-97ad-8ebe86dddda2, filename=a36de60f-e9ec-429d-8e9a-00b8b5256807_Authorized.txt, size=1660, status=completed
+2026-10-12 14:30:24 - || TestAiWithoutUseTestAgentFlag:31 || ШАГ 3: Написать сообщение для генерации ТК
+2026-10-12 14:30:24 - || TestAiWithoutUseTestAgentFlag:165 || → SEND MESSAGE (agent) в диалог cf1d04d6-9086-4c8d-bf26-e0b3c625b400: 'Сделай тест-кейсы на авторизацию использую данные из файла'
+2026-10-12 14:30:24 - || TestAiWithoutUseTestAgentFlag:26 || → POST http://localhost:9081/api/ai-test/chat/conversations/cf1d04d6-9086-4c8d-bf26-e0b3c625b400/messages
+2026-10-12 14:30:24 - || TestAiWithoutUseTestAgentFlag:37 ||   request body:
+{
+  "message": "Сделай тест-кейсы на авторизацию использую данные из файла",
+  "context": {
+    "atkEnabled": false,
+    "tkEnabled": true,
+    "kits": "СБП",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/cf1d04d6-9086-4c8d-bf26-e0b3c625b400/messages
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:50 ||   response body: <SSE stream, skipped>
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:176 || event=finish data={
+  "conversationId": "cf1d04d6-9086-4c8d-bf26-e0b3c625b400",
+  "messageId": "c96c690d-7500-4a10-985e-ae4e58a518f7",
+  "role": "ASSISTANT",
+  "content": "▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Успешная авторизация корректным логином и паролем\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить корректный вход в систему с валидными учетными данными\n▪ сценарий: positive, valid credentials\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу входа в систему\n- данные: Страница входа\n- результат: Страница входа загружена корректно\n\n→ ШАГ 2\n- шаг: Ввести логин 'Vova_P'\n- данные: Логин: Vova_P\n- результат: Поле логина заполнено корректно\n\n→ ШАГ 3\n- шаг: Ввести пароль 'password1'\n- данные: Пароль: password1\n- результат: Поле пароля заполнено корректно\n\n→ ШАГ 4\n- шаг: Нажать кнопку 'Войти'\n- данные: Кнопка входа активна\n- результат: Система перенаправляет пользователя на главную страницу без ошибок\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Ошибка авторизации с некорректным логином\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить обработку попытки входа с неверным логином\n▪ сценарий: negative, invalid login\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу входа в систему\n- данные: Страница входа\n- результат: Страница входа загружена корректно\n\n→ ШАГ 2\n- шаг: Ввести логин 'invalid_user'\n- данные: Логин: invalid_user\n- результат: Поле логина заполнено\n\n→ ШАГ 3\n- шаг: Ввести любой пароль (например, 'password3')\n- данные: Пароль: password3\n- результат: Поле пароля заполнено\n\n→ ШАГ 4\n- шаг: Нажать кнопку 'Войти'\n- данные: Кнопка входа активна\n- результат: Появляется всплывающее сообщение: 'ATTENTION Внимание некорректный пользователь ATTENTION'\n\n→ ШАГ 5\n- шаг: Проверить состояние страницы после ошибки\n- данные: Страница входа\n- результат: Пользователь остается на странице входа, данные не отправляются на сервер\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Ошибка авторизации с неверным паролем\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить обработку попытки входа с неверным паролем\n▪ сценарий: negative, invalid password\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу входа в систему\n- данные: Страница входа\n- результат: Страница входа загружена корректно\n\n→ ШАГ 2\n- шаг: Ввести логин 'user3'\n- данные: Логин: user3\n- результат: Поле логина заполнено\n\n→ ШАГ 3\n- шаг: Ввести пароль 'wrongpass'\n- данные: Пароль: wrongpass\n- результат: Поле пароля заполнено\n\n→ ШАГ 4\n- шаг: Нажать кнопку 'Войти'\n- данные: Кнопка входа активна\n- результат: Появляется всплывающее сообщение об ошибке авторизации\n\n→ ШАГ 5\n- шаг: Проверить состояние страницы после ошибки\n- данные: Страница входа\n- результат: Пользователь остается на странице входа, данные не отправляются на сервер\n■ КОНЕЦ\n\n",
+  "seq": 1,
+  "metadata": {
+    "assistantId": "c96c690d-7500-4a10-985e-ae4e58a518f7",
+    "senderId": null,
+    "testCases": [
+      {
+        "id": "8dc8c643-1850-43ea-99da-d4d33357f470",
+        "key": "TC-65915657",
+        "name": "Успешная авторизация корректным логином и паролем",
+        "status": "Draft",
+        "precondition": "Пользователь находится на странице входа в систему",
+        "objective": "Проверить корректный вход в систему с валидными учетными данными",
+        "folder": "Авторизация",
+        "priority": "High",
+        "component": "Login System",
+        "labels": "positive, valid credentials",
+        "owner": "QA Engineer",
+        "estimatedTime": "5 minutes",
+        "coverageIssues": "",
+        "coveragePages": "",
+        "steps": [
+          {
+            "step": "Перейти на страницу входа в систему",
+            "testData": "Страница входа",
+            "expectedResult": "Страница входа загружена корректно"
+          },
+          {
+            "step": "Ввести логин 'Vova_P'",
+            "testData": "Логин: Vova_P",
+            "expectedResult": "Поле логина заполнено корректно"
+          },
+          {
+            "step": "Ввести пароль 'password1'",
+            "testData": "Пароль: password1",
+            "expectedResult": "Поле пароля заполнено корректно"
+          },
+          {
+            "step": "Нажать кнопку 'Войти'",
+            "testData": "Кнопка входа активна",
+            "expectedResult": "Система перенаправляет пользователя на главную страницу без ошибок"
+          }
+        ],
+        "testScriptPlainText": "",
+        "testScriptBDD": "",
+        "markdown": "",
+        "source": "LLM Generation",
+        "requirementId": "",
+        "orderIndex": 1
+      },
+      {
+        "id": "61b554d0-8390-498a-ad91-ef55c1bc09fc",
+        "key": "TC-37544170",
+        "name": "Ошибка авторизации с некорректным логином",
+        "status": "Draft",
+        "precondition": "Пользователь находится на странице входа в систему",
+        "objective": "Проверить обработку попытки входа с неверным логином",
+        "folder": "Авторизация",
+        "priority": "Medium",
+        "component": "Login System",
+        "labels": "negative, invalid login",
+        "owner": "QA Engineer",
+        "estimatedTime": "4 minutes",
+        "coverageIssues": "",
+        "coveragePages": "",
+        "steps": [
+          {
+            "step": "Перейти на страницу входа в систему",
+            "testData": "Страница входа",
+            "expectedResult": "Страница входа загружена корректно"
+          },
+          {
+            "step": "Ввести логин 'invalid_user'",
+            "testData": "Логин: invalid_user",
+            "expectedResult": "Поле логина заполнено"
+          },
+          {
+            "step": "Ввести любой пароль (например, 'password3')",
+            "testData": "Пароль: password3",
+            "expectedResult": "Поле пароля заполнено"
+          },
+          {
+            "step": "Нажать кнопку 'Войти'",
+            "testData": "Кнопка входа активна",
+            "expectedResult": "Появляется всплывающее сообщение: 'ATTENTION Внимание некорректный пользователь ATTENTION'"
+          },
+          {
+            "step": "Проверить состояние страницы после ошибки",
+            "testData": "Страница входа",
+            "expectedResult": "Пользователь остается на странице входа, данные не отправляются на сервер"
+          }
+        ],
+        "testScriptPlainText": "",
+        "testScriptBDD": "",
+        "markdown": "",
+        "source": "LLM Generation",
+        "requirementId": "",
+        "orderIndex": 2
+      },
+      {
+        "id": "2a011223-7c9a-47aa-8d38-f4e46b5d68b0",
+        "key": "TC-00189173",
+        "name": "Ошибка авторизации с неверным паролем",
+        "status": "Draft",
+        "precondition": "Пользователь находится на странице входа в систему",
+        "objective": "Проверить обработку попытки входа с неверным паролем",
+        "folder": "Авторизация",
+        "priority": "Medium",
+        "component": "Login System",
+        "labels": "negative, invalid password",
+        "owner": "QA Engineer",
+        "estimatedTime": "4 minutes",
+        "coverageIssues": "",
+        "coveragePages": "",
+        "steps": [
+          {
+            "step": "Перейти на страницу входа в систему",
+            "testData": "Страница входа",
+            "expectedResult": "Страница входа загружена корректно"
+          },
+          {
+            "step": "Ввести логин 'user3'",
+            "testData": "Логин: user3",
+            "expectedResult": "Поле логина заполнено"
+          },
+          {
+            "step": "Ввести пароль 'wrongpass'",
+            "testData": "Пароль: wrongpass",
+            "expectedResult": "Поле пароля заполнено"
+          },
+          {
+            "step": "Нажать кнопку 'Войти'",
+            "testData": "Кнопка входа активна",
+            "expectedResult": "Появляется всплывающее сообщение об ошибке авторизации"
+          },
+          {
+            "step": "Проверить состояние страницы после ошибки",
+            "testData": "Страница входа",
+            "expectedResult": "Пользователь остается на странице входа, данные не отправляются на сервер"
+          }
+        ],
+        "testScriptPlainText": "",
+        "testScriptBDD": "",
+        "markdown": "",
+        "source": "LLM Generation",
+        "requirementId": "",
+        "orderIndex": 3
+      }
+    ],
+    "userText": null,
+    "workflowStatus": "completed",
+    "source": "test-cruiser",
+    "sentAt": null,
+    "type": null
+  }
+}
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:100 || ============================================================
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:101 || РЕЗУЛЬТАТ SSE-СТРИМА
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:102 || ============================================================
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:103 || conversationId: cf1d04d6-9086-4c8d-bf26-e0b3c625b400
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:104 || messageId:      c96c690d-7500-4a10-985e-ae4e58a518f7
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:105 || событий всего:  1
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:106 || чанков:         1
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:107 || последний seq:  1
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:108 || finish получен: True
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:109 || длина текста:   2742 символов
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:110 || ============================================================
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:111 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:112 || ============================================================
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:113 || ▣ ТЕСТ-КЕЙС
+
+▧ META ДАННЫЕ
+▪ имя: Успешная авторизация корректным логином и паролем
+▪ статус: Draft
+▪ предусловия: Пользователь находится на странице входа в систему
+▪ цель: Проверить корректный вход в систему с валидными учетными данными
+▪ сценарий: positive, valid credentials
+▪ пользователь: dev-user
+
+▤ ШАГИ
+
+→ ШАГ 1
+- шаг: Перейти на страницу входа в систему
+- данные: Страница входа
+- результат: Страница входа загружена корректно
+
+→ ШАГ 2
+- шаг: Ввести логин 'Vova_P'
+- данные: Логин: Vova_P
+- результат: Поле логина заполнено корректно
+
+→ ШАГ 3
+- шаг: Ввести пароль 'password1'
+- данные: Пароль: password1
+- результат: Поле пароля заполнено корректно
+
+→ ШАГ 4
+- шаг: Нажать кнопку 'Войти'
+- данные: Кнопка входа активна
+- результат: Система перенаправляет пользователя на главную страницу без ошибок
+■ КОНЕЦ
+
+▣ ТЕСТ-КЕЙС
+
+▧ META ДАННЫЕ
+▪ имя: Ошибка авторизации с некорректным логином
+▪ статус: Draft
+▪ предусловия: Пользователь находится на странице входа в систему
+▪ цель: Проверить обработку попытки входа с неверным логином
+▪ сценарий: negative, invalid login
+▪ пользователь: dev-user
+
+▤ ШАГИ
+
+→ ШАГ 1
+- шаг: Перейти на страницу входа в систему
+- данные: Страница входа
+- результат: Страница входа загружена корректно
+
+→ ШАГ 2
+- шаг: Ввести логин 'invalid_user'
+- данные: Логин: invalid_user
+- результат: Поле логина заполнено
+
+→ ШАГ 3
+- шаг: Ввести любой пароль (например, 'password3')
+- данные: Пароль: password3
+- результат: Поле пароля заполнено
+
+→ ШАГ 4
+- шаг: Нажать кнопку 'Войти'
+- данные: Кнопка входа активна
+- результат: Появляется всплывающее сообщение: 'ATTENTION Внимание некорректный пользователь ATTENTION'
+
+→ ШАГ 5
+- шаг: Проверить состояние страницы после ошибки
+- данные: Страница входа
+- результат: Пользователь остается на странице входа, данные не отправляются на сервер
+■ КОНЕЦ
+
+▣ ТЕСТ-КЕЙС
+
+▧ META ДАННЫЕ
+▪ имя: Ошибка авторизации с неверным паролем
+▪ статус: Draft
+▪ предусловия: Пользователь находится на странице входа в систему
+▪ цель: Проверить обработку попытки входа с неверным паролем
+▪ сценарий: negative, invalid password
+▪ пользователь: dev-user
+
+▤ ШАГИ
+
+→ ШАГ 1
+- шаг: Перейти на страницу входа в систему
+- данные: Страница входа
+- результат: Страница входа загружена корректно
+
+→ ШАГ 2
+- шаг: Ввести логин 'user3'
+- данные: Логин: user3
+- результат: Поле логина заполнено
+
+→ ШАГ 3
+- шаг: Ввести пароль 'wrongpass'
+- данные: Пароль: wrongpass
+- результат: Поле пароля заполнено
+
+→ ШАГ 4
+- шаг: Нажать кнопку 'Войти'
+- данные: Кнопка входа активна
+- результат: Появляется всплывающее сообщение об ошибке авторизации
+
+→ ШАГ 5
+- шаг: Проверить состояние страницы после ошибки
+- данные: Страница входа
+- результат: Пользователь остается на странице входа, данные не отправляются на сервер
+■ КОНЕЦ
+
+
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:114 || ============================================================
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:38 || ШАГ 4: Получение сообщений диалога
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:204 || Получение всех сообщений пользователя dev-user из диалога - cf1d04d6-9086-4c8d-bf26-e0b3c625b400
+2026-10-12 14:31:00 - || TestAiWithoutUseTestAgentFlag:26 || → GET http://localhost:9081/api/ai-test/chat/conversations/cf1d04d6-9086-4c8d-bf26-e0b3c625b400/messages
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/conversations/cf1d04d6-9086-4c8d-bf26-e0b3c625b400/messages
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:58 ||   response body:
+[
+  {
+    "id": "e1d794ec-6a5b-4e8c-a63e-6b06aaeb78ed",
+    "conversationId": "cf1d04d6-9086-4c8d-bf26-e0b3c625b400",
+    "role": "GREETING",
+    "content": "👋 Привет, ! Я ИИ Ассистент 🤖 \n Я могу помочь тебе с написанием тест-кейсов (ТК) и авто-тестов (АТК) \nИнструкцию по моему использованию ты можешь найти сверху этого чата, нажав на кнопку 'Инструкция' . ⬆️\nЗагрузи необходимые файлы и введи запрос. Учти, что я могу писать только ТК и АТК и ничего больше! \nДавай начнем! 🚀",
+    "cipher": "SBP001",
+    "createdAt": "2026-10-12T14:30:21.826493",
+    "metadata": {}
+  },
+  {
+    "id": "179232da-a209-4e7b-91e9-7cb6bd93ab97",
+    "conversationId": "cf1d04d6-9086-4c8d-bf26-e0b3c625b400",
+    "role": "USER",
+    "content": "Сделай тест-кейсы на авторизацию использую данные из файла",
+    "cipher": "SBP001",
+    "createdAt": "2026-10-12T14:31:00.831672",
+    "metadata": {
+      "kits": "СБП",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": true,
+      "atkEnabled": false,
+      "useTestAgent": false
+    }
+  },
+  {
+    "id": "c96c690d-7500-4a10-985e-ae4e58a518f7",
+    "conversationId": "cf1d04d6-9086-4c8d-bf26-e0b3c625b400",
+    "role": "ASSISTANT",
+    "content": "▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Успешная авторизация корректным логином и паролем\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить корректный вход в систему с валидными учетными данными\n▪ сценарий: positive, valid credentials\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу входа в систему\n- данные: Страница входа\n- результат: Страница входа загружена корректно\n\n→ ШАГ 2\n- шаг: Ввести логин 'Vova_P'\n- данные: Логин: Vova_P\n- результат: Поле логина заполнено корректно\n\n→ ШАГ 3\n- шаг: Ввести пароль 'password1'\n- данные: Пароль: password1\n- результат: Поле пароля заполнено корректно\n\n→ ШАГ 4\n- шаг: Нажать кнопку 'Войти'\n- данные: Кнопка входа активна\n- результат: Система перенаправляет пользователя на главную страницу без ошибок\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Ошибка авторизации с некорректным логином\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить обработку попытки входа с неверным логином\n▪ сценарий: negative, invalid login\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу входа в систему\n- данные: Страница входа\n- результат: Страница входа загружена корректно\n\n→ ШАГ 2\n- шаг: Ввести логин 'invalid_user'\n- данные: Логин: invalid_user\n- результат: Поле логина заполнено\n\n→ ШАГ 3\n- шаг: Ввести любой пароль (например, 'password3')\n- данные: Пароль: password3\n- результат: Поле пароля заполнено\n\n→ ШАГ 4\n- шаг: Нажать кнопку 'Войти'\n- данные: Кнопка входа активна\n- результат: Появляется всплывающее сообщение: 'ATTENTION Внимание некорректный пользователь ATTENTION'\n\n→ ШАГ 5\n- шаг: Проверить состояние страницы после ошибки\n- данные: Страница входа\n- результат: Пользователь остается на странице входа, данные не отправляются на сервер\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Ошибка авторизации с неверным паролем\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить обработку попытки входа с неверным паролем\n▪ сценарий: negative, invalid password\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу входа в систему\n- данные: Страница входа\n- результат: Страница входа загружена корректно\n\n→ ШАГ 2\n- шаг: Ввести логин 'user3'\n- данные: Логин: user3\n- результат: Поле логина заполнено\n\n→ ШАГ 3\n- шаг: Ввести пароль 'wrongpass'\n- данные: Пароль: wrongpass\n- результат: Поле пароля заполнено\n\n→ ШАГ 4\n- шаг: Нажать кнопку 'Войти'\n- данные: Кнопка входа активна\n- результат: Появляется всплывающее сообщение об ошибке авторизации\n\n→ ШАГ 5\n- шаг: Проверить состояние страницы после ошибки\n- данные: Страница входа\n- результат: Пользователь остается на странице входа, данные не отправляются на сервер\n■ КОНЕЦ\n\n",
+    "cipher": "SBP001",
+    "createdAt": "2026-10-12T14:31:00.885239",
+    "metadata": {
+      "kits": "СБП",
+      "type": null,
+      "model": "Qwen/Qwen3.5-4B",
+      "sentAt": null,
+      "source": "test-cruiser",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "senderId": null,
+      "userText": null,
+      "testCases": [
+        {
+          "id": "8dc8c643-1850-43ea-99da-d4d33357f470",
+          "key": "TC-65915657",
+          "name": "Успешная авторизация корректным логином и паролем",
+          "owner": "QA Engineer",
+          "steps": [
+            {
+              "step": "Перейти на страницу входа в систему",
+              "testData": "Страница входа",
+              "expectedResult": "Страница входа загружена корректно"
+            },
+            {
+              "step": "Ввести логин 'Vova_P'",
+              "testData": "Логин: Vova_P",
+              "expectedResult": "Поле логина заполнено корректно"
+            },
+            {
+              "step": "Ввести пароль 'password1'",
+              "testData": "Пароль: password1",
+              "expectedResult": "Поле пароля заполнено корректно"
+            },
+            {
+              "step": "Нажать кнопку 'Войти'",
+              "testData": "Кнопка входа активна",
+              "expectedResult": "Система перенаправляет пользователя на главную страницу без ошибок"
+            }
+          ],
+          "folder": "Авторизация",
+          "labels": "positive, valid credentials",
+          "source": "LLM Generation",
+          "status": "Draft",
+          "markdown": "",
+          "priority": "High",
+          "component": "Login System",
+          "objective": "Проверить корректный вход в систему с валидными учетными данными",
+          "orderIndex": 1,
+          "precondition": "Пользователь находится на странице входа в систему",
+          "coveragePages": "",
+          "estimatedTime": "5 minutes",
+          "requirementId": "",
+          "testScriptBDD": "",
+          "coverageIssues": "",
+          "testScriptPlainText": ""
+        },
+        {
+          "id": "61b554d0-8390-498a-ad91-ef55c1bc09fc",
+          "key": "TC-37544170",
+          "name": "Ошибка авторизации с некорректным логином",
+          "owner": "QA Engineer",
+          "steps": [
+            {
+              "step": "Перейти на страницу входа в систему",
+              "testData": "Страница входа",
+              "expectedResult": "Страница входа загружена корректно"
+            },
+            {
+              "step": "Ввести логин 'invalid_user'",
+              "testData": "Логин: invalid_user",
+              "expectedResult": "Поле логина заполнено"
+            },
+            {
+              "step": "Ввести любой пароль (например, 'password3')",
+              "testData": "Пароль: password3",
+              "expectedResult": "Поле пароля заполнено"
+            },
+            {
+              "step": "Нажать кнопку 'Войти'",
+              "testData": "Кнопка входа активна",
+              "expectedResult": "Появляется всплывающее сообщение: 'ATTENTION Внимание некорректный пользователь ATTENTION'"
+            },
+            {
+              "step": "Проверить состояние страницы после ошибки",
+              "testData": "Страница входа",
+              "expectedResult": "Пользователь остается на странице входа, данные не отправляются на сервер"
+            }
+          ],
+          "folder": "Авторизация",
+          "labels": "negative, invalid login",
+          "source": "LLM Generation",
+          "status": "Draft",
+          "markdown": "",
+          "priority": "Medium",
+          "component": "Login System",
+          "objective": "Проверить обработку попытки входа с неверным логином",
+          "orderIndex": 2,
+          "precondition": "Пользователь находится на странице входа в систему",
+          "coveragePages": "",
+          "estimatedTime": "4 minutes",
+          "requirementId": "",
+          "testScriptBDD": "",
+          "coverageIssues": "",
+          "testScriptPlainText": ""
+        },
+        {
+          "id": "2a011223-7c9a-47aa-8d38-f4e46b5d68b0",
+          "key": "TC-00189173",
+          "name": "Ошибка авторизации с неверным паролем",
+          "owner": "QA Engineer",
+          "steps": [
+            {
+              "step": "Перейти на страницу входа в систему",
+              "testData": "Страница входа",
+              "expectedResult": "Страница входа загружена корректно"
+            },
+            {
+              "step": "Ввести логин 'user3'",
+              "testData": "Логин: user3",
+              "expectedResult": "Поле логина заполнено"
+            },
+            {
+              "step": "Ввести пароль 'wrongpass'",
+              "testData": "Пароль: wrongpass",
+              "expectedResult": "Поле пароля заполнено"
+            },
+            {
+              "step": "Нажать кнопку 'Войти'",
+              "testData": "Кнопка входа активна",
+              "expectedResult": "Появляется всплывающее сообщение об ошибке авторизации"
+            },
+            {
+              "step": "Проверить состояние страницы после ошибки",
+              "testData": "Страница входа",
+              "expectedResult": "Пользователь остается на странице входа, данные не отправляются на сервер"
+            }
+          ],
+          "folder": "Авторизация",
+          "labels": "negative, invalid password",
+          "source": "LLM Generation",
+          "status": "Draft",
+          "markdown": "",
+          "priority": "Medium",
+          "component": "Login System",
+          "objective": "Проверить обработку попытки входа с неверным паролем",
+          "orderIndex": 3,
+          "precondition": "Пользователь находится на странице входа в систему",
+          "coveragePages": "",
+          "estimatedTime": "4 minutes",
+          "requirementId": "",
+          "testScriptBDD": "",
+          "coverageIssues": "",
+          "testScriptPlainText": ""
+        }
+      ],
+      "tkEnabled": true,
+      "atkEnabled": false,
+      "assistantId": "c96c690d-7500-4a10-985e-ae4e58a518f7",
+      "useTestAgent": false,
+      "workflowStatus": "completed"
+    }
+  }
+]
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:209 || Получено 3 сообщений
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:49 || ШАГ 7: Удаление диалога с id - cf1d04d6-9086-4c8d-bf26-e0b3c625b400
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:86 || Удаляем диалог cf1d04d6-9086-4c8d-bf26-e0b3c625b400 пользователя c id dev-user 
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:26 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/cf1d04d6-9086-4c8d-bf26-e0b3c625b400
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/cf1d04d6-9086-4c8d-bf26-e0b3c625b400
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:58 ||   response body:
+{
+  "id": "cf1d04d6-9086-4c8d-bf26-e0b3c625b400",
+  "businessUid": "СБП-ДС-12.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": false,
+  "tkEnabled": true,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-12T14:30:21.755074",
+  "updatedAt": "2026-10-12T14:30:24.589058",
+  "cipher": "SBP001"
+}
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:90 || <Response [200 ]>
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:93 || Диалог с id - cf1d04d6-9086-4c8d-bf26-e0b3c625b400 удален
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:63 || ============================================================
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:64 || END TestAiWithoutUseTestAgentFlag
+2026-10-12 14:31:01 - || TestAiWithoutUseTestAgentFlag:65 || ============================================================

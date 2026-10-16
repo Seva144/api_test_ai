@@ -22,6 +22,8 @@ class TkDTO(BaseModel):
     user_id: str = Field(alias="userId")
     kits: str
     cipher: str
+    kitsId: UUID = Field(alias="kitsId")
+    testingType: UUID = Field(alias="testingType")
 
     version: int | None = None
     status: str | None = None

@@ -23,6 +23,7 @@ class AtkDTO(BaseModel):
     content: str
     kits: str
     cipher: str
+    kitsId: UUID = Field(alias="kitsId")
 
     project_uuid: UUID = Field(alias="projectUUID")
     name_class: str = Field(alias="nameClass")

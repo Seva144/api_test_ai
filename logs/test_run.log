@@ -1,6 +1,3 @@
-2026-10-16 09:19:37 - || pytest:7 || ▶ START  tests/ai_test_push_atk_to_jgit.py::TestAiPushToAtkJgit::test_ai_push_atk_to_jgit
-2026-10-16 09:19:41 - || assertions.assertion_base:260 || assert_stream_result: chunks=62, event_count=63, text_len=222
-2026-10-16 09:19:41 - || assertions.assertion_base:288 ||  assert_stream_result: OK (диалог b3061064-8906-452c-844f-5bc3255410b2, сообщений 1, чанков 62, seq 1..62)
-2026-10-16 09:19:41 - || assertions.assertion_base:307 ||  сообщение с id=5ab1b0e1-2154-41a5-8e30-f452b6131539 найдено
-2026-10-16 09:19:49 - || pytest:20 ||  FAILED tests/ai_test_push_atk_to_jgit.py::TestAiPushToAtkJgit::test_ai_push_atk_to_jgit — AssertionError: Ожидался JSON-массив, получен dict. Тело: {'message': 'ATK_PUSH_JGIT_ERROR: Ошибка отправки данных в JGit\nОшибка при отправке данных.'}
-2026-10-16 09:19:49 - || pytest:11 || ◆ END    tests/ai_test_push_atk_to_jgit.py::TestAiPushToAtkJgit::test_ai_push_atk_to_jgit
+2026-10-16 13:36:43 - || pytest:7 || ▶ START  tests/ai_test_save_tk.py::TestAiSaveTk::test_ai_save_tk
+2026-10-16 13:37:02 - || assertions.assertion_base:387 || assert_test_cases_generated: всего=5
+2026-10-16 13:37:02 - || assertions.assertion_base:307 ||  сообщение с id=caf4f2bf-e346-4195-87d3-47d3153238ee найдено

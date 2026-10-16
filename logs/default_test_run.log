@@ -1,0 +1,198 @@
+2026-10-16 09:19:37 - || TestAiPushToAtkJgit:56 || ApiClient инициализирован
+2026-10-16 09:19:37 - || TestAiPushToAtkJgit:58 || ============================================================
+2026-10-16 09:19:37 - || TestAiPushToAtkJgit:59 || START TestAiPushToAtkJgit  (log: logs/default_test_run.log)
+2026-10-16 09:19:37 - || TestAiPushToAtkJgit:60 || ============================================================
+2026-10-16 09:19:37 - || TestAiPushToAtkJgit:12 || ШAГ 1: Создание диалога пользователя
+2026-10-16 09:19:37 - || TestAiPushToAtkJgit:73 || Создание нового диалога диалога
+2026-10-16 09:19:37 - || TestAiPushToAtkJgit:76 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-10-16 09:19:37 - || TestAiPushToAtkJgit:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-16 09:19:37 - || TestAiPushToAtkJgit:37 ||   request body:
+{
+  "title": "Новый диалог",
+  "context": {
+    "atkEnabled": false,
+    "tkEnabled": false,
+    "useTestAgent": false,
+    "kits": "СБП",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-16 09:19:38 - || TestAiPushToAtkJgit:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-16 09:19:38 - || TestAiPushToAtkJgit:58 ||   response body:
+{
+  "id": "b3061064-8906-452c-844f-5bc3255410b2",
+  "businessUid": "СБП-ДС-16.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": false,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-16T09:19:37.963511975",
+  "updatedAt": "2026-10-16T09:19:37.963511975",
+  "cipher": "SBP001"
+}
+2026-10-16 09:19:38 - || TestAiPushToAtkJgit:83 || Создан диалог id=b3061064-8906-452c-844f-5bc3255410b2
+2026-10-16 09:19:38 - || TestAiPushToAtkJgit:22 || ШAГ 2: отправка сообщения на получение АТК
+2026-10-16 09:19:38 - || TestAiPushToAtkJgit:118 || Отправляем сообщение 'Сгенерируй авто тест-кейс по авторизации' в диалог b3061064-8906-452c-844f-5bc3255410b2
+2026-10-16 09:19:38 - || TestAiPushToAtkJgit:26 || → POST http://localhost:9081/api/ai-test/chat/conversations/b3061064-8906-452c-844f-5bc3255410b2/messages
+2026-10-16 09:19:38 - || TestAiPushToAtkJgit:37 ||   request body:
+{
+  "message": "Сгенерируй авто тест-кейс по авторизации",
+  "context": {
+    "atkEnabled": true,
+    "tkEnabled": false,
+    "kits": "СБП",
+    "urlApp": "https://test-app.local",
+    "model": "Qwen/Qwen3.5-4B"
+  }
+}
+2026-10-16 09:19:40 - || TestAiPushToAtkJgit:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/b3061064-8906-452c-844f-5bc3255410b2/messages
+2026-10-16 09:19:40 - || TestAiPushToAtkJgit:50 ||   response body: <SSE stream, skipped>
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:101 || ============================================================
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:102 || РЕЗУЛЬТАТ SSE-СТРИМА
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:103 || ============================================================
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:104 || conversationId: b3061064-8906-452c-844f-5bc3255410b2
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:105 || messageId:      5ab1b0e1-2154-41a5-8e30-f452b6131539
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:106 || событий всего:  63
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:107 || чанков:         62
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:108 || последний seq:  62
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:109 || finish получен: True
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:110 || длина текста:   222 символов
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:111 || ============================================================
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:112 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:113 || ============================================================
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:114 || /**
+ *
+ * @author dev-user
+ */
+public class AuthorizationTestsOfSBP001BydevUser {
+    public void successfulLoginTest() {
+        // Test logic
+    }
+
+    public void unsuccessfulLoginTest() {
+        // Test logic
+    }
+}
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:115 || ============================================================
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:28 || ШАГ 3: Получение сообщений диалога
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:205 || Получение всех сообщений пользователя dev-user из диалога - b3061064-8906-452c-844f-5bc3255410b2
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:26 || → GET http://localhost:9081/api/ai-test/chat/conversations/b3061064-8906-452c-844f-5bc3255410b2/messages
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/conversations/b3061064-8906-452c-844f-5bc3255410b2/messages
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:58 ||   response body:
+[
+  {
+    "id": "e76b364f-ee77-4955-a7cb-f307e7070792",
+    "conversationId": "b3061064-8906-452c-844f-5bc3255410b2",
+    "role": "GREETING",
+    "content": "👋 Привет, ! Я ИИ Ассистент 🤖 \n Я могу помочь тебе с написанием тест-кейсов (ТК) и авто-тестов (АТК) \nИнструкцию по моему использованию ты можешь найти сверху этого чата, нажав на кнопку 'Инструкция' . ⬆️\nЗагрузи необходимые файлы и введи запрос. Учти, что я могу писать только ТК и АТК и ничего больше! \nДавай начнем! 🚀",
+    "cipher": "SBP001",
+    "createdAt": "2026-10-16T09:19:38.134378",
+    "metadata": {}
+  },
+  {
+    "id": "aae088e9-6059-4329-876d-cfdd0d369e59",
+    "conversationId": "b3061064-8906-452c-844f-5bc3255410b2",
+    "role": "USER",
+    "content": "Сгенерируй авто тест-кейс по авторизации",
+    "cipher": "SBP001",
+    "createdAt": "2026-10-16T09:19:39.400053",
+    "metadata": {
+      "kits": "СБП",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  },
+  {
+    "id": "5ab1b0e1-2154-41a5-8e30-f452b6131539",
+    "conversationId": "b3061064-8906-452c-844f-5bc3255410b2",
+    "role": "ASSISTANT",
+    "content": "/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001BydevUser {\n    public void successfulLoginTest() {\n        // Test logic\n    }\n\n    public void unsuccessfulLoginTest() {\n        // Test logic\n    }\n}",
+    "cipher": "SBP001",
+    "createdAt": "2026-10-16T09:19:41.092355",
+    "metadata": {
+      "kits": "СБП",
+      "model": "Qwen/Qwen3.5-4B",
+      "urlApp": "https://test-app.local",
+      "repoLink": "",
+      "tkEnabled": false,
+      "atkEnabled": true,
+      "useTestAgent": false
+    }
+  }
+]
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:210 || Получено 3 сообщений
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:33 || ШАГ 4: Сохранение АТК
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:218 || Отправка АТК пользователя dev-user id сообщения - b3061064-8906-452c-844f-5bc3255410b2
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:26 || → POST http://localhost:9081/api/ai-test/atk/1f865f5b-4b8a-4caa-a66f-1cec318750e9
+2026-10-16 09:19:41 - || TestAiPushToAtkJgit:37 ||   request body:
+{
+  "message": "/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001BydevUser {\n    public void successfulLoginTest() {\n        // Test logic\n    }\n\n    public void unsuccessfulLoginTest() {\n        // Test logic\n    }\n}",
+  "name": "{name}",
+  "context": {
+    "kits": "СБП"
+  }
+}
+2026-10-16 09:19:42 - || TestAiPushToAtkJgit:46 || ← 200 POST http://localhost:9081/api/ai-test/atk/1f865f5b-4b8a-4caa-a66f-1cec318750e9
+2026-10-16 09:19:42 - || TestAiPushToAtkJgit:58 ||   response body:
+{
+  "id": "dec4a532-bc81-4213-bc4e-a0b39a21a967",
+  "businessUid": "СБП-ПРАТК-16.10.2026-1",
+  "name": "{name}",
+  "userId": "dev-user",
+  "content": "class AuthorizationTestsOfSBP001BydevUser {\n    public void successfulLoginTest() {\n        // Test logic\n    }\n\n    public void unsuccessfulLoginTest() {\n        // Test logic\n    }\n}",
+  "kits": "СБП",
+  "cipher": "SBP001",
+  "projectUUID": "1f865f5b-4b8a-4caa-a66f-1cec318750e9",
+  "nameClass": "AuthorizationTestsOfSBP001BydevUser$3.java",
+  "createdAt": "2026-10-16T09:19:42.403452611",
+  "updatedAt": "2026-10-16T09:19:42.403452611"
+}
+2026-10-16 09:19:42 - || TestAiPushToAtkJgit:224 || Создан АТК с id=dec4a532-bc81-4213-bc4e-a0b39a21a967
+2026-10-16 09:19:42 - || TestAiPushToAtkJgit:39 || ШАГ 5: Отправка АТК на на Jgit
+2026-10-16 09:19:42 - || TestAiPushToAtkJgit:328 || Отпарвка АТК на JGIT в количестве 1
+2026-10-16 09:19:42 - || TestAiPushToAtkJgit:26 || → POST http://localhost:9081/api/ai-test/atk/save-jgit
+2026-10-16 09:19:42 - || TestAiPushToAtkJgit:37 ||   request body:
+{
+  "atkIds": [
+    "dec4a532-bc81-4213-bc4e-a0b39a21a967"
+  ]
+}
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:46 || ← 200 POST http://localhost:9081/api/ai-test/atk/save-jgit
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:58 ||   response body:
+{
+  "message": "ATK_PUSH_JGIT_ERROR: Ошибка отправки данных в JGit\nОшибка при отправке данных."
+}
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:45 || ШАГ 5: Удаление диалога
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:87 || Удаляем диалог b3061064-8906-452c-844f-5bc3255410b2 пользователя c id dev-user 
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:26 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/b3061064-8906-452c-844f-5bc3255410b2
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/b3061064-8906-452c-844f-5bc3255410b2
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:58 ||   response body:
+{
+  "id": "b3061064-8906-452c-844f-5bc3255410b2",
+  "businessUid": "СБП-ДС-16.10.2026-1",
+  "userId": "dev-user",
+  "currentModel": "Qwen/Qwen3.5-4B",
+  "atkEnabled": true,
+  "tkEnabled": false,
+  "useTestAgent": false,
+  "urlApp": "https://test-app.local",
+  "kitsComponent": "СБП",
+  "title": "Новый диалог",
+  "createdAt": "2026-10-16T09:19:37.963512",
+  "updatedAt": "2026-10-16T09:19:38.508357",
+  "cipher": "SBP001"
+}
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:91 || <Response [200 ]>
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:94 || Диалог с id - b3061064-8906-452c-844f-5bc3255410b2 удален
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:64 || ============================================================
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:65 || END TestAiPushToAtkJgit
+2026-10-16 09:19:49 - || TestAiPushToAtkJgit:66 || ============================================================
