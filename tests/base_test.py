@@ -9,7 +9,7 @@ from httpx import Timeout
 
 from api.client import ApiClient
 from api.ai_test_api import post_conversation, delete_conversation, stream_message, get_messages, post_atk, delete_atk, \
-    post_tk, delete_tk, upload_file, delete_file, get_files
+    post_tk, delete_tk, upload_file, delete_file, get_files, send_tk_control
 from assertions.assertion_base import assert_status_code, assert_schema, assert_schema_list, assert_file_uploaded
 from config.logging_config import build_logger, LoggingConfig
 from models.request.default_fields import *
@@ -18,6 +18,7 @@ from models.response.conversation_dto import ConversationDTO
 from models.response.file_dto import FileDTO
 from models.response.message_chunk_dto import MessageChunkDTO, MessageStreamResult
 from models.response.message_dto import MessageDTO
+from models.response.response_sender_dto import SenderDTO
 from models.response.tk_dto import TkDTO
 from utilities.json_utils import create_request
 from utilities.log_utils import pretty_json
@@ -309,6 +310,23 @@ class TestBase:
         self.logger.info(f"Получено {len(files)} файлов")
         by_id: dict[UUID, FileDTO] = {f.id: f for  f in files}
         return by_id
+
+    def send_tk(self, ids: list[UUID]) -> SenderDTO:
+        self.logger.info(f"Получение ТК для отправки на Control в количестве {len(ids)}")
+        request = create_request(
+            TK_SEND_CONFIG,
+            "send_tks",
+            tkIds=[str(ids) for ids in ids],
+        )
+        response = send_tk_control(self.client, json=request)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema_list(response, SenderDTO)
+        dto = SenderDTO.model_validate(response.json())
+        return dto
+
+
+
+
 
 
 

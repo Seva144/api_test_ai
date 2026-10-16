@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from uuid import UUID
 
 
 @dataclass
@@ -81,7 +82,16 @@ class TKMessageConfig:
     kits: str = "СБП"
 
 
-TK_MESSAGE_DEFAULT = ATKMessageConfig()
+TK_MESSAGE_DEFAULT = TKMessageConfig()
+
+
+@dataclass
+class TkSendConfig:
+    tkIds: list[UUID] | None = None
+
+
+TK_SEND_CONFIG = TkSendConfig()
+
 
 
 

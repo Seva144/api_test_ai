@@ -1,5 +1,5 @@
-2026-10-13 09:49:11 - || pytest:7 || ▶ START  tests/single_operation/send_message_agent.py::TestSendMessageToAgent::test_create_conversation
-2026-10-13 09:49:35 - || assertions.assertion_base:387 || assert_test_cases_generated: всего=5
-2026-10-13 09:49:58 - || assertions.assertion_base:387 || assert_test_cases_generated: всего=5
-2026-10-13 09:49:58 - || pytest:18 ||  PASSED tests/single_operation/send_message_agent.py::TestSendMessageToAgent::test_create_conversation
-2026-10-13 09:49:58 - || pytest:11 || ◆ END    tests/single_operation/send_message_agent.py::TestSendMessageToAgent::test_create_conversation
+2026-10-15 15:46:00 - || pytest:7 || ▶ START  tests/ai_test_send_tk_to_control.py::TestAiSendToTkControl::test_ai_send_to_tk_control
+2026-10-15 15:46:20 - || assertions.assertion_base:387 || assert_test_cases_generated: всего=5
+2026-10-15 15:46:20 - || assertions.assertion_base:307 ||  сообщение с id=3fffe80a-fda1-496d-b25c-e08d5d47302d найдено
+2026-10-15 15:47:09 - || pytest:20 ||  FAILED tests/ai_test_send_tk_to_control.py::TestAiSendToTkControl::test_ai_send_to_tk_control — AssertionError: Ожидался JSON-массив, получен dict. Тело: {'message': 'TK_SEND_ZVEZDOCHET_ERROR: Ошибка отправки ТК в ZVEZDOCHET\nНе удалось передать АТК в сервис экспорта. Обратитесь к администратору.'}
+2026-10-15 15:47:09 - || pytest:11 || ◆ END    tests/ai_test_send_tk_to_control.py::TestAiSendToTkControl::test_ai_send_to_tk_control

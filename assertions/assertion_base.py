@@ -8,6 +8,7 @@ from models.response.file_dto import FileDTO
 from models.response.message_agent_dto import TestCaseDTO
 from models.response.message_chunk_dto import MessageStreamResult
 from models.response.message_dto import MessageDTO
+from models.response.response_sender_dto import SenderDTO
 from utilities.files_utils import read_json_test_data, read_json_common_response_data
 from utilities.json_utils import compare_json_left_in_right, remove_ids
 
@@ -366,7 +367,6 @@ def assert_file_uploaded(
     )
     logger.info(f"conversationId совпадает: {file_dto.conversation_id}")
 
-
     assert file_dto.error is None, (
         f"Ошибка загрузки: {file_dto.error} — {file_dto.error_message}"
     )
@@ -386,3 +386,15 @@ def assert_test_cases_agent_generated(result: MessageStreamResult) -> list[TestC
     test_cases = last.metadata.test_cases
     logger.info(f"assert_test_cases_generated: всего={len(test_cases)}")
     return test_cases
+
+
+def assert_failure_zero(response: SenderDTO):
+    """Проверяет, что количество проавленных отправок равно нулю"""
+    logger.info(
+        f"assert_failure_zero: total={response.total_count}, "
+        f"success={response.success_count}, failed={response.failed_count}"
+    )
+    assert not response.failed_uids, (
+        f"Ожидался пустой failedUids, получено: {response.failed_uids}"
+    )
+    logger.info("failedUids пуст")

@@ -1,6 +1,7 @@
 from uuid import UUID
 
-from assertions.assertion_base import assert_test_cases_agent_generated, assert_messages_contains_id
+from assertions.assertion_base import assert_test_cases_agent_generated, assert_messages_contains_id, \
+    assert_failure_zero
 from models.request.default_fields import MESSAGE_TK_SIMPLE
 from tests.base_test import TestBase
 
@@ -35,10 +36,16 @@ class TestAiSendToTkControl(TestBase):
             testing_type = "4a494142-2c18-4efd-9ec8-b92ca7d7e9d8"
             tks = self.tks_create(id_conversation, id_user, id_message, assistant_msg.content, testing_type)
             self.logger.info(f"Сгенерировано {len(tks)} TK")
+            tk_ids = [tk.id for tk in tks]
 
+            # 5. Отправка ТК на control
+            self.logger.info(f"ШАГ 5: Отправка ТК на control")
+            sender = self.send_tk(tk_ids)
+            assert_failure_zero(sender)
 
         finally:
             # 6. удаление диалога
+            self.logger.info(f"ШАГ 5: Удаление диалога")
             self.delete_conversation(id_conversation, id_user)
 
 
