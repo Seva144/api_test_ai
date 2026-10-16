@@ -73,3 +73,7 @@ def get_testing_type(client: ApiClient) -> Response:
 
 def send_tk_control(clent: ApiClient, **kwargs: Any) -> Response:
     return clent.post(routes.Routes.SEND_TKS, **kwargs)
+
+
+def push_atk_jgit(client: ApiClient, **kwargs: Any) -> Response:
+    return client.post(routes.Routes.PUSH_ATKS, **kwargs)

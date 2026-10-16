@@ -9,7 +9,7 @@ from httpx import Timeout
 
 from api.client import ApiClient
 from api.ai_test_api import post_conversation, delete_conversation, stream_message, get_messages, post_atk, delete_atk, \
-    post_tk, delete_tk, upload_file, delete_file, get_files, send_tk_control
+    post_tk, delete_tk, upload_file, delete_file, get_files, send_tk_control, push_atk_jgit
 from assertions.assertion_base import assert_status_code, assert_schema, assert_schema_list, assert_file_uploaded
 from config.logging_config import build_logger, LoggingConfig
 from models.request.default_fields import *
@@ -308,13 +308,13 @@ class TestBase:
         assert_schema_list(response, FileDTO)
         files = [FileDTO.model_validate(item) for item in response.json()]
         self.logger.info(f"Получено {len(files)} файлов")
-        by_id: dict[UUID, FileDTO] = {f.id: f for  f in files}
+        by_id: dict[UUID, FileDTO] = {f.id: f for f in files}
         return by_id
 
     def send_tk(self, ids: list[UUID]) -> SenderDTO:
-        self.logger.info(f"Получение ТК для отправки на Control в количестве {len(ids)}")
+        self.logger.info(f"Отправка ТК на Control в количестве {len(ids)}")
         request = create_request(
-            TK_SEND_CONFIG,
+            SEND_CONFIG,
             "send_tks",
             tkIds=[str(ids) for ids in ids],
         )
@@ -324,14 +324,15 @@ class TestBase:
         dto = SenderDTO.model_validate(response.json())
         return dto
 
-
-
-
-
-
-
-
-
-
-
-
+    def push_atk(self, ids: list[UUID]) -> SenderDTO:
+        self.logger.info(f"Отпарвка АТК на JGIT в количестве {len(ids)}")
+        request = create_request(
+            SEND_CONFIG,
+            "push_atks",
+            atkIds=[str(ids) for ids in ids]
+        )
+        response = push_atk_jgit(self.client, json=request)
+        assert_status_code(response, HTTPStatus.OK)
+        assert_schema_list(response, SenderDTO)
+        dto = SenderDTO.model_validate(response.json())
+        return dto

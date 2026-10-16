@@ -16,6 +16,7 @@ class Routes(str, Enum):
     FILES_GET = 'chat/{}/files'
     TESTING_TYPE = 'testing-type/get-all'
     SEND_TKS = 'tk/send-control'
+    PUSH_ATKS = 'atk/save-jgit'
 
     def __str__(self) -> str:
         return self.value

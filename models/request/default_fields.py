@@ -20,7 +20,6 @@ DEFAULT_CONVERSATION = ConversationConfigDefault()
 class MessageConfigAtkSimple:
     atkEnabled: bool = True
     tkEnabled: bool = False
-    useTestAgent: bool = False
     model: str = "Qwen/Qwen3.5-4B"
     kits: str = "СБП"
     url_app: str = "https://test-app.local"
@@ -85,12 +84,13 @@ class TKMessageConfig:
 TK_MESSAGE_DEFAULT = TKMessageConfig()
 
 
+# для отправки ТК и АТК
 @dataclass
-class TkSendConfig:
+class SendConfig:
     tkIds: list[UUID] | None = None
 
 
-TK_SEND_CONFIG = TkSendConfig()
+SEND_CONFIG = SendConfig()
 
 
 
