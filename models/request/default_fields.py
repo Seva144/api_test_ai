@@ -20,7 +20,7 @@ DEFAULT_CONVERSATION = ConversationConfigDefault()
 class MessageConfigAtkSimple:
     atkEnabled: bool = True
     tkEnabled: bool = False
-    model: str = "Qwen/Qwen3.5-4B"
+    model: str = "Qwen/Qwen3.8-27B-FP8"
     kits: str = "СБП"
     url_app: str = "https://test-app.local"
 

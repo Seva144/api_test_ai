@@ -1,3 +1,6 @@
-2026-10-16 13:36:43 - || pytest:7 || ▶ START  tests/ai_test_save_tk.py::TestAiSaveTk::test_ai_save_tk
-2026-10-16 13:37:02 - || assertions.assertion_base:387 || assert_test_cases_generated: всего=5
-2026-10-16 13:37:02 - || assertions.assertion_base:307 ||  сообщение с id=caf4f2bf-e346-4195-87d3-47d3153238ee найдено
+2026-10-21 09:01:40 - || pytest:7 || ▶ START  tests/ai_test_save_atk.py::TestAiSaveAtk::test_ai_save_atk
+2026-10-21 09:02:32 - || assertions.assertion_base:260 || assert_stream_result: chunks=324, event_count=325, text_len=2660
+2026-10-21 09:02:32 - || assertions.assertion_base:288 ||  assert_stream_result: OK (диалог 272c0572-e41e-4755-95c4-629852ace1e2, сообщений 1, чанков 324, seq 118..441)
+2026-10-21 09:02:32 - || assertions.assertion_base:307 ||  сообщение с id=d379f28e-257a-4bac-9bec-f3884771d7b8 найдено
+2026-10-21 09:02:33 - || pytest:18 ||  PASSED tests/ai_test_save_atk.py::TestAiSaveAtk::test_ai_save_atk
+2026-10-21 09:02:33 - || pytest:11 || ◆ END    tests/ai_test_save_atk.py::TestAiSaveAtk::test_ai_save_atk

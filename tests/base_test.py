@@ -216,7 +216,7 @@ class TestBase:
                    message: str,
                    project_id: UUID) -> AtkDTO:
         self.logger.info(f"Отправка АТК пользователя {user_id} id сообщения - {id_conversation}")
-        request = create_request(ATK_MESSAGE_DEFAULT, "post_atk", message=message)
+        request = create_request(ATK_MESSAGE_DEFAULT, "post_atk", message=message, projectUUID=str(project_id))
         response = post_atk(self.client, project_id, json=request)
         assert_status_code(response, HTTPStatus.OK)
         assert_schema(response, AtkDTO)

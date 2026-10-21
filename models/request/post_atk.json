@@ -1,7 +1,6 @@
 {
   "message": "{{message}}",
-  "name": "{name}",
-  "context": {
-    "kits": "{{kits}}"
-  }
+  "name": "{{name}}",
+  "kits": "{{kits}}",
+  "projectUUID": "{{projectUUID}}"
 }

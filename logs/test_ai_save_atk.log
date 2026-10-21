@@ -1,12 +1,12 @@
-2026-10-16 13:31:52 - || TestAiSaveAtk:56 || ApiClient инициализирован
-2026-10-16 13:31:52 - || TestAiSaveAtk:58 || ============================================================
-2026-10-16 13:31:52 - || TestAiSaveAtk:59 || START TestAiSaveAtk  (log: logs/test_ai_save_atk.log)
-2026-10-16 13:31:52 - || TestAiSaveAtk:60 || ============================================================
-2026-10-16 13:31:52 - || TestAiSaveAtk:19 || ШAГ 1: Создание диалога пользователя
-2026-10-16 13:31:52 - || TestAiSaveAtk:73 || Создание нового диалога диалога
-2026-10-16 13:31:52 - || TestAiSaveAtk:76 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
-2026-10-16 13:31:52 - || TestAiSaveAtk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
-2026-10-16 13:31:52 - || TestAiSaveAtk:37 ||   request body:
+2026-10-21 09:01:40 - || TestAiSaveAtk:56 || ApiClient инициализирован
+2026-10-21 09:01:40 - || TestAiSaveAtk:58 || ============================================================
+2026-10-21 09:01:40 - || TestAiSaveAtk:59 || START TestAiSaveAtk  (log: logs/test_ai_save_atk.log)
+2026-10-21 09:01:40 - || TestAiSaveAtk:60 || ============================================================
+2026-10-21 09:01:40 - || TestAiSaveAtk:19 || ШAГ 1: Создание диалога пользователя
+2026-10-21 09:01:40 - || TestAiSaveAtk:73 || Создание нового диалога диалога
+2026-10-21 09:01:40 - || TestAiSaveAtk:76 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-10-21 09:01:40 - || TestAiSaveAtk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-21 09:01:40 - || TestAiSaveAtk:37 ||   request body:
 {
   "title": "Новый диалог",
   "context": {
@@ -18,11 +18,11 @@
     "model": "Qwen/Qwen3.5-4B"
   }
 }
-2026-10-16 13:31:52 - || TestAiSaveAtk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
-2026-10-16 13:31:52 - || TestAiSaveAtk:58 ||   response body:
+2026-10-21 09:01:42 - || TestAiSaveAtk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-10-21 09:01:42 - || TestAiSaveAtk:58 ||   response body:
 {
-  "id": "a4b34b66-9ea1-4e02-8e31-8223da4d3449",
-  "businessUid": "СБП-ДС-16.10.2026-1",
+  "id": "272c0572-e41e-4755-95c4-629852ace1e2",
+  "businessUid": "СБП-ДС-21.10.2026-2",
   "userId": "dev-user",
   "currentModel": "Qwen/Qwen3.5-4B",
   "atkEnabled": false,
@@ -31,15 +31,15 @@
   "urlApp": "https://test-app.local",
   "kitsComponent": "СБП",
   "title": "Новый диалог",
-  "createdAt": "2026-10-16T13:31:52.666190277",
-  "updatedAt": "2026-10-16T13:31:52.666190277",
+  "createdAt": "2026-10-21T09:01:41.787424875",
+  "updatedAt": "2026-10-21T09:01:41.787424875",
   "cipher": "SBP001"
 }
-2026-10-16 13:31:52 - || TestAiSaveAtk:83 || Создан диалог id=a4b34b66-9ea1-4e02-8e31-8223da4d3449
-2026-10-16 13:31:52 - || TestAiSaveAtk:28 || ШAГ 2: отправка сообщения на получение АТК
-2026-10-16 13:31:52 - || TestAiSaveAtk:118 || Отправляем сообщение 'Сгенерируй авто тест-кейс по авторизации' в диалог a4b34b66-9ea1-4e02-8e31-8223da4d3449
-2026-10-16 13:31:52 - || TestAiSaveAtk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations/a4b34b66-9ea1-4e02-8e31-8223da4d3449/messages
-2026-10-16 13:31:52 - || TestAiSaveAtk:37 ||   request body:
+2026-10-21 09:01:42 - || TestAiSaveAtk:83 || Создан диалог id=272c0572-e41e-4755-95c4-629852ace1e2
+2026-10-21 09:01:42 - || TestAiSaveAtk:28 || ШAГ 2: отправка сообщения на получение АТК
+2026-10-21 09:01:42 - || TestAiSaveAtk:118 || Отправляем сообщение 'Сгенерируй авто тест-кейс по авторизации' в диалог 272c0572-e41e-4755-95c4-629852ace1e2
+2026-10-21 09:01:42 - || TestAiSaveAtk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations/272c0572-e41e-4755-95c4-629852ace1e2/messages
+2026-10-21 09:01:42 - || TestAiSaveAtk:37 ||   request body:
 {
   "message": "Сгенерируй авто тест-кейс по авторизации",
   "context": {
@@ -47,77 +47,134 @@
     "tkEnabled": false,
     "kits": "СБП",
     "urlApp": "https://test-app.local",
-    "model": "Qwen/Qwen3.5-4B"
+    "model": "Qwen/Qwen3.8-27B-FP8"
   }
 }
-2026-10-16 13:31:53 - || TestAiSaveAtk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/a4b34b66-9ea1-4e02-8e31-8223da4d3449/messages
-2026-10-16 13:31:53 - || TestAiSaveAtk:50 ||   response body: <SSE stream, skipped>
-2026-10-16 13:31:55 - || TestAiSaveAtk:101 || ============================================================
-2026-10-16 13:31:55 - || TestAiSaveAtk:102 || РЕЗУЛЬТАТ SSE-СТРИМА
-2026-10-16 13:31:55 - || TestAiSaveAtk:103 || ============================================================
-2026-10-16 13:31:55 - || TestAiSaveAtk:104 || conversationId: a4b34b66-9ea1-4e02-8e31-8223da4d3449
-2026-10-16 13:31:55 - || TestAiSaveAtk:105 || messageId:      294bc651-6ca1-4c15-8ac5-1585f7d08392
-2026-10-16 13:31:55 - || TestAiSaveAtk:106 || событий всего:  230
-2026-10-16 13:31:55 - || TestAiSaveAtk:107 || чанков:         229
-2026-10-16 13:31:55 - || TestAiSaveAtk:108 || последний seq:  229
-2026-10-16 13:31:55 - || TestAiSaveAtk:109 || finish получен: True
-2026-10-16 13:31:55 - || TestAiSaveAtk:110 || длина текста:   1020 символов
-2026-10-16 13:31:55 - || TestAiSaveAtk:111 || ============================================================
-2026-10-16 13:31:55 - || TestAiSaveAtk:112 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
-2026-10-16 13:31:55 - || TestAiSaveAtk:113 || ============================================================
-2026-10-16 13:31:55 - || TestAiSaveAtk:114 || /**
+2026-10-21 09:01:59 - || TestAiSaveAtk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/272c0572-e41e-4755-95c4-629852ace1e2/messages
+2026-10-21 09:01:59 - || TestAiSaveAtk:50 ||   response body: <SSE stream, skipped>
+2026-10-21 09:02:32 - || TestAiSaveAtk:101 || ============================================================
+2026-10-21 09:02:32 - || TestAiSaveAtk:102 || РЕЗУЛЬТАТ SSE-СТРИМА
+2026-10-21 09:02:32 - || TestAiSaveAtk:103 || ============================================================
+2026-10-21 09:02:32 - || TestAiSaveAtk:104 || conversationId: 272c0572-e41e-4755-95c4-629852ace1e2
+2026-10-21 09:02:32 - || TestAiSaveAtk:105 || messageId:      d379f28e-257a-4bac-9bec-f3884771d7b8
+2026-10-21 09:02:32 - || TestAiSaveAtk:106 || событий всего:  325
+2026-10-21 09:02:32 - || TestAiSaveAtk:107 || чанков:         324
+2026-10-21 09:02:32 - || TestAiSaveAtk:108 || последний seq:  441
+2026-10-21 09:02:32 - || TestAiSaveAtk:109 || finish получен: True
+2026-10-21 09:02:32 - || TestAiSaveAtk:110 || длина текста:   2660 символов
+2026-10-21 09:02:32 - || TestAiSaveAtk:111 || ============================================================
+2026-10-21 09:02:32 - || TestAiSaveAtk:112 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
+2026-10-21 09:02:32 - || TestAiSaveAtk:113 || ============================================================
+2026-10-21 09:02:32 - || TestAiSaveAtk:114 || 
+
+package com.sbp001.tests;
+
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
+/**
  *
  * @author dev-user
  */
-public class AuthorizationTestsOfSBP001BydevUser {
-    private static final String USERNAME = "testUser";
-    private static final String CORRECT_PASSWORD = "correct";
-    private static final String WRONG_PASSWORD = "wrong";
-    private static final String LOGIN_FIELD = "username";
-    private static final String PASSWORD_FIELD = "password";
-    private static final String LOGIN_BUTTON = "login";
-    private static final String SUCCESS_PAGE = "success";
+public class AuthorizationTestsOfSBP001ByDevuser {
 
-    public void successfulLoginTest() {
-        fillUsername(LOGIN_FIELD, USERNAME);
-        fillPassword(PASSWORD_FIELD, CORRECT_PASSWORD);
-        clickButton(LOGIN_BUTTON);
-        assertTrue("User should be redirected to success page", isPresent(SUCCESS_PAGE));
+    private SelenideElement loginInput;
+    private SelenideElement passwordInput;
+    private SelenideElement loginButton;
+    private SelenideElement errorLabel;
+    private SelenideElement dashboard;
+
+    private static final String BASE_URL = "https://sbp001.example.com";
+    private static final String LOGIN = "dev-user";
+    private static final String PASSWORD = "SecurePass123!";
+    private static final String WRONG_PASSWORD = "WrongPass123!";
+
+    @BeforeEach
+    void setUp() {
+        open(BASE_URL + "/login");
+        loginInput = $("#login-input");
+        passwordInput = $("#password-input");
+        loginButton = $("#login-button");
+        errorLabel = $("#error-label");
+        dashboard = $("#dashboard");
     }
 
-    public void unsuccessfulLoginTest() {
-        fillUsername(LOGIN_FIELD, USERNAME);
-        fillPassword(PASSWORD_FIELD, WRONG_PASSWORD);
-        clickButton(LOGIN_BUTTON);
-        assertTrue("User should see error message", isPresent("error"));
+    @Test
+    @DisplayName("Successful login with valid credentials")
+    void successfulLoginWithValidCredentials() {
+        loginInput.setValue(LOGIN);
+        passwordInput.setValue(PASSWORD);
+        loginButton.click();
+
+        dashboard.shouldBe(visible, text("Dashboard"), Duration.ofSeconds(10));
+        Selenide.location().should(contain("/dashboard"));
+    }
+
+    @Test
+    @DisplayName("Unsuccessful login with wrong password")
+    void unsuccessfulLoginWithWrongPassword() {
+        loginInput.setValue(LOGIN);
+        passwordInput.setValue(WRONG_PASSWORD);
+        loginButton.click();
+
+        errorLabel.shouldBe(visible, text("Invalid username or password"));
+        Selenide.location().should(contain("/login"));
+    }
+
+    @Test
+    @DisplayName("Unsuccessful login with empty fields")
+    void unsuccessfulLoginWithEmptyFields() {
+        loginButton.click();
+
+        errorLabel.shouldBe(visible, text("Please fill in all required fields"));
+        Selenide.location().should(contain("/login"));
+    }
+
+    @Test
+    @DisplayName("Unsuccessful login with non-existent user")
+    void unsuccessfulLoginWithNonExistentUser() {
+        loginInput.setValue("nonexistent-user");
+        passwordInput.setValue(PASSWORD);
+        loginButton.click();
+
+        errorLabel.shouldBe(visible, text("Invalid username or password"));
+        Selenide.location().should(contain("/login"));
     }
 }
-2026-10-16 13:31:55 - || TestAiSaveAtk:115 || ============================================================
-2026-10-16 13:31:55 - || TestAiSaveAtk:34 || ШАГ 3: Получение сообщений диалога
-2026-10-16 13:31:55 - || TestAiSaveAtk:205 || Получение всех сообщений пользователя dev-user из диалога - a4b34b66-9ea1-4e02-8e31-8223da4d3449
-2026-10-16 13:31:55 - || TestAiSaveAtk:26 || → GET http://localhost:9081/api/ai-test/chat/conversations/a4b34b66-9ea1-4e02-8e31-8223da4d3449/messages
-2026-10-16 13:31:55 - || TestAiSaveAtk:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/conversations/a4b34b66-9ea1-4e02-8e31-8223da4d3449/messages
-2026-10-16 13:31:55 - || TestAiSaveAtk:58 ||   response body:
+2026-10-21 09:02:32 - || TestAiSaveAtk:115 || ============================================================
+2026-10-21 09:02:32 - || TestAiSaveAtk:34 || ШАГ 3: Получение сообщений диалога
+2026-10-21 09:02:32 - || TestAiSaveAtk:205 || Получение всех сообщений пользователя dev-user из диалога - 272c0572-e41e-4755-95c4-629852ace1e2
+2026-10-21 09:02:32 - || TestAiSaveAtk:26 || → GET http://localhost:9081/api/ai-test/chat/conversations/272c0572-e41e-4755-95c4-629852ace1e2/messages
+2026-10-21 09:02:32 - || TestAiSaveAtk:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/conversations/272c0572-e41e-4755-95c4-629852ace1e2/messages
+2026-10-21 09:02:32 - || TestAiSaveAtk:58 ||   response body:
 [
   {
-    "id": "80f51599-2d04-4288-bc4d-e486e3114735",
-    "conversationId": "a4b34b66-9ea1-4e02-8e31-8223da4d3449",
+    "id": "9d43935c-462f-4085-8729-7ac155bfdd1c",
+    "conversationId": "272c0572-e41e-4755-95c4-629852ace1e2",
     "role": "GREETING",
     "content": "👋 Привет, ! Я ИИ Ассистент 🤖 \n Я могу помочь тебе с написанием тест-кейсов (ТК) и авто-тестов (АТК) \nИнструкцию по моему использованию ты можешь найти сверху этого чата, нажав на кнопку 'Инструкция' . ⬆️\nЗагрузи необходимые файлы и введи запрос. Учти, что я могу писать только ТК и АТК и ничего больше! \nДавай начнем! 🚀",
     "cipher": "SBP001",
-    "createdAt": "2026-10-16T13:31:52.719266",
+    "createdAt": "2026-10-21T09:01:41.983044",
     "metadata": {}
   },
   {
-    "id": "402f5ba4-232f-4d77-977b-658e6eedd639",
-    "conversationId": "a4b34b66-9ea1-4e02-8e31-8223da4d3449",
+    "id": "e73c3474-b4c8-4627-8563-ea0071079cbd",
+    "conversationId": "272c0572-e41e-4755-95c4-629852ace1e2",
     "role": "USER",
     "content": "Сгенерируй авто тест-кейс по авторизации",
     "cipher": "SBP001",
-    "createdAt": "2026-10-16T13:31:53.02837",
+    "createdAt": "2026-10-21T09:01:42.948607",
     "metadata": {
       "kits": "СБП",
-      "model": "Qwen/Qwen3.5-4B",
+      "model": "Qwen/Qwen3.8-27B-FP8",
       "urlApp": "https://test-app.local",
       "repoLink": "",
       "tkEnabled": false,
@@ -126,15 +183,15 @@ public class AuthorizationTestsOfSBP001BydevUser {
     }
   },
   {
-    "id": "294bc651-6ca1-4c15-8ac5-1585f7d08392",
-    "conversationId": "a4b34b66-9ea1-4e02-8e31-8223da4d3449",
+    "id": "d379f28e-257a-4bac-9bec-f3884771d7b8",
+    "conversationId": "272c0572-e41e-4755-95c4-629852ace1e2",
     "role": "ASSISTANT",
-    "content": "/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001BydevUser {\n    private static final String USERNAME = \"testUser\";\n    private static final String CORRECT_PASSWORD = \"correct\";\n    private static final String WRONG_PASSWORD = \"wrong\";\n    private static final String LOGIN_FIELD = \"username\";\n    private static final String PASSWORD_FIELD = \"password\";\n    private static final String LOGIN_BUTTON = \"login\";\n    private static final String SUCCESS_PAGE = \"success\";\n\n    public void successfulLoginTest() {\n        fillUsername(LOGIN_FIELD, USERNAME);\n        fillPassword(PASSWORD_FIELD, CORRECT_PASSWORD);\n        clickButton(LOGIN_BUTTON);\n        assertTrue(\"User should be redirected to success page\", isPresent(SUCCESS_PAGE));\n    }\n\n    public void unsuccessfulLoginTest() {\n        fillUsername(LOGIN_FIELD, USERNAME);\n        fillPassword(PASSWORD_FIELD, WRONG_PASSWORD);\n        clickButton(LOGIN_BUTTON);\n        assertTrue(\"User should see error message\", isPresent(\"error\"));\n    }\n}",
+    "content": "\n\npackage com.sbp001.tests;\n\nimport com.codeborne.selenide.Condition;\nimport com.codeborne.selenide.Selenide;\nimport com.codeborne.selenide.SelenideElement;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.DisplayName;\nimport org.junit.jupiter.api.Test;\n\nimport static com.codeborne.selenide.Condition.*;\nimport static com.codeborne.selenide.Selenide.$;\nimport static com.codeborne.selenide.Selenide.open;\n\n/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001ByDevuser {\n\n    private SelenideElement loginInput;\n    private SelenideElement passwordInput;\n    private SelenideElement loginButton;\n    private SelenideElement errorLabel;\n    private SelenideElement dashboard;\n\n    private static final String BASE_URL = \"https://sbp001.example.com\";\n    private static final String LOGIN = \"dev-user\";\n    private static final String PASSWORD = \"SecurePass123!\";\n    private static final String WRONG_PASSWORD = \"WrongPass123!\";\n\n    @BeforeEach\n    void setUp() {\n        open(BASE_URL + \"/login\");\n        loginInput = $(\"#login-input\");\n        passwordInput = $(\"#password-input\");\n        loginButton = $(\"#login-button\");\n        errorLabel = $(\"#error-label\");\n        dashboard = $(\"#dashboard\");\n    }\n\n    @Test\n    @DisplayName(\"Successful login with valid credentials\")\n    void successfulLoginWithValidCredentials() {\n        loginInput.setValue(LOGIN);\n        passwordInput.setValue(PASSWORD);\n        loginButton.click();\n\n        dashboard.shouldBe(visible, text(\"Dashboard\"), Duration.ofSeconds(10));\n        Selenide.location().should(contain(\"/dashboard\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with wrong password\")\n    void unsuccessfulLoginWithWrongPassword() {\n        loginInput.setValue(LOGIN);\n        passwordInput.setValue(WRONG_PASSWORD);\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Invalid username or password\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with empty fields\")\n    void unsuccessfulLoginWithEmptyFields() {\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Please fill in all required fields\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with non-existent user\")\n    void unsuccessfulLoginWithNonExistentUser() {\n        loginInput.setValue(\"nonexistent-user\");\n        passwordInput.setValue(PASSWORD);\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Invalid username or password\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n}",
     "cipher": "SBP001",
-    "createdAt": "2026-10-16T13:31:55.354432",
+    "createdAt": "2026-10-21T09:02:32.344913",
     "metadata": {
       "kits": "СБП",
-      "model": "Qwen/Qwen3.5-4B",
+      "model": "Qwen/Qwen3.8-27B-FP8",
       "urlApp": "https://test-app.local",
       "repoLink": "",
       "tkEnabled": false,
@@ -143,76 +200,75 @@ public class AuthorizationTestsOfSBP001BydevUser {
     }
   }
 ]
-2026-10-16 13:31:55 - || TestAiSaveAtk:210 || Получено 3 сообщений
-2026-10-16 13:31:55 - || TestAiSaveAtk:39 || ШАГ 4: Сохранение АТК
-2026-10-16 13:31:55 - || TestAiSaveAtk:218 || Отправка АТК пользователя dev-user id сообщения - a4b34b66-9ea1-4e02-8e31-8223da4d3449
-2026-10-16 13:31:55 - || TestAiSaveAtk:26 || → POST http://localhost:9081/api/ai-test/atk/1f865f5b-4b8a-4caa-a66f-1cec318750e9
-2026-10-16 13:31:55 - || TestAiSaveAtk:37 ||   request body:
+2026-10-21 09:02:32 - || TestAiSaveAtk:210 || Получено 3 сообщений
+2026-10-21 09:02:32 - || TestAiSaveAtk:39 || ШАГ 4: Сохранение АТК
+2026-10-21 09:02:32 - || TestAiSaveAtk:218 || Отправка АТК пользователя dev-user id сообщения - 272c0572-e41e-4755-95c4-629852ace1e2
+2026-10-21 09:02:32 - || TestAiSaveAtk:26 || → POST http://localhost:9081/api/ai-test/atk/save
+2026-10-21 09:02:32 - || TestAiSaveAtk:37 ||   request body:
 {
-  "message": "/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001BydevUser {\n    private static final String USERNAME = \"testUser\";\n    private static final String CORRECT_PASSWORD = \"correct\";\n    private static final String WRONG_PASSWORD = \"wrong\";\n    private static final String LOGIN_FIELD = \"username\";\n    private static final String PASSWORD_FIELD = \"password\";\n    private static final String LOGIN_BUTTON = \"login\";\n    private static final String SUCCESS_PAGE = \"success\";\n\n    public void successfulLoginTest() {\n        fillUsername(LOGIN_FIELD, USERNAME);\n        fillPassword(PASSWORD_FIELD, CORRECT_PASSWORD);\n        clickButton(LOGIN_BUTTON);\n        assertTrue(\"User should be redirected to success page\", isPresent(SUCCESS_PAGE));\n    }\n\n    public void unsuccessfulLoginTest() {\n        fillUsername(LOGIN_FIELD, USERNAME);\n        fillPassword(PASSWORD_FIELD, WRONG_PASSWORD);\n        clickButton(LOGIN_BUTTON);\n        assertTrue(\"User should see error message\", isPresent(\"error\"));\n    }\n}",
-  "name": "{name}",
-  "context": {
-    "kits": "СБП"
-  }
+  "message": "package com.sbp001.tests;\n\nimport com.codeborne.selenide.Condition;\nimport com.codeborne.selenide.Selenide;\nimport com.codeborne.selenide.SelenideElement;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.DisplayName;\nimport org.junit.jupiter.api.Test;\n\nimport static com.codeborne.selenide.Condition.*;\nimport static com.codeborne.selenide.Selenide.$;\nimport static com.codeborne.selenide.Selenide.open;\n\n/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001ByDevuser {\n\n    private SelenideElement loginInput;\n    private SelenideElement passwordInput;\n    private SelenideElement loginButton;\n    private SelenideElement errorLabel;\n    private SelenideElement dashboard;\n\n    private static final String BASE_URL = \"https://sbp001.example.com\";\n    private static final String LOGIN = \"dev-user\";\n    private static final String PASSWORD = \"SecurePass123!\";\n    private static final String WRONG_PASSWORD = \"WrongPass123!\";\n\n    @BeforeEach\n    void setUp() {\n        open(BASE_URL + \"/login\");\n        loginInput = $(\"#login-input\");\n        passwordInput = $(\"#password-input\");\n        loginButton = $(\"#login-button\");\n        errorLabel = $(\"#error-label\");\n        dashboard = $(\"#dashboard\");\n    }\n\n    @Test\n    @DisplayName(\"Successful login with valid credentials\")\n    void successfulLoginWithValidCredentials() {\n        loginInput.setValue(LOGIN);\n        passwordInput.setValue(PASSWORD);\n        loginButton.click();\n\n        dashboard.shouldBe(visible, text(\"Dashboard\"), Duration.ofSeconds(10));\n        Selenide.location().should(contain(\"/dashboard\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with wrong password\")\n    void unsuccessfulLoginWithWrongPassword() {\n        loginInput.setValue(LOGIN);\n        passwordInput.setValue(WRONG_PASSWORD);\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Invalid username or password\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with empty fields\")\n    void unsuccessfulLoginWithEmptyFields() {\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Please fill in all required fields\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with non-existent user\")\n    void unsuccessfulLoginWithNonExistentUser() {\n        loginInput.setValue(\"nonexistent-user\");\n        passwordInput.setValue(PASSWORD);\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Invalid username or password\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n}",
+  "name": "АТК",
+  "kits": "СБП",
+  "projectUUID": "1f865f5b-4b8a-4caa-a66f-1cec318750e9"
 }
-2026-10-16 13:31:55 - || TestAiSaveAtk:46 || ← 200 POST http://localhost:9081/api/ai-test/atk/1f865f5b-4b8a-4caa-a66f-1cec318750e9
-2026-10-16 13:31:55 - || TestAiSaveAtk:58 ||   response body:
+2026-10-21 09:02:32 - || TestAiSaveAtk:46 || ← 200 POST http://localhost:9081/api/ai-test/atk/save
+2026-10-21 09:02:32 - || TestAiSaveAtk:58 ||   response body:
 {
-  "id": "21e358b1-8656-4f48-b0b8-f64e22693b66",
-  "businessUid": "СБП-ПРАТК-16.10.2026-2",
-  "name": "{name}",
+  "id": "f02cfaaa-6a0c-4d4c-a65e-bfb3ab88eb0a",
+  "businessUid": "СБП-ПРАТК-21.10.2026-1",
+  "name": "АТК",
   "userId": "dev-user",
-  "content": "class AuthorizationTestsOfSBP001BydevUser {\n    private static final String USERNAME = \"testUser\";\n    private static final String CORRECT_PASSWORD = \"correct\";\n    private static final String WRONG_PASSWORD = \"wrong\";\n    private static final String LOGIN_FIELD = \"username\";\n    private static final String PASSWORD_FIELD = \"password\";\n    private static final String LOGIN_BUTTON = \"login\";\n    private static final String SUCCESS_PAGE = \"success\";\n\n    public void successfulLoginTest() {\n        fillUsername(LOGIN_FIELD, USERNAME);\n        fillPassword(PASSWORD_FIELD, CORRECT_PASSWORD);\n        clickButton(LOGIN_BUTTON);\n        assertTrue(\"User should be redirected to success page\", isPresent(SUCCESS_PAGE));\n    }\n\n    public void unsuccessfulLoginTest() {\n        fillUsername(LOGIN_FIELD, USERNAME);\n        fillPassword(PASSWORD_FIELD, WRONG_PASSWORD);\n        clickButton(LOGIN_BUTTON);\n        assertTrue(\"User should see error message\", isPresent(\"error\"));\n    }\n}",
+  "content": "package com.sbp001.tests;\n\nimport com.codeborne.selenide.Condition;\nimport com.codeborne.selenide.Selenide;\nimport com.codeborne.selenide.SelenideElement;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.DisplayName;\nimport org.junit.jupiter.api.Test;\n\nimport static com.codeborne.selenide.Condition.*;\nimport static com.codeborne.selenide.Selenide.$;\nimport static com.codeborne.selenide.Selenide.open;\n\n/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001ByDevuser {\n\n    private SelenideElement loginInput;\n    private SelenideElement passwordInput;\n    private SelenideElement loginButton;\n    private SelenideElement errorLabel;\n    private SelenideElement dashboard;\n\n    private static final String BASE_URL = \"https://sbp001.example.com\";\n    private static final String LOGIN = \"dev-user\";\n    private static final String PASSWORD = \"SecurePass123!\";\n    private static final String WRONG_PASSWORD = \"WrongPass123!\";\n\n    @BeforeEach\n    void setUp() {\n        open(BASE_URL + \"/login\");\n        loginInput = $(\"#login-input\");\n        passwordInput = $(\"#password-input\");\n        loginButton = $(\"#login-button\");\n        errorLabel = $(\"#error-label\");\n        dashboard = $(\"#dashboard\");\n    }\n\n    @Test\n    @DisplayName(\"Successful login with valid credentials\")\n    void successfulLoginWithValidCredentials() {\n        loginInput.setValue(LOGIN);\n        passwordInput.setValue(PASSWORD);\n        loginButton.click();\n\n        dashboard.shouldBe(visible, text(\"Dashboard\"), Duration.ofSeconds(10));\n        Selenide.location().should(contain(\"/dashboard\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with wrong password\")\n    void unsuccessfulLoginWithWrongPassword() {\n        loginInput.setValue(LOGIN);\n        passwordInput.setValue(WRONG_PASSWORD);\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Invalid username or password\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with empty fields\")\n    void unsuccessfulLoginWithEmptyFields() {\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Please fill in all required fields\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with non-existent user\")\n    void unsuccessfulLoginWithNonExistentUser() {\n        loginInput.setValue(\"nonexistent-user\");\n        passwordInput.setValue(PASSWORD);\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Invalid username or password\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n}",
   "kits": "СБП",
   "cipher": "SBP001",
   "kitsId": "ced69fab-2838-494a-b05b-cc2ad18a8666",
   "projectUUID": "1f865f5b-4b8a-4caa-a66f-1cec318750e9",
-  "nameClass": "AuthorizationTestsOfSBP001BydevUser$4.java",
-  "createdAt": "2026-10-16T13:31:55.751078601",
-  "updatedAt": "2026-10-16T13:31:55.751078601"
+  "nameClass": "AuthorizationTestsOfSBP001ByDevuser.java",
+  "createdAt": "2026-10-21T09:02:32.864412641",
+  "updatedAt": "2026-10-21T09:02:32.864412641"
 }
-2026-10-16 13:31:55 - || TestAiSaveAtk:224 || Создан АТК с id=21e358b1-8656-4f48-b0b8-f64e22693b66
-2026-10-16 13:32:10 - || TestAiSaveAtk:45 || ШАГ 5: Удаление АТК
-2026-10-16 13:32:10 - || TestAiSaveAtk:228 || Удаление АТК с id - 21e358b1-8656-4f48-b0b8-f64e22693b66, пользователем id - dev-user
-2026-10-16 13:32:10 - || TestAiSaveAtk:26 || → DELETE http://localhost:9081/api/ai-test/atk/21e358b1-8656-4f48-b0b8-f64e22693b66
-2026-10-16 13:32:10 - || TestAiSaveAtk:46 || ← 200 DELETE http://localhost:9081/api/ai-test/atk/21e358b1-8656-4f48-b0b8-f64e22693b66
-2026-10-16 13:32:10 - || TestAiSaveAtk:58 ||   response body:
+2026-10-21 09:02:32 - || TestAiSaveAtk:224 || Создан АТК с id=f02cfaaa-6a0c-4d4c-a65e-bfb3ab88eb0a
+2026-10-21 09:02:32 - || TestAiSaveAtk:45 || ШАГ 5: Удаление АТК
+2026-10-21 09:02:32 - || TestAiSaveAtk:228 || Удаление АТК с id - f02cfaaa-6a0c-4d4c-a65e-bfb3ab88eb0a, пользователем id - dev-user
+2026-10-21 09:02:32 - || TestAiSaveAtk:26 || → DELETE http://localhost:9081/api/ai-test/atk/f02cfaaa-6a0c-4d4c-a65e-bfb3ab88eb0a
+2026-10-21 09:02:33 - || TestAiSaveAtk:46 || ← 200 DELETE http://localhost:9081/api/ai-test/atk/f02cfaaa-6a0c-4d4c-a65e-bfb3ab88eb0a
+2026-10-21 09:02:33 - || TestAiSaveAtk:58 ||   response body:
 {
-  "id": "21e358b1-8656-4f48-b0b8-f64e22693b66",
-  "businessUid": "СБП-ПРАТК-16.10.2026-2",
-  "name": "{name}",
+  "id": "f02cfaaa-6a0c-4d4c-a65e-bfb3ab88eb0a",
+  "businessUid": "СБП-ПРАТК-21.10.2026-1",
+  "name": "АТК",
   "userId": "dev-user",
-  "content": "class AuthorizationTestsOfSBP001BydevUser {\n    private static final String USERNAME = \"testUser\";\n    private static final String CORRECT_PASSWORD = \"correct\";\n    private static final String WRONG_PASSWORD = \"wrong\";\n    private static final String LOGIN_FIELD = \"username\";\n    private static final String PASSWORD_FIELD = \"password\";\n    private static final String LOGIN_BUTTON = \"login\";\n    private static final String SUCCESS_PAGE = \"success\";\n\n    public void successfulLoginTest() {\n        fillUsername(LOGIN_FIELD, USERNAME);\n        fillPassword(PASSWORD_FIELD, CORRECT_PASSWORD);\n        clickButton(LOGIN_BUTTON);\n        assertTrue(\"User should be redirected to success page\", isPresent(SUCCESS_PAGE));\n    }\n\n    public void unsuccessfulLoginTest() {\n        fillUsername(LOGIN_FIELD, USERNAME);\n        fillPassword(PASSWORD_FIELD, WRONG_PASSWORD);\n        clickButton(LOGIN_BUTTON);\n        assertTrue(\"User should see error message\", isPresent(\"error\"));\n    }\n}",
+  "content": "package com.sbp001.tests;\n\nimport com.codeborne.selenide.Condition;\nimport com.codeborne.selenide.Selenide;\nimport com.codeborne.selenide.SelenideElement;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.DisplayName;\nimport org.junit.jupiter.api.Test;\n\nimport static com.codeborne.selenide.Condition.*;\nimport static com.codeborne.selenide.Selenide.$;\nimport static com.codeborne.selenide.Selenide.open;\n\n/**\n *\n * @author dev-user\n */\npublic class AuthorizationTestsOfSBP001ByDevuser {\n\n    private SelenideElement loginInput;\n    private SelenideElement passwordInput;\n    private SelenideElement loginButton;\n    private SelenideElement errorLabel;\n    private SelenideElement dashboard;\n\n    private static final String BASE_URL = \"https://sbp001.example.com\";\n    private static final String LOGIN = \"dev-user\";\n    private static final String PASSWORD = \"SecurePass123!\";\n    private static final String WRONG_PASSWORD = \"WrongPass123!\";\n\n    @BeforeEach\n    void setUp() {\n        open(BASE_URL + \"/login\");\n        loginInput = $(\"#login-input\");\n        passwordInput = $(\"#password-input\");\n        loginButton = $(\"#login-button\");\n        errorLabel = $(\"#error-label\");\n        dashboard = $(\"#dashboard\");\n    }\n\n    @Test\n    @DisplayName(\"Successful login with valid credentials\")\n    void successfulLoginWithValidCredentials() {\n        loginInput.setValue(LOGIN);\n        passwordInput.setValue(PASSWORD);\n        loginButton.click();\n\n        dashboard.shouldBe(visible, text(\"Dashboard\"), Duration.ofSeconds(10));\n        Selenide.location().should(contain(\"/dashboard\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with wrong password\")\n    void unsuccessfulLoginWithWrongPassword() {\n        loginInput.setValue(LOGIN);\n        passwordInput.setValue(WRONG_PASSWORD);\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Invalid username or password\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with empty fields\")\n    void unsuccessfulLoginWithEmptyFields() {\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Please fill in all required fields\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n\n    @Test\n    @DisplayName(\"Unsuccessful login with non-existent user\")\n    void unsuccessfulLoginWithNonExistentUser() {\n        loginInput.setValue(\"nonexistent-user\");\n        passwordInput.setValue(PASSWORD);\n        loginButton.click();\n\n        errorLabel.shouldBe(visible, text(\"Invalid username or password\"));\n        Selenide.location().should(contain(\"/login\"));\n    }\n}",
   "kits": "СБП",
   "cipher": "SBP001",
   "kitsId": "ced69fab-2838-494a-b05b-cc2ad18a8666",
   "projectUUID": "1f865f5b-4b8a-4caa-a66f-1cec318750e9",
-  "nameClass": "AuthorizationTestsOfSBP001BydevUser$4.java",
-  "createdAt": "2026-10-16T13:31:55.751079",
-  "updatedAt": "2026-10-16T13:31:55.751079"
+  "nameClass": "AuthorizationTestsOfSBP001ByDevuser.java",
+  "createdAt": "2026-10-21T09:02:32.864413",
+  "updatedAt": "2026-10-21T09:02:32.864413"
 }
-2026-10-16 13:32:10 - || TestAiSaveAtk:233 || Удален АТК с id=21e358b1-8656-4f48-b0b8-f64e22693b66
-2026-10-16 13:32:10 - || TestAiSaveAtk:87 || Удаляем диалог a4b34b66-9ea1-4e02-8e31-8223da4d3449 пользователя c id dev-user 
-2026-10-16 13:32:10 - || TestAiSaveAtk:26 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/a4b34b66-9ea1-4e02-8e31-8223da4d3449
-2026-10-16 13:32:10 - || TestAiSaveAtk:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/a4b34b66-9ea1-4e02-8e31-8223da4d3449
-2026-10-16 13:32:10 - || TestAiSaveAtk:58 ||   response body:
+2026-10-21 09:02:33 - || TestAiSaveAtk:233 || Удален АТК с id=f02cfaaa-6a0c-4d4c-a65e-bfb3ab88eb0a
+2026-10-21 09:02:33 - || TestAiSaveAtk:87 || Удаляем диалог 272c0572-e41e-4755-95c4-629852ace1e2 пользователя c id dev-user 
+2026-10-21 09:02:33 - || TestAiSaveAtk:26 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/272c0572-e41e-4755-95c4-629852ace1e2
+2026-10-21 09:02:33 - || TestAiSaveAtk:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/272c0572-e41e-4755-95c4-629852ace1e2
+2026-10-21 09:02:33 - || TestAiSaveAtk:58 ||   response body:
 {
-  "id": "a4b34b66-9ea1-4e02-8e31-8223da4d3449",
-  "businessUid": "СБП-ДС-16.10.2026-1",
+  "id": "272c0572-e41e-4755-95c4-629852ace1e2",
+  "businessUid": "СБП-ДС-21.10.2026-2",
   "userId": "dev-user",
-  "currentModel": "Qwen/Qwen3.5-4B",
+  "currentModel": "Qwen/Qwen3.8-27B-FP8",
   "atkEnabled": true,
   "tkEnabled": false,
   "useTestAgent": false,
   "urlApp": "https://test-app.local",
   "kitsComponent": "СБП",
   "title": "Новый диалог",
-  "createdAt": "2026-10-16T13:31:52.66619",
-  "updatedAt": "2026-10-16T13:31:52.826698",
+  "createdAt": "2026-10-21T09:01:41.787425",
+  "updatedAt": "2026-10-21T09:01:42.241472",
   "cipher": "SBP001"
 }
-2026-10-16 13:32:10 - || TestAiSaveAtk:91 || <Response [200 ]>
-2026-10-16 13:32:10 - || TestAiSaveAtk:94 || Диалог с id - a4b34b66-9ea1-4e02-8e31-8223da4d3449 удален
-2026-10-16 13:32:10 - || TestAiSaveAtk:64 || ============================================================
-2026-10-16 13:32:10 - || TestAiSaveAtk:65 || END TestAiSaveAtk
-2026-10-16 13:32:10 - || TestAiSaveAtk:66 || ============================================================
+2026-10-21 09:02:33 - || TestAiSaveAtk:91 || <Response [200 ]>
+2026-10-21 09:02:33 - || TestAiSaveAtk:94 || Диалог с id - 272c0572-e41e-4755-95c4-629852ace1e2 удален
+2026-10-21 09:02:33 - || TestAiSaveAtk:64 || ============================================================
+2026-10-21 09:02:33 - || TestAiSaveAtk:65 || END TestAiSaveAtk
+2026-10-21 09:02:33 - || TestAiSaveAtk:66 || ============================================================

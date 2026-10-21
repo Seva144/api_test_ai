@@ -7,7 +7,7 @@ class Routes(str, Enum):
     CONVERSATION_BY_ID = 'chat/conversations/{}'
     MESSAGE_SEND = 'chat/conversations/{}/messages'
     MESSAGES_GET = 'chat/conversations/{}/messages'
-    ATK_POST = '/atk/{}'
+    ATK_POST = '/atk/save'
     ATK_DELETE = '/atk/{}'
     TK_POST = '/tk/{}'
     TK_DELETE = '/tk/{}'
