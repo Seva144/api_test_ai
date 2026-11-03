@@ -1,8 +1,6 @@
 {
   "message": "{{message}}",
-  "name": "{name}",
-  "context": {
-    "kits": "{{kits}}",
-    "testingType": "{{testingType}}"
-  }
+  "name": "{{name}}",
+  "kits": "{{kits}}",
+  "testingType": "{{testingType}}"
 }

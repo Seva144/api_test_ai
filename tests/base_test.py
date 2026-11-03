@@ -160,8 +160,8 @@ class TestBase:
 
     def send_message(self, config: Any, id_conversation: UUID, message: str) -> MessageStreamResult:
         """
-            Отправляет сообщение агенту (useTestAgent=true).
-            Агент возвращает ОДИН finish-чанк с metadata.testCases.
+            Отправляет сообщение.
+            Чанки текста приходят с event=chunk, завершение — event=finish (content пустой).
             """
         self.logger.info(f"→ SEND MESSAGE (agent) в диалог {id_conversation}: {message!r}")
 
@@ -186,19 +186,24 @@ class TestBase:
         if not chunks:
             raise AssertionError("Агент не вернул ни одного сообщения")
 
-        # у агента обычно один финальный чанк с testCases
-        last = chunks[-1]
-        full_text = last.content
+        text_chunks = [c for c in chunks if c.event_type == "chunk"]
+        if not text_chunks:
+            raise AssertionError("SSE не вернул ни одного chunk-события с текстом")
 
+        full_text = "".join(c.content for c in sorted(text_chunks, key=lambda c: c.seq))
+        finished = any(c.event_type == "finish" for c in chunks)
+
+        first = text_chunks[0]
         result = MessageStreamResult(
-            conversation_id=last.conversation_id,
-            message_id=last.message_id,
+            conversation_id=first.conversation_id,
+            message_id=first.message_id,
             chunks=chunks,
             full_text=full_text,
             event_count=event_count,
+            finished=finished,
         )
 
-        self._log_stream_result(result, finished=True)
+        self._log_stream_result(result, finished=finished)
         return result
 
     def get_messages(self, id_conversation: UUID, user_id: str) -> dict[UUID, MessageDTO]:
@@ -217,7 +222,7 @@ class TestBase:
                    project_id: UUID) -> AtkDTO:
         self.logger.info(f"Отправка АТК пользователя {user_id} id сообщения - {id_conversation}")
         request = create_request(ATK_MESSAGE_DEFAULT, "post_atk", message=message, projectUUID=str(project_id))
-        response = post_atk(self.client, project_id, json=request)
+        response = post_atk(self.client, json=request)
         assert_status_code(response, HTTPStatus.OK)
         assert_schema(response, AtkDTO)
         dto = AtkDTO.model_validate(response.json())
@@ -235,13 +240,12 @@ class TestBase:
 
     def tks_create(self, id_conversation: UUID,
                    user_id: str,
-                   message_id: UUID,
                    message: str,
-                   testing_type: str
+                   testing_type: UUID
                    ) -> list[TkDTO]:
         self.logger.info(f"Отправка ТК пользователя {user_id} id сообщения - {id_conversation}")
-        request = create_request(TK_MESSAGE_DEFAULT, "post_tk", message=message, testingType=testing_type)
-        response = post_tk(self.client, message_id, json=request)
+        request = create_request(TK_MESSAGE_DEFAULT, "post_tk", message=message, testingType=str(testing_type))
+        response = post_tk(self.client, json=request)
         assert_status_code(response, HTTPStatus.OK)
         assert_schema_list(response, TkDTO)
         tks = [TkDTO.model_validate(item) for item in response.json()]

@@ -9,7 +9,7 @@ class Routes(str, Enum):
     MESSAGES_GET = 'chat/conversations/{}/messages'
     ATK_POST = '/atk/save'
     ATK_DELETE = '/atk/{}'
-    TK_POST = '/tk/{}'
+    TK_POST = '/tk/save'
     TK_DELETE = '/tk/{}'
     FILE_UPLOAD = 'chat/{}/files/upload'
     FILE_DELETE = 'chat/{}/files/{}'

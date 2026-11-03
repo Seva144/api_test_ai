@@ -31,7 +31,7 @@ class TestAiDownloadFileToAgentDoc(TestBase):
             self.logger.info(f"ШАГ 3: Написать сообщение для генерации ТК")
             message = "Сделай тест кейсы на отпуск использую данные из файла"
             message_send = self.send_message(MESSAGE_TK_SIMPLE, id_conversation, message)
-            assert_test_cases_agent_generated(message_send)
+            assert_stream_result(message_send, id_conversation)
             id_message = message_send.message_id
 
             # 4. Получить сообщения диалога

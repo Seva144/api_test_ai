@@ -251,43 +251,45 @@ def assert_stream_result(
 ) -> None:
     """
     Проверяет инварианты SSE-стрима:
-      - поток непуст;
-      - все чанки из одного диалога и одного сообщения;
+      - поток непуст (есть chunk-события);
+      - чанки из одного диалога и одного сообщения;
       - seq монотонно возрастает;
-      - full_text склеен из чанков в порядке seq;
-      - event_type у всех чанков = 'chunk'.
+      - full_text склеен из chunk-событий в порядке seq;
+      - стрим завершён событием finish.
     """
+    chunks = [c for c in result.chunks if c.event_type == "chunk"]
+    finish_events = [c for c in result.chunks if c.event_type == "finish"]
+
     logger.info(
-        f"assert_stream_result: chunks={len(result.chunks)}, "
-        f"event_count={result.event_count}, text_len={len(result.full_text)}"
+        f"assert_stream_result: chunks={len(chunks)}, "
+        f"finish={len(finish_events)}, event_count={result.event_count}, "
+        f"text_len={len(result.full_text)}"
     )
 
-    assert result.chunks, "SSE не вернул ни одного чанка"
+    assert chunks, "SSE не вернул ни одного chunk-события"
+    assert finish_events, "SSE не завершился событием finish"
     assert result.full_text.strip(), "Пустой ответ модели"
 
-    conv_ids = {c.conversation_id for c in result.chunks}
+    conv_ids = {c.conversation_id for c in chunks}
     assert conv_ids == {id_conversation}, (
         f"Чанки из разных диалогов: {conv_ids}, ожидался {id_conversation}"
     )
 
-    msg_ids = {c.message_id for c in result.chunks}
+    msg_ids = {c.message_id for c in chunks}
     assert len(msg_ids) == 1, f"Чанки из разных сообщений: {msg_ids}"
     assert result.message_id in msg_ids, (
         f"result.message_id={result.message_id} нет среди чанков"
     )
 
-    seqs = [c.seq for c in result.chunks]
+    seqs = [c.seq for c in chunks]
     assert seqs == sorted(seqs), f"seq не возрастает: первые 10 = {seqs[:10]}"
 
-    expected = "".join(c.content for c in sorted(result.chunks, key=lambda c: c.seq))
+    expected = "".join(c.content for c in sorted(chunks, key=lambda c: c.seq))
     assert result.full_text == expected, "full_text не совпадает со склейкой чанков"
 
-    event_types = {c.event_type for c in result.chunks}
-    assert event_types <= {"chunk"}, f"Неожиданные event_type: {event_types}"
-
     logger.info(
-        f" assert_stream_result: OK "
-        f"(диалог {id_conversation}, сообщений 1, чанков {len(result.chunks)}, "
+        f"assert_stream_result: OK "
+        f"(диалог {id_conversation}, чанков {len(chunks)}, "
         f"seq {seqs[0]}..{seqs[-1]})"
     )
 

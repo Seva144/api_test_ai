@@ -1,11 +1,11 @@
-2026-10-12 15:19:05 - || TestAiSimpleCrudTk:55 || ApiClient инициализирован
-2026-10-12 15:19:05 - || TestAiSimpleCrudTk:57 || ============================================================
-2026-10-12 15:19:05 - || TestAiSimpleCrudTk:58 || START TestAiSimpleCrudTk  (log: logs/ai_test_simple_crud_tk.log)
-2026-10-12 15:19:05 - || TestAiSimpleCrudTk:59 || ============================================================
-2026-10-12 15:19:05 - || TestAiSimpleCrudTk:72 || Создание нового диалога диалога
-2026-10-12 15:19:05 - || TestAiSimpleCrudTk:75 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
-2026-10-12 15:19:05 - || TestAiSimpleCrudTk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
-2026-10-12 15:19:05 - || TestAiSimpleCrudTk:37 ||   request body:
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:56 || ApiClient инициализирован
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:58 || ============================================================
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:59 || START TestAiSimpleCrudTk  (log: logs/ai_test_simple_crud_tk.log)
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:60 || ============================================================
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:73 || Создание нового диалога диалога
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:76 || payload: {'title': 'Новый диалог', 'context': {'atkEnabled': False, 'tkEnabled': False, 'useTestAgent': False, 'kits': 'СБП', 'urlApp': 'https://test-app.local', 'model': 'Qwen/Qwen3.5-4B'}}
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:37 ||   request body:
 {
   "title": "Новый диалог",
   "context": {
@@ -17,11 +17,11 @@
     "model": "Qwen/Qwen3.5-4B"
   }
 }
-2026-10-12 15:19:06 - || TestAiSimpleCrudTk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
-2026-10-12 15:19:06 - || TestAiSimpleCrudTk:58 ||   response body:
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:58 ||   response body:
 {
-  "id": "63068926-683c-4c56-8ae0-bbc39223b880",
-  "businessUid": "СБП-ДС-12.10.2026-1",
+  "id": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "businessUid": "СБП-ДС-03.11.2026-1",
   "userId": "dev-user",
   "currentModel": "Qwen/Qwen3.5-4B",
   "atkEnabled": false,
@@ -30,14 +30,14 @@
   "urlApp": "https://test-app.local",
   "kitsComponent": "СБП",
   "title": "Новый диалог",
-  "createdAt": "2026-10-12T15:19:06.042668074",
-  "updatedAt": "2026-10-12T15:19:06.042668074",
+  "createdAt": "2026-11-03T09:23:40.736302916",
+  "updatedAt": "2026-11-03T09:23:40.736302916",
   "cipher": "SBP001"
 }
-2026-10-12 15:19:06 - || TestAiSimpleCrudTk:82 || Создан диалог id=63068926-683c-4c56-8ae0-bbc39223b880
-2026-10-12 15:19:06 - || TestAiSimpleCrudTk:165 || → SEND MESSAGE (agent) в диалог 63068926-683c-4c56-8ae0-bbc39223b880: 'Сделай ТК по авторизации'
-2026-10-12 15:19:06 - || TestAiSimpleCrudTk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations/63068926-683c-4c56-8ae0-bbc39223b880/messages
-2026-10-12 15:19:06 - || TestAiSimpleCrudTk:37 ||   request body:
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:83 || Создан диалог id=94414b74-64b9-4cf5-aac9-f67554aad961
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:166 || → SEND MESSAGE (agent) в диалог 94414b74-64b9-4cf5-aac9-f67554aad961: 'Сделай ТК по авторизации'
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:26 || → POST http://localhost:9081/api/ai-test/chat/conversations/94414b74-64b9-4cf5-aac9-f67554aad961/messages
+2026-11-03 09:23:40 - || TestAiSimpleCrudTk:37 ||   request body:
 {
   "message": "Сделай ТК по авторизации",
   "context": {
@@ -48,457 +48,729 @@
     "model": "Qwen/Qwen3.5-4B"
   }
 }
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/63068926-683c-4c56-8ae0-bbc39223b880/messages
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:50 ||   response body: <SSE stream, skipped>
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:176 || event=finish data={
-  "conversationId": "63068926-683c-4c56-8ae0-bbc39223b880",
-  "messageId": "5a7fcda1-d1e0-4a7e-8c8a-2ed515f20d65",
-  "role": "ASSISTANT",
-  "content": "▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация с корректными данными\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить успешный вход в систему с правильными учетными данными\n▪ сценарий: positive, valid credentials\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу авторизации\n- данные: Страница входа\n- результат: Отображается форма входа с полями для логина и пароля\n\n→ ШАГ 2\n- шаг: Ввести корректный логин\n- данные: Логин пользователя\n- результат: Логин отображается в поле ввода\n\n→ ШАГ 3\n- шаг: Ввести корректный пароль\n- данные: Пароль пользователя\n- результат: Пароль отображается в поле ввода\n\n→ ШАГ 4\n- шаг: Нажать кнопку «Войти»\n- данные: Кнопка входа активна\n- результат: Пользователь перенаправляется на главную страницу или личный кабинет\n\n→ ШАГ 5\n- шаг: Проверить отображение информации о пользователе\n- данные: Личный кабинет\n- результат: Отображается имя пользователя, профиль и доступные функции\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация с некорректными данными\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить обработку попытки входа с неверными учетными данными\n▪ сценарий: negative, invalid credentials\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу авторизации\n- данные: Страница входа\n- результат: Отображается форма входа\n\n→ ШАГ 2\n- шаг: Ввести неверный логин\n- данные: Неверный логин\n- результат: Неверный логин отображается в поле ввода\n\n→ ШАГ 3\n- шаг: Ввести неверный пароль\n- данные: Неверный пароль\n- результат: Неверный пароль отображается в поле ввода\n\n→ ШАГ 4\n- шаг: Нажать кнопку «Войти»\n- данные: Кнопка входа активна\n- результат: Отображается сообщение об ошибке: «Неверный логин или пароль»\n\n→ ШАГ 5\n- шаг: Проверить отсутствие перенаправления\n- данные: Статус страницы\n- результат: Пользователь остается на странице авторизации\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация с пустыми полями\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить обработку попытки входа без заполнения полей\n▪ сценарий: negative, empty fields\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу авторизации\n- данные: Страница входа\n- результат: Отображается форма входа\n\n→ ШАГ 2\n- шаг: Оставить поля логина и пароля пустыми\n- данные: Пустые поля\n- результат: Поля остаются пустыми\n\n→ ШАГ 3\n- шаг: Нажать кнопку «Войти»\n- данные: Кнопка входа активна\n- результат: Отображается сообщение об ошибке: «Поля логина и пароля обязательны»\n\n→ ШАГ 4\n- шаг: Проверить отсутствие перенаправления\n- данные: Статус страницы\n- результат: Пользователь остается на странице авторизации\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация с использованием ссылки «Забыли пароль»\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице авторизации\n▪ цель: Проверить возможность перехода к восстановлению пароля\n▪ сценарий: navigation, password recovery\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Найти ссылку «Забыли пароль»\n- данные: Ссылка на восстановление\n- результат: Ссылка отображается на странице входа\n\n→ ШАГ 2\n- шаг: Нажать на ссылку «Забыли пароль»\n- данные: Ссылка активна\n- результат: Перенаправление на страницу восстановления пароля\n\n→ ШАГ 3\n- шаг: Проверить содержимое страницы восстановления\n- данные: Страница восстановления\n- результат: Отображается форма для ввода email для сброса пароля\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация через социальные сети\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице авторизации\n▪ цель: Проверить возможность входа через сторонние сервисы\n▪ сценарий: positive, social login\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Найти кнопку входа через Google\n- данные: Кнопка входа Google\n- результат: Кнопка отображается на странице входа\n\n→ ШАГ 2\n- шаг: Нажать кнопку «Войти через Google»\n- данные: Кнопка активна\n- результат: Открывается окно авторизации Google\n\n→ ШАГ 3\n- шаг: Пройти авторизацию в Google\n- данные: Учетные данные Google\n- результат: Пользователь перенаправляется в систему или возвращается в личный кабинет\n\n→ ШАГ 4\n- шаг: Проверить профиль пользователя\n- данные: Личный кабинет\n- результат: Профиль пользователя отображается корректно с данными из Google\n■ КОНЕЦ\n\n",
-  "seq": 1,
-  "metadata": {
-    "assistantId": "5a7fcda1-d1e0-4a7e-8c8a-2ed515f20d65",
-    "senderId": null,
-    "testCases": [
-      {
-        "id": "1101f79d-e9cb-44e7-95d6-4d9077ad2c6d",
-        "key": "TC-78781222",
-        "name": "Авторизация с корректными данными",
-        "status": "Draft",
-        "precondition": "Пользователь находится на странице входа в систему",
-        "objective": "Проверить успешный вход в систему с правильными учетными данными",
-        "folder": "Авторизация",
-        "priority": "High",
-        "component": "Authentication",
-        "labels": "positive, valid credentials",
-        "owner": "QA Engineer",
-        "estimatedTime": "5 minutes",
-        "coverageIssues": "",
-        "coveragePages": "",
-        "steps": [
-          {
-            "step": "Перейти на страницу авторизации",
-            "testData": "Страница входа",
-            "expectedResult": "Отображается форма входа с полями для логина и пароля"
-          },
-          {
-            "step": "Ввести корректный логин",
-            "testData": "Логин пользователя",
-            "expectedResult": "Логин отображается в поле ввода"
-          },
-          {
-            "step": "Ввести корректный пароль",
-            "testData": "Пароль пользователя",
-            "expectedResult": "Пароль отображается в поле ввода"
-          },
-          {
-            "step": "Нажать кнопку «Войти»",
-            "testData": "Кнопка входа активна",
-            "expectedResult": "Пользователь перенаправляется на главную страницу или личный кабинет"
-          },
-          {
-            "step": "Проверить отображение информации о пользователе",
-            "testData": "Личный кабинет",
-            "expectedResult": "Отображается имя пользователя, профиль и доступные функции"
-          }
-        ],
-        "testScriptPlainText": "",
-        "testScriptBDD": "",
-        "markdown": "",
-        "source": "LLM Generation",
-        "requirementId": "",
-        "orderIndex": 1
-      },
-      {
-        "id": "c7793a0f-8048-4f1a-b9a1-b5e3343f5153",
-        "key": "TC-22265258",
-        "name": "Авторизация с некорректными данными",
-        "status": "Draft",
-        "precondition": "Пользователь находится на странице входа в систему",
-        "objective": "Проверить обработку попытки входа с неверными учетными данными",
-        "folder": "Авторизация",
-        "priority": "High",
-        "component": "Authentication",
-        "labels": "negative, invalid credentials",
-        "owner": "QA Engineer",
-        "estimatedTime": "5 minutes",
-        "coverageIssues": "",
-        "coveragePages": "",
-        "steps": [
-          {
-            "step": "Перейти на страницу авторизации",
-            "testData": "Страница входа",
-            "expectedResult": "Отображается форма входа"
-          },
-          {
-            "step": "Ввести неверный логин",
-            "testData": "Неверный логин",
-            "expectedResult": "Неверный логин отображается в поле ввода"
-          },
-          {
-            "step": "Ввести неверный пароль",
-            "testData": "Неверный пароль",
-            "expectedResult": "Неверный пароль отображается в поле ввода"
-          },
-          {
-            "step": "Нажать кнопку «Войти»",
-            "testData": "Кнопка входа активна",
-            "expectedResult": "Отображается сообщение об ошибке: «Неверный логин или пароль»"
-          },
-          {
-            "step": "Проверить отсутствие перенаправления",
-            "testData": "Статус страницы",
-            "expectedResult": "Пользователь остается на странице авторизации"
-          }
-        ],
-        "testScriptPlainText": "",
-        "testScriptBDD": "",
-        "markdown": "",
-        "source": "LLM Generation",
-        "requirementId": "",
-        "orderIndex": 2
-      },
-      {
-        "id": "aabecbb7-5c4f-4c83-8fde-8a9bafc4efce",
-        "key": "TC-85557060",
-        "name": "Авторизация с пустыми полями",
-        "status": "Draft",
-        "precondition": "Пользователь находится на странице входа в систему",
-        "objective": "Проверить обработку попытки входа без заполнения полей",
-        "folder": "Авторизация",
-        "priority": "Medium",
-        "component": "Authentication",
-        "labels": "negative, empty fields",
-        "owner": "QA Engineer",
-        "estimatedTime": "4 minutes",
-        "coverageIssues": "",
-        "coveragePages": "",
-        "steps": [
-          {
-            "step": "Перейти на страницу авторизации",
-            "testData": "Страница входа",
-            "expectedResult": "Отображается форма входа"
-          },
-          {
-            "step": "Оставить поля логина и пароля пустыми",
-            "testData": "Пустые поля",
-            "expectedResult": "Поля остаются пустыми"
-          },
-          {
-            "step": "Нажать кнопку «Войти»",
-            "testData": "Кнопка входа активна",
-            "expectedResult": "Отображается сообщение об ошибке: «Поля логина и пароля обязательны»"
-          },
-          {
-            "step": "Проверить отсутствие перенаправления",
-            "testData": "Статус страницы",
-            "expectedResult": "Пользователь остается на странице авторизации"
-          }
-        ],
-        "testScriptPlainText": "",
-        "testScriptBDD": "",
-        "markdown": "",
-        "source": "LLM Generation",
-        "requirementId": "",
-        "orderIndex": 3
-      },
-      {
-        "id": "6d21f242-a22d-4f11-a38c-dd3ddf51ef0c",
-        "key": "TC-53539290",
-        "name": "Авторизация с использованием ссылки «Забыли пароль»",
-        "status": "Draft",
-        "precondition": "Пользователь находится на странице авторизации",
-        "objective": "Проверить возможность перехода к восстановлению пароля",
-        "folder": "Авторизация",
-        "priority": "Low",
-        "component": "Authentication",
-        "labels": "navigation, password recovery",
-        "owner": "QA Engineer",
-        "estimatedTime": "3 minutes",
-        "coverageIssues": "",
-        "coveragePages": "",
-        "steps": [
-          {
-            "step": "Найти ссылку «Забыли пароль»",
-            "testData": "Ссылка на восстановление",
-            "expectedResult": "Ссылка отображается на странице входа"
-          },
-          {
-            "step": "Нажать на ссылку «Забыли пароль»",
-            "testData": "Ссылка активна",
-            "expectedResult": "Перенаправление на страницу восстановления пароля"
-          },
-          {
-            "step": "Проверить содержимое страницы восстановления",
-            "testData": "Страница восстановления",
-            "expectedResult": "Отображается форма для ввода email для сброса пароля"
-          }
-        ],
-        "testScriptPlainText": "",
-        "testScriptBDD": "",
-        "markdown": "",
-        "source": "LLM Generation",
-        "requirementId": "",
-        "orderIndex": 4
-      },
-      {
-        "id": "1b87c293-ed08-414b-97ef-77a3a89b64cb",
-        "key": "TC-55970941",
-        "name": "Авторизация через социальные сети",
-        "status": "Draft",
-        "precondition": "Пользователь находится на странице авторизации",
-        "objective": "Проверить возможность входа через сторонние сервисы",
-        "folder": "Авторизация",
-        "priority": "Medium",
-        "component": "Authentication",
-        "labels": "positive, social login",
-        "owner": "QA Engineer",
-        "estimatedTime": "6 minutes",
-        "coverageIssues": "",
-        "coveragePages": "",
-        "steps": [
-          {
-            "step": "Найти кнопку входа через Google",
-            "testData": "Кнопка входа Google",
-            "expectedResult": "Кнопка отображается на странице входа"
-          },
-          {
-            "step": "Нажать кнопку «Войти через Google»",
-            "testData": "Кнопка активна",
-            "expectedResult": "Открывается окно авторизации Google"
-          },
-          {
-            "step": "Пройти авторизацию в Google",
-            "testData": "Учетные данные Google",
-            "expectedResult": "Пользователь перенаправляется в систему или возвращается в личный кабинет"
-          },
-          {
-            "step": "Проверить профиль пользователя",
-            "testData": "Личный кабинет",
-            "expectedResult": "Профиль пользователя отображается корректно с данными из Google"
-          }
-        ],
-        "testScriptPlainText": "",
-        "testScriptBDD": "",
-        "markdown": "",
-        "source": "LLM Generation",
-        "requirementId": "",
-        "orderIndex": 5
-      }
-    ],
-    "userText": null,
-    "workflowStatus": "completed",
-    "source": "test-cruiser",
-    "sentAt": null,
-    "type": null
-  }
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:46 || ← 200 POST http://localhost:9081/api/ai-test/chat/conversations/94414b74-64b9-4cf5-aac9-f67554aad961/messages
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:50 ||   response body: <SSE stream, skipped>
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "role": "assistant",
+  "content": "▣ ",
+  "seq": 0
 }
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:100 || ============================================================
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:101 || РЕЗУЛЬТАТ SSE-СТРИМА
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:102 || ============================================================
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:103 || conversationId: 63068926-683c-4c56-8ae0-bbc39223b880
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:104 || messageId:      5a7fcda1-d1e0-4a7e-8c8a-2ed515f20d65
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:105 || событий всего:  1
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:106 || чанков:         1
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:107 || последний seq:  1
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:108 || finish получен: True
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:109 || длина текста:   4310 символов
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:110 || ============================================================
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:111 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:112 || ============================================================
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:113 || ▣ ТЕСТ-КЕЙС
-
-▧ META ДАННЫЕ
-▪ имя: Авторизация с корректными данными
-▪ статус: Draft
-▪ предусловия: Пользователь находится на странице входа в систему
-▪ цель: Проверить успешный вход в систему с правильными учетными данными
-▪ сценарий: positive, valid credentials
-▪ пользователь: dev-user
-
-▤ ШАГИ
-
-→ ШАГ 1
-- шаг: Перейти на страницу авторизации
-- данные: Страница входа
-- результат: Отображается форма входа с полями для логина и пароля
-
-→ ШАГ 2
-- шаг: Ввести корректный логин
-- данные: Логин пользователя
-- результат: Логин отображается в поле ввода
-
-→ ШАГ 3
-- шаг: Ввести корректный пароль
-- данные: Пароль пользователя
-- результат: Пароль отображается в поле ввода
-
-→ ШАГ 4
-- шаг: Нажать кнопку «Войти»
-- данные: Кнопка входа активна
-- результат: Пользователь перенаправляется на главную страницу или личный кабинет
-
-→ ШАГ 5
-- шаг: Проверить отображение информации о пользователе
-- данные: Личный кабинет
-- результат: Отображается имя пользователя, профиль и доступные функции
-■ КОНЕЦ
-
-▣ ТЕСТ-КЕЙС
-
-▧ META ДАННЫЕ
-▪ имя: Авторизация с некорректными данными
-▪ статус: Draft
-▪ предусловия: Пользователь находится на странице входа в систему
-▪ цель: Проверить обработку попытки входа с неверными учетными данными
-▪ сценарий: negative, invalid credentials
-▪ пользователь: dev-user
-
-▤ ШАГИ
-
-→ ШАГ 1
-- шаг: Перейти на страницу авторизации
-- данные: Страница входа
-- результат: Отображается форма входа
-
-→ ШАГ 2
-- шаг: Ввести неверный логин
-- данные: Неверный логин
-- результат: Неверный логин отображается в поле ввода
-
-→ ШАГ 3
-- шаг: Ввести неверный пароль
-- данные: Неверный пароль
-- результат: Неверный пароль отображается в поле ввода
-
-→ ШАГ 4
-- шаг: Нажать кнопку «Войти»
-- данные: Кнопка входа активна
-- результат: Отображается сообщение об ошибке: «Неверный логин или пароль»
-
-→ ШАГ 5
-- шаг: Проверить отсутствие перенаправления
-- данные: Статус страницы
-- результат: Пользователь остается на странице авторизации
-■ КОНЕЦ
-
-▣ ТЕСТ-КЕЙС
-
-▧ META ДАННЫЕ
-▪ имя: Авторизация с пустыми полями
-▪ статус: Draft
-▪ предусловия: Пользователь находится на странице входа в систему
-▪ цель: Проверить обработку попытки входа без заполнения полей
-▪ сценарий: negative, empty fields
-▪ пользователь: dev-user
-
-▤ ШАГИ
-
-→ ШАГ 1
-- шаг: Перейти на страницу авторизации
-- данные: Страница входа
-- результат: Отображается форма входа
-
-→ ШАГ 2
-- шаг: Оставить поля логина и пароля пустыми
-- данные: Пустые поля
-- результат: Поля остаются пустыми
-
-→ ШАГ 3
-- шаг: Нажать кнопку «Войти»
-- данные: Кнопка входа активна
-- результат: Отображается сообщение об ошибке: «Поля логина и пароля обязательны»
-
-→ ШАГ 4
-- шаг: Проверить отсутствие перенаправления
-- данные: Статус страницы
-- результат: Пользователь остается на странице авторизации
-■ КОНЕЦ
-
-▣ ТЕСТ-КЕЙС
-
-▧ META ДАННЫЕ
-▪ имя: Авторизация с использованием ссылки «Забыли пароль»
-▪ статус: Draft
-▪ предусловия: Пользователь находится на странице авторизации
-▪ цель: Проверить возможность перехода к восстановлению пароля
-▪ сценарий: navigation, password recovery
-▪ пользователь: dev-user
-
-▤ ШАГИ
-
-→ ШАГ 1
-- шаг: Найти ссылку «Забыли пароль»
-- данные: Ссылка на восстановление
-- результат: Ссылка отображается на странице входа
-
-→ ШАГ 2
-- шаг: Нажать на ссылку «Забыли пароль»
-- данные: Ссылка активна
-- результат: Перенаправление на страницу восстановления пароля
-
-→ ШАГ 3
-- шаг: Проверить содержимое страницы восстановления
-- данные: Страница восстановления
-- результат: Отображается форма для ввода email для сброса пароля
-■ КОНЕЦ
-
-▣ ТЕСТ-КЕЙС
-
-▧ META ДАННЫЕ
-▪ имя: Авторизация через социальные сети
-▪ статус: Draft
-▪ предусловия: Пользователь находится на странице авторизации
-▪ цель: Проверить возможность входа через сторонние сервисы
-▪ сценарий: positive, social login
-▪ пользователь: dev-user
-
-▤ ШАГИ
-
-→ ШАГ 1
-- шаг: Найти кнопку входа через Google
-- данные: Кнопка входа Google
-- результат: Кнопка отображается на странице входа
-
-→ ШАГ 2
-- шаг: Нажать кнопку «Войти через Google»
-- данные: Кнопка активна
-- результат: Открывается окно авторизации Google
-
-→ ШАГ 3
-- шаг: Пройти авторизацию в Google
-- данные: Учетные данные Google
-- результат: Пользователь перенаправляется в систему или возвращается в личный кабинет
-
-→ ШАГ 4
-- шаг: Проверить профиль пользователя
-- данные: Личный кабинет
-- результат: Профиль пользователя отображается корректно с данными из Google
-■ КОНЕЦ
-
-
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:114 || ============================================================
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:204 || Получение всех сообщений пользователя dev-user из диалога - 63068926-683c-4c56-8ae0-bbc39223b880
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:26 || → GET http://localhost:9081/api/ai-test/chat/conversations/63068926-683c-4c56-8ae0-bbc39223b880/messages
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/conversations/63068926-683c-4c56-8ae0-bbc39223b880/messages
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:58 ||   response body:
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "ТЕСТ-КЕЙС\n\n",
+  "seq": 1
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "▧ ",
+  "seq": 2
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "META ",
+  "seq": 3
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "ДАННЫЕ\n",
+  "seq": 4
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "▪ ",
+  "seq": 5
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "имя: ",
+  "seq": 6
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Авторизация ",
+  "seq": 7
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "пользователя\n",
+  "seq": 8
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "▪ ",
+  "seq": 9
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "статус: ",
+  "seq": 10
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "draft\n",
+  "seq": 11
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "▪ ",
+  "seq": 12
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "предусловия: ",
+  "seq": 13
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Пользователь ",
+  "seq": 14
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "находится ",
+  "seq": 15
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "на ",
+  "seq": 16
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "странице ",
+  "seq": 17
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "входа ",
+  "seq": 18
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "в ",
+  "seq": 19
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "систему\n",
+  "seq": 20
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "▪ ",
+  "seq": 21
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "цель: ",
+  "seq": 22
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Проверить ",
+  "seq": 23
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "успешную ",
+  "seq": 24
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "авторизацию ",
+  "seq": 25
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "пользователя\n",
+  "seq": 26
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "▪ ",
+  "seq": 27
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "сценарий: ",
+  "seq": 28
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "positive, ",
+  "seq": 29
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "single ",
+  "seq": 30
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "user\n",
+  "seq": 31
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "▪ ",
+  "seq": 32
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "автор: ",
+  "seq": 33
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "LOGIN\n",
+  "seq": 34
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "▪ ",
+  "seq": 35
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "КИТС: ",
+  "seq": 36
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "KITS\n\n",
+  "seq": 37
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "▤ ",
+  "seq": 38
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "ШАГИ\n\n",
+  "seq": 39
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "→ ",
+  "seq": 40
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "ШАГ ",
+  "seq": 41
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "1\n",
+  "seq": 42
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "- ",
+  "seq": 43
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "шаг: ",
+  "seq": 44
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Ввести ",
+  "seq": 45
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "корректные ",
+  "seq": 46
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "учетные ",
+  "seq": 47
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "данные\n",
+  "seq": 48
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "- ",
+  "seq": 49
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "данные: ",
+  "seq": 50
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Правильный ",
+  "seq": 51
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "логин ",
+  "seq": 52
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "и ",
+  "seq": 53
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "пароль\n",
+  "seq": 54
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "- ",
+  "seq": 55
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "результат: ",
+  "seq": 56
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Поля ",
+  "seq": 57
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "ввода ",
+  "seq": 58
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "очищаются, ",
+  "seq": 59
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "появляется ",
+  "seq": 60
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "сообщение ",
+  "seq": 61
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "об ",
+  "seq": 62
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "успешной ",
+  "seq": 63
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "авторизации\n\n",
+  "seq": 64
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "→ ",
+  "seq": 65
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "ШАГ ",
+  "seq": 66
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "2\n",
+  "seq": 67
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "- ",
+  "seq": 68
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "шаг: ",
+  "seq": 69
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Нажать ",
+  "seq": 70
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "кнопку ",
+  "seq": 71
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "«Войти»\n",
+  "seq": 72
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "- ",
+  "seq": 73
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "данные: ",
+  "seq": 74
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Кнопка ",
+  "seq": 75
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "активна\n",
+  "seq": 76
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "- ",
+  "seq": 77
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "результат: ",
+  "seq": 78
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Пользователь ",
+  "seq": 79
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "перенаправляется ",
+  "seq": 80
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "на ",
+  "seq": 81
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "главную ",
+  "seq": 82
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "страницу ",
+  "seq": 83
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "или ",
+  "seq": 84
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "личный ",
+  "seq": 85
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "кабинет\n\n",
+  "seq": 86
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "→ ",
+  "seq": 87
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "ШАГ ",
+  "seq": 88
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "3\n",
+  "seq": 89
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "- ",
+  "seq": 90
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "шаг: ",
+  "seq": 91
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Проверить ",
+  "seq": 92
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "доступ ",
+  "seq": 93
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "к ",
+  "seq": 94
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "защищенным ",
+  "seq": 95
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "ресурсам\n",
+  "seq": 96
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "- ",
+  "seq": 97
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "данные: ",
+  "seq": 98
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Доступные ",
+  "seq": 99
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "страницы ",
+  "seq": 100
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "личного ",
+  "seq": 101
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "кабинета\n",
+  "seq": 102
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "- ",
+  "seq": 103
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "результат: ",
+  "seq": 104
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "Пользователь ",
+  "seq": 105
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "видит ",
+  "seq": 106
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "свои ",
+  "seq": 107
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "данные, ",
+  "seq": 108
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "историю ",
+  "seq": 109
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "операций ",
+  "seq": 110
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "и ",
+  "seq": 111
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=chunk data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "настройки",
+  "seq": 112
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:177 || event=finish data={
+  "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "messageId": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+  "content": "",
+  "seq": 114
+}
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:101 || ============================================================
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:102 || РЕЗУЛЬТАТ SSE-СТРИМА
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:103 || ============================================================
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:104 || conversationId: 94414b74-64b9-4cf5-aac9-f67554aad961
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:105 || messageId:      7ee1be5f-df70-4b29-adb5-09f58bac2010
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:106 || событий всего:  114
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:107 || чанков:         114
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:108 || последний seq:  114
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:109 || finish получен: True
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:110 || длина текста:   0 символов
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:111 || ============================================================
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:112 || СОБРАННЫЙ ОТВЕТ МОДЕЛИ:
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:113 || ============================================================
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:114 || 
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:115 || ============================================================
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:205 || Получение всех сообщений пользователя dev-user из диалога - 94414b74-64b9-4cf5-aac9-f67554aad961
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:26 || → GET http://localhost:9081/api/ai-test/chat/conversations/94414b74-64b9-4cf5-aac9-f67554aad961/messages
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:46 || ← 200 GET http://localhost:9081/api/ai-test/chat/conversations/94414b74-64b9-4cf5-aac9-f67554aad961/messages
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:58 ||   response body:
 [
   {
-    "id": "56b41064-834a-4b33-9c77-3d5f6b8692e5",
-    "conversationId": "63068926-683c-4c56-8ae0-bbc39223b880",
+    "id": "7c567c30-e9e4-453e-ae90-f94c9f800af4",
+    "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
     "role": "GREETING",
     "content": "👋 Привет, ! Я ИИ Ассистент 🤖 \n Я могу помочь тебе с написанием тест-кейсов (ТК) и авто-тестов (АТК) \nИнструкцию по моему использованию ты можешь найти сверху этого чата, нажав на кнопку 'Инструкция' . ⬆️\nЗагрузи необходимые файлы и введи запрос. Учти, что я могу писать только ТК и АТК и ничего больше! \nДавай начнем! 🚀",
     "cipher": "SBP001",
-    "createdAt": "2026-10-12T15:19:06.100406",
+    "createdAt": "2026-11-03T09:23:40.78523",
     "metadata": {}
   },
   {
-    "id": "9d2964c0-7476-498f-a7f1-a9d6aef968c5",
-    "conversationId": "63068926-683c-4c56-8ae0-bbc39223b880",
+    "id": "f7668dbd-6bea-4ced-be22-cc4a52cb6a22",
+    "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
     "role": "USER",
     "content": "Сделай ТК по авторизации",
     "cipher": "SBP001",
-    "createdAt": "2026-10-12T15:19:28.997915",
+    "createdAt": "2026-11-03T09:23:41.111164",
     "metadata": {
       "kits": "СБП",
       "model": "Qwen/Qwen3.5-4B",
@@ -510,265 +782,31 @@
     }
   },
   {
-    "id": "5a7fcda1-d1e0-4a7e-8c8a-2ed515f20d65",
-    "conversationId": "63068926-683c-4c56-8ae0-bbc39223b880",
+    "id": "7ee1be5f-df70-4b29-adb5-09f58bac2010",
+    "conversationId": "94414b74-64b9-4cf5-aac9-f67554aad961",
     "role": "ASSISTANT",
-    "content": "▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация с корректными данными\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить успешный вход в систему с правильными учетными данными\n▪ сценарий: positive, valid credentials\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу авторизации\n- данные: Страница входа\n- результат: Отображается форма входа с полями для логина и пароля\n\n→ ШАГ 2\n- шаг: Ввести корректный логин\n- данные: Логин пользователя\n- результат: Логин отображается в поле ввода\n\n→ ШАГ 3\n- шаг: Ввести корректный пароль\n- данные: Пароль пользователя\n- результат: Пароль отображается в поле ввода\n\n→ ШАГ 4\n- шаг: Нажать кнопку «Войти»\n- данные: Кнопка входа активна\n- результат: Пользователь перенаправляется на главную страницу или личный кабинет\n\n→ ШАГ 5\n- шаг: Проверить отображение информации о пользователе\n- данные: Личный кабинет\n- результат: Отображается имя пользователя, профиль и доступные функции\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация с некорректными данными\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить обработку попытки входа с неверными учетными данными\n▪ сценарий: negative, invalid credentials\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу авторизации\n- данные: Страница входа\n- результат: Отображается форма входа\n\n→ ШАГ 2\n- шаг: Ввести неверный логин\n- данные: Неверный логин\n- результат: Неверный логин отображается в поле ввода\n\n→ ШАГ 3\n- шаг: Ввести неверный пароль\n- данные: Неверный пароль\n- результат: Неверный пароль отображается в поле ввода\n\n→ ШАГ 4\n- шаг: Нажать кнопку «Войти»\n- данные: Кнопка входа активна\n- результат: Отображается сообщение об ошибке: «Неверный логин или пароль»\n\n→ ШАГ 5\n- шаг: Проверить отсутствие перенаправления\n- данные: Статус страницы\n- результат: Пользователь остается на странице авторизации\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация с пустыми полями\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить обработку попытки входа без заполнения полей\n▪ сценарий: negative, empty fields\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Перейти на страницу авторизации\n- данные: Страница входа\n- результат: Отображается форма входа\n\n→ ШАГ 2\n- шаг: Оставить поля логина и пароля пустыми\n- данные: Пустые поля\n- результат: Поля остаются пустыми\n\n→ ШАГ 3\n- шаг: Нажать кнопку «Войти»\n- данные: Кнопка входа активна\n- результат: Отображается сообщение об ошибке: «Поля логина и пароля обязательны»\n\n→ ШАГ 4\n- шаг: Проверить отсутствие перенаправления\n- данные: Статус страницы\n- результат: Пользователь остается на странице авторизации\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация с использованием ссылки «Забыли пароль»\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице авторизации\n▪ цель: Проверить возможность перехода к восстановлению пароля\n▪ сценарий: navigation, password recovery\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Найти ссылку «Забыли пароль»\n- данные: Ссылка на восстановление\n- результат: Ссылка отображается на странице входа\n\n→ ШАГ 2\n- шаг: Нажать на ссылку «Забыли пароль»\n- данные: Ссылка активна\n- результат: Перенаправление на страницу восстановления пароля\n\n→ ШАГ 3\n- шаг: Проверить содержимое страницы восстановления\n- данные: Страница восстановления\n- результат: Отображается форма для ввода email для сброса пароля\n■ КОНЕЦ\n\n▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация через социальные сети\n▪ статус: Draft\n▪ предусловия: Пользователь находится на странице авторизации\n▪ цель: Проверить возможность входа через сторонние сервисы\n▪ сценарий: positive, social login\n▪ пользователь: dev-user\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Найти кнопку входа через Google\n- данные: Кнопка входа Google\n- результат: Кнопка отображается на странице входа\n\n→ ШАГ 2\n- шаг: Нажать кнопку «Войти через Google»\n- данные: Кнопка активна\n- результат: Открывается окно авторизации Google\n\n→ ШАГ 3\n- шаг: Пройти авторизацию в Google\n- данные: Учетные данные Google\n- результат: Пользователь перенаправляется в систему или возвращается в личный кабинет\n\n→ ШАГ 4\n- шаг: Проверить профиль пользователя\n- данные: Личный кабинет\n- результат: Профиль пользователя отображается корректно с данными из Google\n■ КОНЕЦ\n\n",
+    "content": "▣ ТЕСТ-КЕЙС\n\n▧ META ДАННЫЕ\n▪ имя: Авторизация пользователя\n▪ статус: draft\n▪ предусловия: Пользователь находится на странице входа в систему\n▪ цель: Проверить успешную авторизацию пользователя\n▪ сценарий: positive, single user\n▪ автор: LOGIN\n▪ КИТС: KITS\n\n▤ ШАГИ\n\n→ ШАГ 1\n- шаг: Ввести корректные учетные данные\n- данные: Правильный логин и пароль\n- результат: Поля ввода очищаются, появляется сообщение об успешной авторизации\n\n→ ШАГ 2\n- шаг: Нажать кнопку «Войти»\n- данные: Кнопка активна\n- результат: Пользователь перенаправляется на главную страницу или личный кабинет\n\n→ ШАГ 3\n- шаг: Проверить доступ к защищенным ресурсам\n- данные: Доступные страницы личного кабинета\n- результат: Пользователь видит свои данные, историю операций и настройки",
     "cipher": "SBP001",
-    "createdAt": "2026-10-12T15:19:29.045246",
+    "createdAt": "2026-11-03T09:23:41.572256",
     "metadata": {
       "kits": "СБП",
-      "type": null,
       "model": "Qwen/Qwen3.5-4B",
-      "sentAt": null,
-      "source": "test-cruiser",
       "urlApp": "https://test-app.local",
       "repoLink": "",
-      "senderId": null,
-      "userText": null,
-      "testCases": [
-        {
-          "id": "1101f79d-e9cb-44e7-95d6-4d9077ad2c6d",
-          "key": "TC-78781222",
-          "name": "Авторизация с корректными данными",
-          "owner": "QA Engineer",
-          "steps": [
-            {
-              "step": "Перейти на страницу авторизации",
-              "testData": "Страница входа",
-              "expectedResult": "Отображается форма входа с полями для логина и пароля"
-            },
-            {
-              "step": "Ввести корректный логин",
-              "testData": "Логин пользователя",
-              "expectedResult": "Логин отображается в поле ввода"
-            },
-            {
-              "step": "Ввести корректный пароль",
-              "testData": "Пароль пользователя",
-              "expectedResult": "Пароль отображается в поле ввода"
-            },
-            {
-              "step": "Нажать кнопку «Войти»",
-              "testData": "Кнопка входа активна",
-              "expectedResult": "Пользователь перенаправляется на главную страницу или личный кабинет"
-            },
-            {
-              "step": "Проверить отображение информации о пользователе",
-              "testData": "Личный кабинет",
-              "expectedResult": "Отображается имя пользователя, профиль и доступные функции"
-            }
-          ],
-          "folder": "Авторизация",
-          "labels": "positive, valid credentials",
-          "source": "LLM Generation",
-          "status": "Draft",
-          "markdown": "",
-          "priority": "High",
-          "component": "Authentication",
-          "objective": "Проверить успешный вход в систему с правильными учетными данными",
-          "orderIndex": 1,
-          "precondition": "Пользователь находится на странице входа в систему",
-          "coveragePages": "",
-          "estimatedTime": "5 minutes",
-          "requirementId": "",
-          "testScriptBDD": "",
-          "coverageIssues": "",
-          "testScriptPlainText": ""
-        },
-        {
-          "id": "c7793a0f-8048-4f1a-b9a1-b5e3343f5153",
-          "key": "TC-22265258",
-          "name": "Авторизация с некорректными данными",
-          "owner": "QA Engineer",
-          "steps": [
-            {
-              "step": "Перейти на страницу авторизации",
-              "testData": "Страница входа",
-              "expectedResult": "Отображается форма входа"
-            },
-            {
-              "step": "Ввести неверный логин",
-              "testData": "Неверный логин",
-              "expectedResult": "Неверный логин отображается в поле ввода"
-            },
-            {
-              "step": "Ввести неверный пароль",
-              "testData": "Неверный пароль",
-              "expectedResult": "Неверный пароль отображается в поле ввода"
-            },
-            {
-              "step": "Нажать кнопку «Войти»",
-              "testData": "Кнопка входа активна",
-              "expectedResult": "Отображается сообщение об ошибке: «Неверный логин или пароль»"
-            },
-            {
-              "step": "Проверить отсутствие перенаправления",
-              "testData": "Статус страницы",
-              "expectedResult": "Пользователь остается на странице авторизации"
-            }
-          ],
-          "folder": "Авторизация",
-          "labels": "negative, invalid credentials",
-          "source": "LLM Generation",
-          "status": "Draft",
-          "markdown": "",
-          "priority": "High",
-          "component": "Authentication",
-          "objective": "Проверить обработку попытки входа с неверными учетными данными",
-          "orderIndex": 2,
-          "precondition": "Пользователь находится на странице входа в систему",
-          "coveragePages": "",
-          "estimatedTime": "5 minutes",
-          "requirementId": "",
-          "testScriptBDD": "",
-          "coverageIssues": "",
-          "testScriptPlainText": ""
-        },
-        {
-          "id": "aabecbb7-5c4f-4c83-8fde-8a9bafc4efce",
-          "key": "TC-85557060",
-          "name": "Авторизация с пустыми полями",
-          "owner": "QA Engineer",
-          "steps": [
-            {
-              "step": "Перейти на страницу авторизации",
-              "testData": "Страница входа",
-              "expectedResult": "Отображается форма входа"
-            },
-            {
-              "step": "Оставить поля логина и пароля пустыми",
-              "testData": "Пустые поля",
-              "expectedResult": "Поля остаются пустыми"
-            },
-            {
-              "step": "Нажать кнопку «Войти»",
-              "testData": "Кнопка входа активна",
-              "expectedResult": "Отображается сообщение об ошибке: «Поля логина и пароля обязательны»"
-            },
-            {
-              "step": "Проверить отсутствие перенаправления",
-              "testData": "Статус страницы",
-              "expectedResult": "Пользователь остается на странице авторизации"
-            }
-          ],
-          "folder": "Авторизация",
-          "labels": "negative, empty fields",
-          "source": "LLM Generation",
-          "status": "Draft",
-          "markdown": "",
-          "priority": "Medium",
-          "component": "Authentication",
-          "objective": "Проверить обработку попытки входа без заполнения полей",
-          "orderIndex": 3,
-          "precondition": "Пользователь находится на странице входа в систему",
-          "coveragePages": "",
-          "estimatedTime": "4 minutes",
-          "requirementId": "",
-          "testScriptBDD": "",
-          "coverageIssues": "",
-          "testScriptPlainText": ""
-        },
-        {
-          "id": "6d21f242-a22d-4f11-a38c-dd3ddf51ef0c",
-          "key": "TC-53539290",
-          "name": "Авторизация с использованием ссылки «Забыли пароль»",
-          "owner": "QA Engineer",
-          "steps": [
-            {
-              "step": "Найти ссылку «Забыли пароль»",
-              "testData": "Ссылка на восстановление",
-              "expectedResult": "Ссылка отображается на странице входа"
-            },
-            {
-              "step": "Нажать на ссылку «Забыли пароль»",
-              "testData": "Ссылка активна",
-              "expectedResult": "Перенаправление на страницу восстановления пароля"
-            },
-            {
-              "step": "Проверить содержимое страницы восстановления",
-              "testData": "Страница восстановления",
-              "expectedResult": "Отображается форма для ввода email для сброса пароля"
-            }
-          ],
-          "folder": "Авторизация",
-          "labels": "navigation, password recovery",
-          "source": "LLM Generation",
-          "status": "Draft",
-          "markdown": "",
-          "priority": "Low",
-          "component": "Authentication",
-          "objective": "Проверить возможность перехода к восстановлению пароля",
-          "orderIndex": 4,
-          "precondition": "Пользователь находится на странице авторизации",
-          "coveragePages": "",
-          "estimatedTime": "3 minutes",
-          "requirementId": "",
-          "testScriptBDD": "",
-          "coverageIssues": "",
-          "testScriptPlainText": ""
-        },
-        {
-          "id": "1b87c293-ed08-414b-97ef-77a3a89b64cb",
-          "key": "TC-55970941",
-          "name": "Авторизация через социальные сети",
-          "owner": "QA Engineer",
-          "steps": [
-            {
-              "step": "Найти кнопку входа через Google",
-              "testData": "Кнопка входа Google",
-              "expectedResult": "Кнопка отображается на странице входа"
-            },
-            {
-              "step": "Нажать кнопку «Войти через Google»",
-              "testData": "Кнопка активна",
-              "expectedResult": "Открывается окно авторизации Google"
-            },
-            {
-              "step": "Пройти авторизацию в Google",
-              "testData": "Учетные данные Google",
-              "expectedResult": "Пользователь перенаправляется в систему или возвращается в личный кабинет"
-            },
-            {
-              "step": "Проверить профиль пользователя",
-              "testData": "Личный кабинет",
-              "expectedResult": "Профиль пользователя отображается корректно с данными из Google"
-            }
-          ],
-          "folder": "Авторизация",
-          "labels": "positive, social login",
-          "source": "LLM Generation",
-          "status": "Draft",
-          "markdown": "",
-          "priority": "Medium",
-          "component": "Authentication",
-          "objective": "Проверить возможность входа через сторонние сервисы",
-          "orderIndex": 5,
-          "precondition": "Пользователь находится на странице авторизации",
-          "coveragePages": "",
-          "estimatedTime": "6 minutes",
-          "requirementId": "",
-          "testScriptBDD": "",
-          "coverageIssues": "",
-          "testScriptPlainText": ""
-        }
-      ],
       "tkEnabled": true,
       "atkEnabled": false,
-      "assistantId": "5a7fcda1-d1e0-4a7e-8c8a-2ed515f20d65",
-      "useTestAgent": false,
-      "workflowStatus": "completed"
+      "useTestAgent": false
     }
   }
 ]
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:209 || Получено 3 сообщений
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:86 || Удаляем диалог 63068926-683c-4c56-8ae0-bbc39223b880 пользователя c id dev-user 
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:26 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/63068926-683c-4c56-8ae0-bbc39223b880
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/63068926-683c-4c56-8ae0-bbc39223b880
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:58 ||   response body:
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:210 || Получено 3 сообщений
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:87 || Удаляем диалог 94414b74-64b9-4cf5-aac9-f67554aad961 пользователя c id dev-user 
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:26 || → DELETE http://localhost:9081/api/ai-test/chat/conversations/94414b74-64b9-4cf5-aac9-f67554aad961
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:46 || ← 200 DELETE http://localhost:9081/api/ai-test/chat/conversations/94414b74-64b9-4cf5-aac9-f67554aad961
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:58 ||   response body:
 {
-  "id": "63068926-683c-4c56-8ae0-bbc39223b880",
-  "businessUid": "СБП-ДС-12.10.2026-1",
+  "id": "94414b74-64b9-4cf5-aac9-f67554aad961",
+  "businessUid": "СБП-ДС-03.11.2026-1",
   "userId": "dev-user",
   "currentModel": "Qwen/Qwen3.5-4B",
   "atkEnabled": false,
@@ -777,12 +815,12 @@
   "urlApp": "https://test-app.local",
   "kitsComponent": "СБП",
   "title": "Новый диалог",
-  "createdAt": "2026-10-12T15:19:06.042668",
-  "updatedAt": "2026-10-12T15:19:06.209594",
+  "createdAt": "2026-11-03T09:23:40.736303",
+  "updatedAt": "2026-11-03T09:23:40.913593",
   "cipher": "SBP001"
 }
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:90 || <Response [200 ]>
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:93 || Диалог с id - 63068926-683c-4c56-8ae0-bbc39223b880 удален
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:63 || ============================================================
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:64 || END TestAiSimpleCrudTk
-2026-10-12 15:19:29 - || TestAiSimpleCrudTk:65 || ============================================================
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:91 || <Response [200 ]>
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:94 || Диалог с id - 94414b74-64b9-4cf5-aac9-f67554aad961 удален
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:64 || ============================================================
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:65 || END TestAiSimpleCrudTk
+2026-11-03 09:23:41 - || TestAiSimpleCrudTk:66 || ============================================================

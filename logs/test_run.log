@@ -1,6 +1,8 @@
-2026-10-21 09:01:40 - || pytest:7 || ▶ START  tests/ai_test_save_atk.py::TestAiSaveAtk::test_ai_save_atk
-2026-10-21 09:02:32 - || assertions.assertion_base:260 || assert_stream_result: chunks=324, event_count=325, text_len=2660
-2026-10-21 09:02:32 - || assertions.assertion_base:288 ||  assert_stream_result: OK (диалог 272c0572-e41e-4755-95c4-629852ace1e2, сообщений 1, чанков 324, seq 118..441)
-2026-10-21 09:02:32 - || assertions.assertion_base:307 ||  сообщение с id=d379f28e-257a-4bac-9bec-f3884771d7b8 найдено
-2026-10-21 09:02:33 - || pytest:18 ||  PASSED tests/ai_test_save_atk.py::TestAiSaveAtk::test_ai_save_atk
-2026-10-21 09:02:33 - || pytest:11 || ◆ END    tests/ai_test_save_atk.py::TestAiSaveAtk::test_ai_save_atk
+2026-11-03 14:03:57 - || pytest:7 || ▶ START  tests/ai_test_download_file_to_agent_doc.py::TestAiDownloadFileToAgentDoc::test_ai_download_file_to_agent_doc
+2026-11-03 14:04:13 - || assertions.assertion_base:360 || assert_file_uploaded: id=78f15214-e285-4569-a0cc-0ee045baa46a, filename=ae0b7a87-ec6b-4a97-87d4-d55777398792_Doc_rest.docx, size=20292, mime=application/octet-stream, status=completed
+2026-11-03 14:04:13 - || assertions.assertion_base:370 || conversationId совпадает: 709be568-2186-49ea-9416-9835f5d31bc5
+2026-11-03 14:04:14 - || assertions.assertion_base:263 || assert_stream_result: chunks=157, finish=1, event_count=158, text_len=1099
+2026-11-03 14:04:14 - || assertions.assertion_base:290 || assert_stream_result: OK (диалог 709be568-2186-49ea-9416-9835f5d31bc5, чанков 157, seq 1..157)
+2026-11-03 14:04:14 - || assertions.assertion_base:309 ||  сообщение с id=fc3a7ff1-f348-4eeb-ba50-dc0b623e82a0 найдено
+2026-11-03 14:04:15 - || pytest:18 ||  PASSED tests/ai_test_download_file_to_agent_doc.py::TestAiDownloadFileToAgentDoc::test_ai_download_file_to_agent_doc
+2026-11-03 14:04:15 - || pytest:11 || ◆ END    tests/ai_test_download_file_to_agent_doc.py::TestAiDownloadFileToAgentDoc::test_ai_download_file_to_agent_doc

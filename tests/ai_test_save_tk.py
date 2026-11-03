@@ -38,8 +38,8 @@ class TestAiSaveTk(TestBase):
 
             #  4. Сохранение ТК
             self.logger.info(f"ШАГ 4: Сохранение ТК")
-            testing_type = "4a494142-2c18-4efd-9ec8-b92ca7d7e9d8"
-            tks = self.tks_create(id_conversation, id_user, id_message, assistant_msg.content, testing_type)
+            testing_type = UUID("4a494142-2c18-4efd-9ec8-b92ca7d7e9d8")
+            tks = self.tks_create(id_conversation, id_user, assistant_msg.content, testing_type)
             self.logger.info(f"Сгенерировано {len(tks)} TK")
 
             # 5. Удаление ТК

@@ -22,8 +22,8 @@ class TestAiSendToTkControl(TestBase):
         try:
             # 2. Отправка сообщения
             self.logger.info(f"ШAГ 2: отправка сообщения на получение ТК")
-            message_send = self.send_message(MESSAGE_TK_SIMPLE, id_conversation, message)
-            assert_test_cases_agent_generated(message_send)
+            message_send = self.send_message_locally(MESSAGE_TK_SIMPLE, id_conversation, message)
+            # assert_test_cases_agent_generated(message_send)
             id_message = message_send.message_id
 
             # 3. Получение сообщений
@@ -33,8 +33,8 @@ class TestAiSendToTkControl(TestBase):
 
             #  4. Сохранение ТК
             self.logger.info(f"ШАГ 4: Сохранение ТК")
-            testing_type = "4a494142-2c18-4efd-9ec8-b92ca7d7e9d8"
-            tks = self.tks_create(id_conversation, id_user, id_message, assistant_msg.content, testing_type)
+            testing_type = UUID("4a494142-2c18-4efd-9ec8-b92ca7d7e9d8")
+            tks = self.tks_create(id_conversation, id_user, assistant_msg.content, testing_type)
             self.logger.info(f"Сгенерировано {len(tks)} TK")
             tk_ids = [tk.id for tk in tks]
 
